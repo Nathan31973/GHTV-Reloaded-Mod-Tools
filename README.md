@@ -1,7 +1,10 @@
-# GHTV-Reloaded-Colour-Picker
-This Simple Tool allows you to change the colour of the FX of the highways of Guitar Hero Live in a nice GUI format
+# GHTV-Reloaded-Mod-Tools
+This Simple Tool Modify Guitar Hero Live and GHTV:Reloaded
+Feature
+-- Custom Colour for Highway FX
+-- HyperSpeed for all songs (As of 15/12/2022)
 
-Builds/downloads: https://github.com/Nathan31973/GHTV-Reloaded-Colour-Picker/releases
+Builds/downloads: https://github.com/Nathan31973/GHTV-Reloaded-Mod-Tools/releases
 
 Check out GHTV Reloaded discord http://ghtv.reloaded.stickgaming.net
 
