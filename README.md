@@ -1,4 +1,4 @@
-# GHTV-Reloaded-Mod-Tools V1.2
+# GHTV Reloaded: Mod Tools V1.2
 This simple tool make modify Guitar Hero Live and GHTV: Reloaded very easy!!!
 
 # Found A Bug?
