@@ -1,12 +1,16 @@
 # GHTV-Reloaded-Mod-Tools V1.2
 This simple tool make modify Guitar Hero Live and GHTV: Reloaded very easy!!!
 
+# Found A Bug?
+Please report all bugs on the [Issue](https://github.com/Nathan31973/GHTV-Reloaded-Mod-Tools/issues) page
+
 ## Platform Supported
 - [RPCS3](https://rpcs3.net/)
 
-## Features:
+# Features:
 - Auto Updater (So you know the mod tools are up to date)
 - File Explorer (Make setup easy and remember it)
+
 ## FX Changer
 - Custom Colour for Highway FX
 
@@ -21,7 +25,7 @@ This simple tool make modify Guitar Hero Live and GHTV: Reloaded very easy!!!
 - Export your custom gems as a gem pack so you can share them with the world
 - Export your custom gems into Guitar Hero Live
 
-#### Gem Maker - Importor
+### Gem Maker - Importor
 - Easily import pre-made gem packs from the world into the viewer.
 - Select which gem pack you want to import to Guitar Hero Live
 - Pre-download Offical gem pack approved by the GHTV Reloaded Team
