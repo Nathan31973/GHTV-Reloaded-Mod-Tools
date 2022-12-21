@@ -28,7 +28,7 @@ Please report all bugs on the [Issue](https://github.com/Nathan31973/GHTV-Reload
 ### Gem Maker - Importor
 - Easily import pre-made gem packs from the world into the viewer.
 - Select which gem pack you want to import to Guitar Hero Live
-- Pre-download Offical gem pack approved by the GHTV Reloaded Team
+- Pre-download [Official gem pack](https://github.com/Nathan31973/GHTV-Reloaded-Official-Gem-Packs) approved by the GHTV Reloaded Team
 
 ## Community Patches
 - Hopo notes fixed by GHCripto (make seeing Hammer-ons and Pull-offs easier when Hero Power notes are on screen)
