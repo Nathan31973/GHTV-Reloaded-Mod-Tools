@@ -39,7 +39,7 @@ Please report all bugs on the [Issue](https://github.com/Nathan31973/GHTV-Reload
 ## External resources:
 ### Gem Maker - Creator
 #### Tool auto pre-downloads these
-- [GHLIMGConverter by AnthoChamb](https://github.com/AnthoChamb/GHLIMGConverter)
+- [GHLIMGConverter](https://github.com/AnthoChamb/GHLIMGConverter) by AnthoChamb
 - [PVRTexToolCLI.exe](https://www.imgtec.com/developers/powervr-sdk-tools/legacy-downloads/) version 4.23 or earlier
 #### Manual install require
 - [Python 3+](https://www.python.org/downloads/)
