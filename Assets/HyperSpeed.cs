@@ -242,7 +242,7 @@ public class HyperSpeed : MonoBehaviour
             webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
             webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webClient_DownloadProgressChanged);
             webClient.QueryString.Add("file", Application.persistentDataPath + "\\Hyperspeed.zip"); // To identify the file 
-            webClient.DownloadFileAsync(new Uri("http://ghtv.reloaded.mod.tools.net/"), Application.persistentDataPath + "\\Hyperspeed.zip");
+            webClient.DownloadFileAsync(new Uri("http://ghtv.tools.hyper.stickgaming.net/"), Application.persistentDataPath + "\\Hyperspeed.zip");
         
     }
     void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
