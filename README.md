@@ -1,13 +1,11 @@
-# GHTV Reloaded: Mod Tools V1.2
+# GHTV Reloaded: Mod Tools V1.2.1
 This simple tool make modify Guitar Hero Live and GHTV: Reloaded very easy!!!
 
-# Found A Bug?
-Please report all bugs on the [Issue](https://github.com/Nathan31973/GHTV-Reloaded-Mod-Tools/issues) page
-
-## Platform Supported
-- [RPCS3](https://rpcs3.net/)
-
 # Features:
+- Custom gems (Allow you to change how the Gems look like in Guitar Hero Live)
+- Highway FX (Change the highway FX colours)
+- HyperSpeed (Change how fast the highway is)
+- Community Patches (Easy way to apply community made patches)
 - Auto Updater (So you know the mod tools are up to date)
 - File Explorer (Make setup easy and remember it)
 
@@ -43,6 +41,13 @@ Please report all bugs on the [Issue](https://github.com/Nathan31973/GHTV-Reload
 - [PVRTexToolCLI.exe](https://www.imgtec.com/developers/powervr-sdk-tools/legacy-downloads/) version 4.23 or earlier
 #### Manual install require
 - [Python 3+](https://www.python.org/downloads/)
+
+# Found A Bug?
+Please report all bugs on the [Issue](https://github.com/Nathan31973/GHTV-Reloaded-Mod-Tools/issues) page
+
+## Platform Supported
+- [RPCS3](https://rpcs3.net/)
+
 
 ## Other
 [Builds/downloads](https://github.com/Nathan31973/GHTV-Reloaded-Mod-Tools/releases)
