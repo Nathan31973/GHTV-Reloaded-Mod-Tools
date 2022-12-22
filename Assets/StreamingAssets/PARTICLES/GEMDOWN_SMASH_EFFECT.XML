@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+	You can modify the color of the blue flames for almost all highways, but it won't work for highways that already have their color and texture settings preset.
+	The list below contains the highways on which this modification will not work.
+	
+	############################################################################################################################################
+	##									|Incompatible highways for custom colors|
+	## Avenged Sevenfold - Rivals Zombies - Recording Studio - Hot Rod - Steam Punks - Inlay Floral
+	## Acientnordic - Paper Cutting - Neon Devil - Goth - Viper - Molten Metal - Cosmic Canyon - Lava Flow - Noodles - Crushed It - Death Horns
+	## Imagine Dragons - Festive Nutcrackers - Ratty - Festive Puddings
+	############################################################################################################################################
+	
+	How to change the color of the flames:
+	Find the "Texture colour" tag and change the values using the ones named in the list below
+	
+	###################################################
+	## GREEN:					"0,1,0,0"
+	## LIGHT NEON GREEN:		"0,1,0.5,1"
+	## DARK GREEN:				"0,1,0,0"
+	## RED:						"1,0,0,1"
+	## DARK RED: 				"1,0,0,0"
+	## YELLOW:					"1,1,0,1"
+	## DARK YELLOW:				"1,1,0,0"
+	## BLUE:					"0,1,0,0"
+	## DARK BLUE:				"0,0,1,1"
+	## CYAN:					"0,1,0,0"
+	## LIGHT BLUE:				"0,1,1,1"
+	## LIGHT BLUE LOW:			"0.01,0.1,0.1,1"
+	## LIGHT BLUE VERY LOW:		"0,1,1,0"
+	## ORANJE:					"0,1,0,0"
+	## PURPLE:					"0.1,0,1,1"
+	## PINK:					"1,0,1,1"
+	## WHITE:					"1,1,1,1"
+	##
+	## GUIDE:					"R,G,B,i" (i= intensity)
+	###################################################
+	
+	How to mix colors:
+	You must use decimals without exceeding the value "1" (100%).
+	For example: "0.1,0,1,1" is purple. Using something red (0.1%) and blue (100%) with intensity or high lighting (100%).
+	
+	How it works: If you're in a channel and you change the colors, it will be applied when you jump into a song on demand.
+	If you are in a song on demand and you change the colors, it will be applied after you restart the song or exit to a channel.
+	Note: To best test your edits, do it in GHL, as you'll be able to see the changes faster if you restart the song.
+	
+	Warning: Do not modify anything at all that does not have to do with the color of the textures, as it could become unstable and break the game.
+	
+	That's all, enjoy GHTV Reloaded!
+-->
+<Container Name="Particle System Template" Type="Array">
+  <Class Type="CParticleSystemSettings">
+    <Property Name="Particle System Render Layer">Main</Property>
+    <Property Name="Particle System Camera Type">Perspective</Property>
+  </Class>
+  <Class Type="CParticleEmitterTemplate">
+    <Property Name="Emitter fade out time">0</Property>
+    <Property Name="Source Shape Type">Point</Property>
+    <Property Name="Source Blend">Src Alpha</Property>
+    <Property Name="Oscillation Movement Time">1</Property>
+    <Property Name="Positional Damping Amplitude">0</Property>
+    <Property Name="Burst delay (time between bursts)">0</Property>
+    <Property Name="End Alpha">0</Property>
+    <Property Name="Start Alpha">1</Property>
+    <Property Name="Dynamic Movement Amount">0,0,0,1</Property>
+    <Property Name="Wireframe mode">false</Property>
+    <Property Name="Trajectory Influence">0</Property>
+    <Property Name="Rotation Initial">0,0,0,1</Property>
+    <Property Name="Gravity Direction">0,1,0,0</Property>
+    <Property Name="Size Locked Axes">None</Property>
+    <Property Name="Sort Priority (0-15)">13</Property>
+    <Property Name="End Max Size">4,8,0,0</Property>
+    <Property Name="Emitter fade in time">0</Property>
+    <Property Name="Animation Length">1</Property>
+	<!-- Texture name -->
+    <Property Name="Texture">art\particles\Gem_UpSmash_Beam02.img</Property>
+    <Property Name="Start Max Size">5.8,8,0,0</Property>
+    <Property Name="Positional Damping Frequency">0</Property>
+    <Property Name="Rotation Speed">0</Property>
+    <Property Name="Dynamic Rotation Amount">0,0,0,1</Property>
+    <Property Name="Rotation Speed Vector">0,0,0,1</Property>
+    <Property Name="Should Oscillate Rotation">false</Property>
+    <Property Name="Random Velocity Shape Min Speed">0</Property>
+    <Property Name="Max Age">0.3</Property>
+    <Property Name="Source Shape Size">0,0,0,1</Property>
+    <Property Name="Texture Colour Lifetime">(null)</Property>
+    <Property Name="Source Velocity Initial">0,5,0,1</Property>
+    <Property Name="Mirror Plane Point">0,0,0,1</Property>
+    <Property Name="Oscillation Rotation Time">1</Property>
+    <Property Name="Gravity">100</Property>
+    <Property Name="Emitter lifetime (0 for infinite)">0</Property>
+    <Property Name="Should Mirror?">false</Property>
+    <Property Name="Flicker">0</Property>
+    <Property Name="Frame Rate">0.01</Property>
+    <Property Name="End Min Size">4,8,0,0</Property>
+    <Property Name="Age Deviation">0</Property>
+    <Property Name="Start Min Size">5.8,8,0,0</Property>
+    <Property Name="Destination Alpha Blend">One</Property>
+    <Property Name="Emitter start delay">0</Property>
+    <Property Name="Should Oscillate Movement">false</Property>
+    <Property Name="Path Constraint Completion Time">1</Property>
+    <Property Name="Random Velocity Shape Max Speed">0</Property>
+    <Property Name="Position">0.1,11,0,1</Property>
+    <Property Name="Rotation Damping">0</Property>
+    <Property Name="Rotation">0,0,0,1</Property>
+    <Property Name="Damping (Linear)">0</Property>
+    <Property Name="Rotation Chaos">0</Property>
+    <Property Name="Emitter Burst Type">Burst</Property>
+    <Property Name="Spawn Rate">1</Property>
+    <Property Name="Path Constraint ID">-1</Property>
+    <Property Name="Max Particles">1</Property>
+    <Property Name="Destination Blend">One</Property>
+    <Property Name="Positional Damping Offset">0</Property>
+    <Property Name="Mirror Plane Normal">1,0,0,1</Property>
+    <Property Name="Source Alpha Blend">Src Alpha</Property>
+    <Property Name="Texture Length(in frames)">1</Property>
+    <Property Name="Source Particle Type">Non-Billboarded(rotateable particles)</Property>
+    <Property Name="Emitter Burst_2 Num Burst loops">0</Property>
+    <Property Name="Random Velocity Shape Type">Sphere</Property>
+	<!-- Texture colour -->
+    <Property Name="Colour">UpSmash_BeamCOLOUR</Property>
+    <Property Name="Name">MainBeam01</Property>
+    <Property Name="Emitter Burst_1 Num Particles to Burst">1</Property>
+  </Class>
+  <Class Type="CParticleEmitterTemplate">
+    <Property Name="Emitter fade out time">0</Property>
+    <Property Name="Source Shape Type">Point</Property>
+    <Property Name="Source Blend">Src Alpha</Property>
+    <Property Name="Oscillation Movement Time">1</Property>
+    <Property Name="Positional Damping Amplitude">0</Property>
+    <Property Name="Burst delay (time between bursts)">0</Property>
+    <Property Name="End Alpha">0</Property>
+    <Property Name="Start Alpha">1</Property>
+    <Property Name="Dynamic Movement Amount">0,0,0,1</Property>
+    <Property Name="Wireframe mode">false</Property>
+    <Property Name="Trajectory Influence">0</Property>
+    <Property Name="Rotation Initial">0,0,0,1</Property>
+    <Property Name="Gravity Direction">0,1,0,0</Property>
+    <Property Name="Size Locked Axes">None</Property>
+    <Property Name="Sort Priority (0-15)">13</Property>
+    <Property Name="End Max Size">4.6,9,0,0</Property>
+    <Property Name="Emitter fade in time">0</Property>
+    <Property Name="Animation Length">10</Property>
+	<!-- Texture name -->
+    <Property Name="Texture">art\particles\Gem_Down_Glow_Sequence01.img</Property>
+    <Property Name="Start Max Size">4.6,9,0,0</Property>
+    <Property Name="Positional Damping Frequency">0</Property>
+    <Property Name="Rotation Speed">0</Property>
+    <Property Name="Dynamic Rotation Amount">0,0,0,1</Property>
+    <Property Name="Rotation Speed Vector">0,0,0,1</Property>
+    <Property Name="Should Oscillate Rotation">false</Property>
+    <Property Name="Random Velocity Shape Min Speed">0</Property>
+    <Property Name="Max Age">0.35</Property>
+    <Property Name="Source Shape Size">0,0,0,1</Property>
+    <Property Name="Texture Colour Lifetime">art\particles\Alpha_Strip02.img</Property>
+    <Property Name="Source Velocity Initial">0,5,0,1</Property>
+    <Property Name="Mirror Plane Point">0,0,0,1</Property>
+    <Property Name="Oscillation Rotation Time">1</Property>
+    <Property Name="Gravity">0</Property>
+    <Property Name="Emitter lifetime (0 for infinite)">0</Property>
+    <Property Name="Should Mirror?">false</Property>
+    <Property Name="Flicker">0</Property>
+    <Property Name="Frame Rate">35</Property>
+    <Property Name="End Min Size">4.6,9,0,0</Property>
+    <Property Name="Age Deviation">0</Property>
+    <Property Name="Start Min Size">4.6,9,0,0</Property>
+    <Property Name="Destination Alpha Blend">One</Property>
+    <Property Name="Emitter start delay">0</Property>
+    <Property Name="Should Oscillate Movement">false</Property>
+    <Property Name="Path Constraint Completion Time">1</Property>
+    <Property Name="Random Velocity Shape Max Speed">0</Property>
+    <Property Name="Position">0.2,11.5,-0.65,1</Property>
+    <Property Name="Rotation Damping">0</Property>
+    <Property Name="Rotation">0,0,0,1</Property>
+    <Property Name="Damping (Linear)">0</Property>
+    <Property Name="Rotation Chaos">0</Property>
+    <Property Name="Emitter Burst Type">Burst</Property>
+    <Property Name="Spawn Rate">1</Property>
+    <Property Name="Path Constraint ID">-1</Property>
+    <Property Name="Max Particles">1</Property>
+    <Property Name="Destination Blend">One</Property>
+    <Property Name="Positional Damping Offset">0</Property>
+    <Property Name="Mirror Plane Normal">1,0,0,1</Property>
+    <Property Name="Source Alpha Blend">Src Alpha</Property>
+    <Property Name="Texture Length(in frames)">10</Property>
+    <Property Name="Source Particle Type">Non-Billboarded(rotateable particles)</Property>
+    <Property Name="Emitter Burst_2 Num Burst loops">0</Property>
+    <Property Name="Random Velocity Shape Type">Sphere</Property>
+	<!-- Texture colour -->
+    <Property Name="Colour">LIGHTBOI</Property>
+    <Property Name="Name">Lightning_Sequence01</Property>
+    <Property Name="Emitter Burst_1 Num Particles to Burst">1</Property>
+  </Class>
+  <Class Type="CParticleEmitterTemplate">
+    <Property Name="Emitter fade out time">0</Property>
+    <Property Name="Source Shape Type">Point</Property>
+    <Property Name="Source Blend">Src Alpha</Property>
+    <Property Name="Oscillation Movement Time">1</Property>
+    <Property Name="Positional Damping Amplitude">0</Property>
+    <Property Name="Burst delay (time between bursts)">0</Property>
+    <Property Name="End Alpha">0.8</Property>
+    <Property Name="Start Alpha">1</Property>
+    <Property Name="Dynamic Movement Amount">0,0,0,1</Property>
+    <Property Name="Wireframe mode">false</Property>
+    <Property Name="Trajectory Influence">0</Property>
+    <Property Name="Rotation Initial">0,0,0,1</Property>
+    <Property Name="Gravity Direction">0,1,0,0</Property>
+    <Property Name="Size Locked Axes">None</Property>
+    <Property Name="Sort Priority (0-15)">13</Property>
+    <Property Name="End Max Size">1,1.5,0,0</Property>
+    <Property Name="Emitter fade in time">0</Property>
+    <Property Name="Animation Length">1</Property>
+	<!-- Texture name -->
+    <Property Name="Texture">art\particles\Gem_Down_Node007.img</Property>
+    <Property Name="Start Max Size">5.2,6,0,0</Property>
+    <Property Name="Positional Damping Frequency">0</Property>
+    <Property Name="Rotation Speed">0</Property>
+    <Property Name="Dynamic Rotation Amount">0,0,0,1</Property>
+    <Property Name="Rotation Speed Vector">0,0,0,1</Property>
+    <Property Name="Should Oscillate Rotation">false</Property>
+    <Property Name="Random Velocity Shape Min Speed">0</Property>
+    <Property Name="Max Age">0.45</Property>
+    <Property Name="Source Shape Size">0,0,0,1</Property>
+    <Property Name="Texture Colour Lifetime">(null)</Property>
+    <Property Name="Source Velocity Initial">0,5,0,1</Property>
+    <Property Name="Mirror Plane Point">0,0,0,1</Property>
+    <Property Name="Oscillation Rotation Time">1</Property>
+    <Property Name="Gravity">100</Property>
+    <Property Name="Emitter lifetime (0 for infinite)">0</Property>
+    <Property Name="Should Mirror?">false</Property>
+    <Property Name="Flicker">0</Property>
+    <Property Name="Frame Rate">0.01</Property>
+    <Property Name="End Min Size">1,1.5,0,0</Property>
+    <Property Name="Age Deviation">0</Property>
+    <Property Name="Start Min Size">5.2,6,0,0</Property>
+    <Property Name="Destination Alpha Blend">One</Property>
+    <Property Name="Emitter start delay">0</Property>
+    <Property Name="Should Oscillate Movement">false</Property>
+    <Property Name="Path Constraint Completion Time">1</Property>
+    <Property Name="Random Velocity Shape Max Speed">0</Property>
+    <Property Name="Position">-0.8,9,-0.4,1</Property>
+    <Property Name="Rotation Damping">0</Property>
+    <Property Name="Rotation">0,0,0,1</Property>
+    <Property Name="Damping (Linear)">0</Property>
+    <Property Name="Rotation Chaos">0</Property>
+    <Property Name="Emitter Burst Type">Burst</Property>
+    <Property Name="Spawn Rate">2</Property>
+    <Property Name="Path Constraint ID">-1</Property>
+    <Property Name="Max Particles">2</Property>
+    <Property Name="Destination Blend">One</Property>
+    <Property Name="Positional Damping Offset">0</Property>
+    <Property Name="Mirror Plane Normal">1,0,0,1</Property>
+    <Property Name="Source Alpha Blend">Src Alpha</Property>
+    <Property Name="Texture Length(in frames)">1</Property>
+    <Property Name="Source Particle Type">Non-Billboarded(rotateable particles)</Property>
+    <Property Name="Emitter Burst_2 Num Burst loops">0</Property>
+    <Property Name="Random Velocity Shape Type">Sphere</Property>
+	<!-- Texture colour -->
+    <Property Name="Colour">0.01,0.1,0.1,1</Property>
+    <Property Name="Name">Node007</Property>
+    <Property Name="Emitter Burst_1 Num Particles to Burst">2</Property>
+  </Class>
+  <Class Type="CParticleEmitterTemplate">
+    <Property Name="Emitter fade out time">0</Property>
+    <Property Name="Source Shape Type">Point</Property>
+    <Property Name="Source Blend">Src Alpha</Property>
+    <Property Name="Oscillation Movement Time">1</Property>
+    <Property Name="Positional Damping Amplitude">0</Property>
+    <Property Name="Burst delay (time between bursts)">0</Property>
+    <Property Name="End Alpha">1</Property>
+    <Property Name="Start Alpha">1</Property>
+    <Property Name="Dynamic Movement Amount">0,0,0,1</Property>
+    <Property Name="Wireframe mode">false</Property>
+    <Property Name="Trajectory Influence">0</Property>
+    <Property Name="Rotation Initial">0,0,0,1</Property>
+    <Property Name="Gravity Direction">0,1,0,0</Property>
+    <Property Name="Size Locked Axes">None</Property>
+    <Property Name="Sort Priority (0-15)">13</Property>
+    <Property Name="End Max Size">0,0,0,0</Property>
+    <Property Name="Emitter fade in time">0</Property>
+    <Property Name="Animation Length">1</Property>
+	<!-- Texture name -->
+    <Property Name="Texture">art\particles\Gem_Down_Node009.img</Property>
+    <Property Name="Start Max Size">2.5,5.5,0,0</Property>
+    <Property Name="Positional Damping Frequency">0</Property>
+    <Property Name="Rotation Speed">0</Property>
+    <Property Name="Dynamic Rotation Amount">0,0,0,1</Property>
+    <Property Name="Rotation Speed Vector">0,0,0,1</Property>
+    <Property Name="Should Oscillate Rotation">false</Property>
+    <Property Name="Random Velocity Shape Min Speed">0</Property>
+    <Property Name="Max Age">0.45</Property>
+    <Property Name="Source Shape Size">0,0,0,1</Property>
+    <Property Name="Texture Colour Lifetime">(null)</Property>
+    <Property Name="Source Velocity Initial">0,10,0,1</Property>
+    <Property Name="Mirror Plane Point">0,0,0,1</Property>
+    <Property Name="Oscillation Rotation Time">1</Property>
+    <Property Name="Gravity">100</Property>
+    <Property Name="Emitter lifetime (0 for infinite)">0</Property>
+    <Property Name="Should Mirror?">false</Property>
+    <Property Name="Flicker">0</Property>
+    <Property Name="Frame Rate">0.01</Property>
+    <Property Name="End Min Size">0,0,0,0</Property>
+    <Property Name="Age Deviation">0</Property>
+    <Property Name="Start Min Size">2.5,5.5,0,0</Property>
+    <Property Name="Destination Alpha Blend">One</Property>
+    <Property Name="Emitter start delay">0</Property>
+    <Property Name="Should Oscillate Movement">false</Property>
+    <Property Name="Path Constraint Completion Time">1</Property>
+    <Property Name="Random Velocity Shape Max Speed">0</Property>
+    <Property Name="Position">2.5,6.5,-0.4,1</Property>
+    <Property Name="Rotation Damping">0</Property>
+    <Property Name="Rotation">0,0,0,1</Property>
+    <Property Name="Damping (Linear)">0</Property>
+    <Property Name="Rotation Chaos">0</Property>
+    <Property Name="Emitter Burst Type">Burst</Property>
+    <Property Name="Spawn Rate">2</Property>
+    <Property Name="Path Constraint ID">-1</Property>
+    <Property Name="Max Particles">2</Property>
+    <Property Name="Destination Blend">One</Property>
+    <Property Name="Positional Damping Offset">0</Property>
+    <Property Name="Mirror Plane Normal">1,0,0,1</Property>
+    <Property Name="Source Alpha Blend">Src Alpha</Property>
+    <Property Name="Texture Length(in frames)">1</Property>
+    <Property Name="Source Particle Type">Non-Billboarded(rotateable particles)</Property>
+    <Property Name="Emitter Burst_2 Num Burst loops">0</Property>
+    <Property Name="Random Velocity Shape Type">Sphere</Property>
+	<!-- Texture colour -->
+    <Property Name="Colour">0.01,0.1,0.1,1</Property>
+    <Property Name="Name">Node009</Property>
+    <Property Name="Emitter Burst_1 Num Particles to Burst">2</Property>
+  </Class>
+  <Class Type="CParticleEmitterTemplate">
+    <Property Name="Emitter fade out time">0</Property>
+    <Property Name="Source Shape Type">Point</Property>
+    <Property Name="Source Blend">Src Alpha</Property>
+    <Property Name="Oscillation Movement Time">1</Property>
+    <Property Name="Positional Damping Amplitude">0</Property>
+    <Property Name="Burst delay (time between bursts)">0</Property>
+    <Property Name="End Alpha">1</Property>
+    <Property Name="Start Alpha">1</Property>
+    <Property Name="Dynamic Movement Amount">0,0,0,1</Property>
+    <Property Name="Wireframe mode">false</Property>
+    <Property Name="Trajectory Influence">0</Property>
+    <Property Name="Rotation Initial">0,0,0,1</Property>
+    <Property Name="Gravity Direction">0,1,0,0</Property>
+    <Property Name="Size Locked Axes">None</Property>
+    <Property Name="Sort Priority (0-15)">13</Property>
+    <Property Name="End Max Size">0,0,0,0</Property>
+    <Property Name="Emitter fade in time">0</Property>
+    <Property Name="Animation Length">1</Property>
+	<!-- Texture name -->
+    <Property Name="Texture">art\particles\Gem_Down_Node008.img</Property>
+    <Property Name="Start Max Size">4,4,0,0</Property>
+    <Property Name="Positional Damping Frequency">0</Property>
+    <Property Name="Rotation Speed">0</Property>
+    <Property Name="Dynamic Rotation Amount">0,0,0,1</Property>
+    <Property Name="Rotation Speed Vector">0,0,0,1</Property>
+    <Property Name="Should Oscillate Rotation">false</Property>
+    <Property Name="Random Velocity Shape Min Speed">0</Property>
+    <Property Name="Max Age">0.45</Property>
+    <Property Name="Source Shape Size">0,0,0,1</Property>
+    <Property Name="Texture Colour Lifetime">(null)</Property>
+    <Property Name="Source Velocity Initial">0,18,0,1</Property>
+    <Property Name="Mirror Plane Point">0,0,0,1</Property>
+    <Property Name="Oscillation Rotation Time">1</Property>
+    <Property Name="Gravity">100</Property>
+    <Property Name="Emitter lifetime (0 for infinite)">0</Property>
+    <Property Name="Should Mirror?">false</Property>
+    <Property Name="Flicker">0</Property>
+    <Property Name="Frame Rate">0.01</Property>
+    <Property Name="End Min Size">0,0,0,0</Property>
+    <Property Name="Age Deviation">0</Property>
+    <Property Name="Start Min Size">4,4,0,0</Property>
+    <Property Name="Destination Alpha Blend">One</Property>
+    <Property Name="Emitter start delay">0</Property>
+    <Property Name="Should Oscillate Movement">false</Property>
+    <Property Name="Path Constraint Completion Time">1</Property>
+    <Property Name="Random Velocity Shape Max Speed">0</Property>
+    <Property Name="Position">-1.4,4,0,1</Property>
+    <Property Name="Rotation Damping">0</Property>
+    <Property Name="Rotation">0,0,0,1</Property>
+    <Property Name="Damping (Linear)">0</Property>
+    <Property Name="Rotation Chaos">0</Property>
+    <Property Name="Emitter Burst Type">Burst</Property>
+    <Property Name="Spawn Rate">1</Property>
+    <Property Name="Path Constraint ID">-1</Property>
+    <Property Name="Max Particles">1</Property>
+    <Property Name="Destination Blend">One</Property>
+    <Property Name="Positional Damping Offset">0</Property>
+    <Property Name="Mirror Plane Normal">1,0,0,1</Property>
+    <Property Name="Source Alpha Blend">Src Alpha</Property>
+    <Property Name="Texture Length(in frames)">1</Property>
+    <Property Name="Source Particle Type">Non-Billboarded(rotateable particles)</Property>
+    <Property Name="Emitter Burst_2 Num Burst loops">0</Property>
+    <Property Name="Random Velocity Shape Type">Sphere</Property>
+	<!-- Texture colour -->
+    <Property Name="Colour">0.01,0.1,0.1,1</Property>
+    <Property Name="Name">Node008</Property>
+    <Property Name="Emitter Burst_1 Num Particles to Burst">1</Property>
+  </Class>
+  <Class Type="CParticleEmitterTemplate">
+    <Property Name="Emitter fade out time">0</Property>
+    <Property Name="Source Shape Type">Point</Property>
+    <Property Name="Source Blend">Src Alpha</Property>
+    <Property Name="Oscillation Movement Time">1</Property>
+    <Property Name="Positional Damping Amplitude">0</Property>
+    <Property Name="Burst delay (time between bursts)">0</Property>
+    <Property Name="End Alpha">0</Property>
+    <Property Name="Start Alpha">1</Property>
+    <Property Name="Dynamic Movement Amount">0,0,0,1</Property>
+    <Property Name="Wireframe mode">false</Property>
+    <Property Name="Trajectory Influence">0</Property>
+    <Property Name="Rotation Initial">0,0,0,1</Property>
+    <Property Name="Gravity Direction">0,1,0,0</Property>
+    <Property Name="Size Locked Axes">None</Property>
+    <Property Name="Sort Priority (0-15)">13</Property>
+    <Property Name="End Max Size">0,0,0,0</Property>
+    <Property Name="Emitter fade in time">0</Property>
+    <Property Name="Animation Length">1</Property>
+	<!-- Texture name -->
+    <Property Name="Texture">art\particles\Gem_Down_Node002.img</Property>
+    <Property Name="Start Max Size">3,6,0,0</Property>
+    <Property Name="Positional Damping Frequency">0</Property>
+    <Property Name="Rotation Speed">0</Property>
+    <Property Name="Dynamic Rotation Amount">0,0,0,1</Property>
+    <Property Name="Rotation Speed Vector">0,0,0,1</Property>
+    <Property Name="Should Oscillate Rotation">false</Property>
+    <Property Name="Random Velocity Shape Min Speed">0</Property>
+    <Property Name="Max Age">0.45</Property>
+    <Property Name="Source Shape Size">0,0,0,1</Property>
+    <Property Name="Texture Colour Lifetime">(null)</Property>
+    <Property Name="Source Velocity Initial">0,30,0,1</Property>
+    <Property Name="Mirror Plane Point">0,0,0,1</Property>
+    <Property Name="Oscillation Rotation Time">1</Property>
+    <Property Name="Gravity">100</Property>
+    <Property Name="Emitter lifetime (0 for infinite)">0</Property>
+    <Property Name="Should Mirror?">false</Property>
+    <Property Name="Flicker">0</Property>
+    <Property Name="Frame Rate">0.01</Property>
+    <Property Name="End Min Size">0,0,0,0</Property>
+    <Property Name="Age Deviation">0</Property>
+    <Property Name="Start Min Size">3,6,0,0</Property>
+    <Property Name="Destination Alpha Blend">One</Property>
+    <Property Name="Emitter start delay">0</Property>
+    <Property Name="Should Oscillate Movement">false</Property>
+    <Property Name="Path Constraint Completion Time">1</Property>
+    <Property Name="Random Velocity Shape Max Speed">0</Property>
+    <Property Name="Position">-1.6,5,0,1</Property>
+    <Property Name="Rotation Damping">0</Property>
+    <Property Name="Rotation">0,0,0,1</Property>
+    <Property Name="Damping (Linear)">0</Property>
+    <Property Name="Rotation Chaos">0</Property>
+    <Property Name="Emitter Burst Type">Burst</Property>
+    <Property Name="Spawn Rate">1</Property>
+    <Property Name="Path Constraint ID">-1</Property>
+    <Property Name="Max Particles">1</Property>
+    <Property Name="Destination Blend">One</Property>
+    <Property Name="Positional Damping Offset">0</Property>
+    <Property Name="Mirror Plane Normal">1,0,0,1</Property>
+    <Property Name="Source Alpha Blend">Src Alpha</Property>
+    <Property Name="Texture Length(in frames)">1</Property>
+    <Property Name="Source Particle Type">Non-Billboarded(rotateable particles)</Property>
+    <Property Name="Emitter Burst_2 Num Burst loops">0</Property>
+    <Property Name="Random Velocity Shape Type">Sphere</Property>
+	<!-- Texture colour -->
+    <Property Name="Colour">0.01,0.1,0.1,1</Property>
+    <Property Name="Name">Node002</Property>
+    <Property Name="Emitter Burst_1 Num Particles to Burst">1</Property>
+  </Class>
+  <Class Type="CParticleEmitterTemplate">
+    <Property Name="Emitter fade out time">0</Property>
+    <Property Name="Source Shape Type">Box</Property>
+    <Property Name="Source Blend">Src Alpha</Property>
+    <Property Name="Oscillation Movement Time">1</Property>
+    <Property Name="Positional Damping Amplitude">50</Property>
+    <Property Name="Burst delay (time between bursts)">0</Property>
+    <Property Name="End Alpha">1</Property>
+    <Property Name="Start Alpha">1</Property>
+    <Property Name="Dynamic Movement Amount">0,0,0,1</Property>
+    <Property Name="Wireframe mode">false</Property>
+    <Property Name="Trajectory Influence">0</Property>
+    <Property Name="Rotation Initial">0,0,0,1</Property>
+    <Property Name="Gravity Direction">0,1,0,0</Property>
+    <Property Name="Size Locked Axes">None</Property>
+    <Property Name="Sort Priority (0-15)">13</Property>
+    <Property Name="End Max Size">0,0,0,0</Property>
+    <Property Name="Emitter fade in time">0</Property>
+    <Property Name="Animation Length">1</Property>
+	<!-- Texture name -->
+    <Property Name="Texture">art\particles\Flare02.img</Property>
+    <Property Name="Start Max Size">0.5,0.5,0,0</Property>
+    <Property Name="Positional Damping Frequency">50</Property>
+    <Property Name="Rotation Speed">0</Property>
+    <Property Name="Dynamic Rotation Amount">0,0,0,1</Property>
+    <Property Name="Rotation Speed Vector">0,0,0,1</Property>
+    <Property Name="Should Oscillate Rotation">false</Property>
+    <Property Name="Random Velocity Shape Min Speed">6</Property>
+    <Property Name="Max Age">0.2</Property>
+    <Property Name="Source Shape Size">5,5,5,1</Property>
+    <Property Name="Texture Colour Lifetime">(null)</Property>
+    <Property Name="Source Velocity Initial">0,10,0,1</Property>
+    <Property Name="Mirror Plane Point">0,0,0,1</Property>
+    <Property Name="Oscillation Rotation Time">1</Property>
+    <Property Name="Gravity">100</Property>
+    <Property Name="Emitter lifetime (0 for infinite)">0</Property>
+    <Property Name="Should Mirror?">false</Property>
+    <Property Name="Flicker">1</Property>
+    <Property Name="Frame Rate">0.01</Property>
+    <Property Name="End Min Size">0,0,0,0</Property>
+    <Property Name="Age Deviation">0.1</Property>
+    <Property Name="Start Min Size">1,1,0,0</Property>
+    <Property Name="Destination Alpha Blend">One</Property>
+    <Property Name="Emitter start delay">0</Property>
+    <Property Name="Should Oscillate Movement">false</Property>
+    <Property Name="Path Constraint Completion Time">1</Property>
+    <Property Name="Random Velocity Shape Max Speed">6</Property>
+    <Property Name="Position">0,8,-0.65,1</Property>
+    <Property Name="Rotation Damping">0</Property>
+    <Property Name="Rotation">0,0,0,1</Property>
+    <Property Name="Damping (Linear)">0</Property>
+    <Property Name="Rotation Chaos">0</Property>
+    <Property Name="Emitter Burst Type">Burst</Property>
+    <Property Name="Spawn Rate">35</Property>
+    <Property Name="Path Constraint ID">-1</Property>
+    <Property Name="Max Particles">35</Property>
+    <Property Name="Destination Blend">One</Property>
+    <Property Name="Positional Damping Offset">50</Property>
+    <Property Name="Mirror Plane Normal">1,0,0,1</Property>
+    <Property Name="Source Alpha Blend">Src Alpha</Property>
+    <Property Name="Texture Length(in frames)">1</Property>
+    <Property Name="Source Particle Type">Non-Billboarded(rotateable particles)</Property>
+    <Property Name="Emitter Burst_2 Num Burst loops">0</Property>
+    <Property Name="Random Velocity Shape Type">Sphere</Property>
+	<!-- Texture colour -->
+    <Property Name="Colour">FLEARY</Property>
+	<!---->
+    <Property Name="Name">Sparkle01</Property>
+    <Property Name="Emitter Burst_1 Num Particles to Burst">35</Property>
+  </Class>
+</Container>

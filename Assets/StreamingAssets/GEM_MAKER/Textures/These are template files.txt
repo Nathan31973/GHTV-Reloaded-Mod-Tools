@@ -1,0 +1,2 @@
+All texture must be 256x256 and png
+Gems_Template.psd created by GHCripto

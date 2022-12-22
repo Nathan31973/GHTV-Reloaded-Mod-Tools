@@ -58,3 +58,15 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Assets/StreamingAssets/External_Tools.meta
+Assets/StreamingAssets/External_Tools/GHLIMGConverter-master.meta
+Assets/StreamingAssets/External_Tools/GHLIMGConverter-master/config.ini
+Assets/StreamingAssets/External_Tools/GHLIMGConverter-master/config.ini.meta
+Assets/StreamingAssets/External_Tools/GHLIMGConverter-master/ghl_img_converter.py
+Assets/StreamingAssets/External_Tools/GHLIMGConverter-master/ghl_img_converter.py.meta
+Assets/StreamingAssets/External_Tools/GHLIMGConverter-master/imgformat.py
+Assets/StreamingAssets/External_Tools/GHLIMGConverter-master/imgformat.py.meta
+Assets/StreamingAssets/External_Tools/GHLIMGConverter-master/README.md
+Assets/StreamingAssets/External_Tools/GHLIMGConverter-master/README.md.meta
+Assets/StreamingAssets/External_Tools/GHLIMGConverter-master/textureformat.py
+Assets/StreamingAssets/External_Tools/GHLIMGConverter-master/textureformat.py.meta

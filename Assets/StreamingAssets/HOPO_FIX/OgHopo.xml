@@ -1,0 +1,576 @@
+<?xml version="1.0"?>
+<Config>
+    <!-- Common HUD -->
+    <HUDSharedCatcherRaiseSpeedRatio>60</HUDSharedCatcherRaiseSpeedRatio>
+    <HUDSharedStarpowerActivateDuration>0.5f</HUDSharedStarpowerActivateDuration>
+    <HUDSharedCatcherHitZOffset>-2.5f</HUDSharedCatcherHitZOffset>
+    <HUDSharedCatcherHitTime>0.35f</HUDSharedCatcherHitTime>
+    <TutorialIconScale>1.2f</TutorialIconScale>
+	
+	<HUDCommonHighwayPosX>0.0f</HUDCommonHighwayPosX>
+	<HUDCommonHighwayPosY>0.0f</HUDCommonHighwayPosY>
+	<HUDCommonHighwayPosZ>0.0f</HUDCommonHighwayPosZ>
+    
+	<HUDFadeInOutTime>0.5f</HUDFadeInOutTime>
+	<HUDMPResizeTime>0.5</HUDMPResizeTime>
+	
+	<!-- Alpha value for the transparent HUD gems -->
+	<TransparentHUDAlpha>0.75</TransparentHUDAlpha>
+   	
+	<!-- Alpha vars for transparency HUD options -->
+	<FullHUDTransparency>0.75</FullHUDTransparency>
+	<GemAlphaStartRange>280.0</GemAlphaStartRange>
+	<GemAlphaEndRange>220.0</GemAlphaEndRange>
+	<GemAlphaStart>0.0</GemAlphaStart>
+	<GemAlphaEnd>1.0</GemAlphaEnd>	
+	<GemFadeDownZStart>-24.5</GemFadeDownZStart>
+    <GemFadeDownZRange>10.0</GemFadeDownZRange>
+   
+	<!-- Shake amounts -->
+	<HighwayShakeAmountMul2>0.75</HighwayShakeAmountMul2>
+	<HighwayNumShakesMul2>3</HighwayNumShakesMul2>
+	<HighwayShakeTimeMul2>0.3</HighwayShakeTimeMul2>
+   
+	<HighwayShakeAmountMul3>2.5</HighwayShakeAmountMul3>
+	<HighwayNumShakesMul3>3</HighwayNumShakesMul3>
+	<HighwayShakeTimeMul3>0.3</HighwayShakeTimeMul3>
+   
+	<HighwayShakeAmountMul4>3.0</HighwayShakeAmountMul4>
+	<HighwayNumShakesMul4>3</HighwayNumShakesMul4>
+	<HighwayShakeTimeMul4>0.3</HighwayShakeTimeMul4>
+	
+	<HighwayLaneWidth>16.2568</HighwayLaneWidth>
+	<HighwayLaneLength>300.0</HighwayLaneLength>
+	<HighwayScaleX>1.0</HighwayScaleX>
+	<HighwayOffsetX>0.0</HighwayOffsetX>	
+	<HighwayOffsetY>-2.0</HighwayOffsetY>
+	<HighwayOffsetZ>-2.0</HighwayOffsetZ>
+	<TouchHighwayScale>1.3</TouchHighwayScale>
+	<TouchHighwayOffsetX>0.0</TouchHighwayOffsetX>	
+	<TouchHighwayOffsetY>0.0</TouchHighwayOffsetY>
+	<TouchHighwayOffsetZ>-2.0</TouchHighwayOffsetZ>
+	<PersonalBestMarkerXOffset>3.0</PersonalBestMarkerXOffset>	
+	<PersonalBestMarkerYOffset>-1.0</PersonalBestMarkerYOffset>
+	<PersonalBestMarkerZOffset>0.0</PersonalBestMarkerZOffset>
+	<GemTrailYOffset>-1.50</GemTrailYOffset>
+	<TouchGemTrailYOffset>0.5</TouchGemTrailYOffset>
+	<GemTrailWidth>4.0</GemTrailWidth>
+	<GemTrailShader>Shaders/Trail.hlsl</GemTrailShader>	
+	<TouchGemHeight>8.367</TouchGemHeight>
+	<TouchGemYOffset>0.5</TouchGemYOffset>
+
+	<TouchButtonWidth>130.0f</TouchButtonWidth>
+	<TouchButtonHeight>180.0f</TouchButtonHeight>
+	<TouchButtonX>250.0f</TouchButtonX>
+	<TouchButtonY>500.0f</TouchButtonY>
+
+	<PhoneLandscapeTouchButtonWidth>149.5f</PhoneLandscapeTouchButtonWidth>
+	<PhoneLandscapeTouchButtonHeight>180.0f</PhoneLandscapeTouchButtonHeight>
+	<PhoneLandscapeTouchButtonX>270.0f</PhoneLandscapeTouchButtonX>
+	<PhoneLandscapeTouchButtonY>420.0f</PhoneLandscapeTouchButtonY>
+
+	<PortraitTouchButtonWidth>160.0f</PortraitTouchButtonWidth>
+	<PortraitTouchButtonHeight>200.0f</PortraitTouchButtonHeight>
+	<PortraitTouchButtonX>0.0f</PortraitTouchButtonX>
+	<PortraitTouchButtonY>860.0f</PortraitTouchButtonY>
+
+	<TouchButtonMinSwipeDistance>5.0f</TouchButtonMinSwipeDistance>
+	<TouchButtonMaxVerticalTravelDistance>50.0f</TouchButtonMaxVerticalTravelDistance>
+	<TouchSuccessVFXCatcherOffsetY>1.0f</TouchSuccessVFXCatcherOffsetY>
+	<TouchSuccessVFXCatcherOffsetZ>7.0f</TouchSuccessVFXCatcherOffsetZ>
+	<TouchGemScale>1.5f</TouchGemScale>
+	<TouchFlameEffectYOffset>2.0f</TouchFlameEffectYOffset>
+	<TouchFlameEffectZOffset>15.0f</TouchFlameEffectZOffset>
+
+	<RenderDebugButtonValues>0</RenderDebugButtonValues>
+	
+	<GemNodeMappings>
+		<Switch>gem_switch_node</Switch>
+		<Normal>gem_node</Normal>
+		<Shadow>gem_shadow_node</Shadow>
+		<Hopo>gem_hopo_node</Hopo>
+		<HeroPowerCollect>gem_hero_node</HeroPowerCollect>
+		
+		<Up>gem_up_node</Up>
+		<Down>gem_down_node</Down>
+		<Both>gem_both_node</Both>
+		<Open>gem_open_node</Open>
+		<Left>gem_side_node</Left>
+		<Right>gem_side_node</Right>
+	</GemNodeMappings>
+	
+	<HighwayNodeMappings>
+		<Bar>highway_bar_node</Bar>
+		<Neck>highway_bar_node</Neck>
+		<Edge>highway_edge_node</Edge>
+		<EdgeMultiPlayer>highway_edge_multiplayer_node</EdgeMultiPlayer>
+		<Shadow>highway_plate_shadow_node</Shadow>
+		<Strings>highway_strings_node</Strings>		
+		<PositiveStrum>highway_strum_positive_node</PositiveStrum>
+		<NegativeStrum>highway_strum_negative_node</NegativeStrum>
+		<FailFlash>highway_fail_flash_node</FailFlash>
+		<StreakFlash>highway_streak_flash_node</StreakFlash>
+	</HighwayNodeMappings>
+	
+	<HighwayMaterialMappings>	
+		<PositiveStrum>positiveStrum_MAT</PositiveStrum>
+		<NegativeStrum>negativeStrum_MAT</NegativeStrum>
+		<FailFlash>failFlash_MAT</FailFlash>
+		<StreakFlash>streakFlash_MAT</StreakFlash>
+		<MultiplayerEdgeMain>multiEdge1_MAT</MultiplayerEdgeMain>
+		<MultiplayerEdgeSecondary>multiEdge2_MAT</MultiplayerEdgeSecondary>
+	</HighwayMaterialMappings>
+	
+	<GemMaterialMappings>
+		<!-- NORMAL -->
+		<Configuration Hopo="Off" HeroPowerCollect="Off" HeroPowerActive="Off" Streak="Off" >
+			<LeftHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemLeft_MAT" />
+			</LeftHanded>
+			<RightHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemCentre_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemBorder_MAT" />
+			</RightHanded>
+		</Configuration>
+					
+		<!-- HERO POWER COLLECT -->
+		<Configuration Hopo="Off" HeroPowerCollect="On" HeroPowerActive="Off" Streak="Off">
+			<LeftHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemHeroCollectLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroCollectLeft_MAT" />
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconLeft_MAT" />
+			</LeftHanded>
+			<RightHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemHeroCollect_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroCollect_MAT" />
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIcon_MAT" />
+			</RightHanded>
+		</Configuration>
+		
+		<!-- HERO POWER COLLECT & HERO POWER ACTIVE -->
+		<Configuration Hopo="Off" HeroPowerCollect="On" HeroPowerActive="On" Streak="Off">
+			<LeftHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveNoIconLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroActiveLeft_MAT" />
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconActive_MAT" />
+			</LeftHanded>
+			<RightHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveNoIcon_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroActive_MAT" />
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconActive_MAT" />
+			</RightHanded>				
+		</Configuration>
+
+		<!-- HERO POWER COLLECT & STREAK -->
+		<Configuration Hopo="Off" HeroPowerCollect="On" HeroPowerActive="Off" Streak="On">
+			<LeftHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemStreakNoIconLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreakLeft_MAT" />
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconLeft_MAT" />
+			</LeftHanded>
+			<RightHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemStreakNoIcon_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreak_MAT" />
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIcon_MAT" />
+			</RightHanded>				
+		</Configuration>
+		
+		<!-- HERO POWER COLLECT & HERO POWER ACTIVE & STREAK -->
+		<Configuration Hopo="Off" HeroPowerCollect="On" HeroPowerActive="On" Streak="On">
+			<LeftHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveNoIconLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreakLeft_MAT" />
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconActive_MAT" />
+			</LeftHanded>
+			<RightHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveNoIcon_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreak_MAT" />
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconActive_MAT" />
+			</RightHanded>				
+		</Configuration>
+		
+		<!-- HERO POWER ACTIVE -->
+		<Configuration Hopo="Off" HeroPowerCollect="Off" HeroPowerActive="On" Streak="Off">
+			<LeftHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroActiveLeft_MAT" />
+			</LeftHanded>
+			<RightHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemHeroActive_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroActive_MAT" />
+			</RightHanded>				
+		</Configuration>
+				
+		<!-- HERO POWER ACTIVE & STREAK -->
+		<Configuration Hopo="Off" HeroPowerCollect="Off" HeroPowerActive="On" Streak="On">
+			<LeftHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreakLeft_MAT" />
+			</LeftHanded>
+			<RightHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemHeroActive_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreak_MAT" />
+			</RightHanded>				
+		</Configuration>
+		
+		<!-- STREAK -->
+		<Configuration Hopo="Off" HeroPowerCollect="Off" HeroPowerActive="Off" Streak="On">
+			<LeftHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemStreakLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreakLeft_MAT" />
+			</LeftHanded>
+			<RightHanded>
+				<!-- Body Mesh Materials -->	
+				<Swap Original="gemCentre_MAT" On="gemStreak_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreak_MAT" />
+			</RightHanded>				
+		</Configuration>
+			
+		<!-- HOPO -->
+		<Configuration Hopo="On" HeroPowerCollect="Off" HeroPowerActive="Off" Streak="Off" >
+			<LeftHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHopoLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHopoLeft_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopo_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoFront_MAT" />
+			</LeftHanded>
+			
+			<RightHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHopo_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHopo_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopo_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoFront_MAT" />
+			</RightHanded>
+		</Configuration>
+				
+		<!-- HOPO & STREAK -->
+		<Configuration Hopo="On" HeroPowerCollect="Off" HeroPowerActive="Off" Streak="On" >
+			<LeftHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemStreakLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreakLeft_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoStreak_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoStreakFront_MAT" />
+			</LeftHanded>
+			
+			<RightHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemStreak_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreak_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoStreak_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoStreakFront_MAT" />
+			</RightHanded>
+		</Configuration>	
+	
+		<!-- HOPO & HERO POWER ACTIVE & STREAK -->
+		<Configuration Hopo="On" HeroPowerCollect="Off" HeroPowerActive="On" Streak="On" >
+			<LeftHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreakLeft_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoStreak_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoStreakFront_MAT" />
+			</LeftHanded>
+			
+			<RightHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHeroActive_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreak_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoStreak_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoStreakFront_MAT" />
+			</RightHanded>
+		</Configuration>	
+		
+		<!-- HOPO & HERO POWER COLLECT & HERO POWER ACTIVE & STREAK -->
+		<Configuration Hopo="On" HeroPowerCollect="On" HeroPowerActive="On" Streak="On" >
+			<LeftHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveNoIconLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreakLeft_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoStreak_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoStreakFront_MAT" />
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconActive_MAT" />				
+			</LeftHanded>
+			
+			<RightHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveNoIcon_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreak_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoStreak_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoStreakFront_MAT" />
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconActive_MAT" />
+			</RightHanded>
+		</Configuration>	
+		
+		<!-- HOPO & HERO POWER COLLECT & HERO POWER ACTIVE -->
+		<Configuration Hopo="On" HeroPowerCollect="On" HeroPowerActive="On" Streak="Off" >
+			<LeftHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveNoIconLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroActiveLeft_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoHero_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoHeroFront_MAT" />
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconActive_MAT" />				
+			</LeftHanded>
+			
+			<RightHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveNoIcon_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroActive_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoHero_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoHeroFront_MAT" />
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconActive_MAT" />
+			</RightHanded>
+		</Configuration>	
+		
+		<!-- HOPO & HERO POWER ACTIVE -->
+		<Configuration Hopo="On" HeroPowerCollect="Off" HeroPowerActive="On" Streak="Off" >
+			<LeftHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHeroActiveLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroActiveLeft_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoHero_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoHeroFront_MAT" />	
+			</LeftHanded>
+			
+			<RightHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHeroActive_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroActive_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoHero_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoHeroFront_MAT" />				
+			</RightHanded>
+		</Configuration>	
+		
+		<!-- HOPO & HERO POWER COLLECT -->
+		<Configuration Hopo="On" HeroPowerCollect="On" HeroPowerActive="Off" Streak="Off" >
+			<LeftHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHeroCollectLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroCollectLeft_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoHero_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoHeroFront_MAT" />	
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconLeft_MAT" />
+			</LeftHanded>
+			
+			<RightHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemHeroCollect_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemHeroCollect_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoHero_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoHeroFront_MAT" />	
+
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIcon_MAT" />					
+			</RightHanded>
+		</Configuration>	
+		
+		<!-- HOPO & HERO POWER COLLECT & STREAK -->
+		<Configuration Hopo="On" HeroPowerCollect="On" HeroPowerActive="Off" Streak="On" >
+			<LeftHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemStreakNoIconLeft_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreakLeft_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoStreak_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoStreakFront_MAT" />	
+				
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIconLeft_MAT" />
+			</LeftHanded>
+			
+			<RightHanded>
+				<!-- Body Mesh Materials -->				
+				<Swap Original="gemCentre_MAT" On="gemStreakNoIcon_MAT" />
+				<Swap Original="gemBorder_MAT" On="gemStreak_MAT" />
+				
+				<!-- Hopo Mesh Materials -->
+				<Swap Original="hopo_MAT" On="hopoStreak_MAT" />
+				<Swap Original="hopoFront_MAT" On="hopoStreakFront_MAT" />	
+
+				<!-- Collect Mesh Materials -->
+				<Swap Original="heroIcon_MAT" On="heroIcon_MAT" />				
+			</RightHanded>
+		</Configuration>			
+	</GemMaterialMappings>
+	
+	<OpenStrumMaterialMappings>
+		<!-- DEFAULT -->
+        <Configuration HeroPowerCollect="Off" HeroPowerActive="Off" Streak="Off">
+			<Swap Original="gemOpenUpper_MAT" On="gemOpenUpper_MAT" />
+			<Swap Original="gemOpenLower_MAT" On="gemOpenLower_MAT" />
+        </Configuration>
+		
+		<!-- HERO POWER COLLECT -->
+		<Configuration HeroPowerCollect="On" HeroPowerActive="Off" Streak="Off">
+			<Swap Original="gemOpenUpper_MAT" On="gemOpenHeroCollect_MAT" />
+			<Swap Original="gemOpenLower_MAT" On="gemOpenHeroCollect_MAT" />	
+		</Configuration>
+	
+		<!-- HERO POWER ACTIVE -->
+		<Configuration HeroPowerCollect="Any" HeroPowerActive="On" Streak="Off">
+			<Swap Original="gemOpenUpper_MAT" On="gemOpenHeroActive_MAT" />
+			<Swap Original="gemOpenLower_MAT" On="gemOpenHeroActive_MAT" />	
+		</Configuration>
+		
+		<!-- STREAK -->
+		<Configuration HeroPowerCollect="Any" HeroPowerActive="Off" Streak="On">
+			<Swap Original="gemOpenUpper_MAT" On="gemOpenStreak_MAT" />
+			<Swap Original="gemOpenLower_MAT" On="gemOpenStreak_MAT" />	
+		</Configuration>
+	
+		<!-- HERO POWER ACTIVE & STREAK -->
+		<Configuration HeroPowerCollect="Any" HeroPowerActive="On" Streak="On">
+			<Swap Original="gemOpenUpper_MAT" On="gemOpenHeroActive_MAT" />
+			<Swap Original="gemOpenLower_MAT" On="gemOpenStreak_MAT" />	
+		</Configuration>
+		
+		<!-- WHAT ABOUT THE 'COLLECT MESH' of the OpenStrum model? -->		
+	
+	</OpenStrumMaterialMappings>
+	
+	
+	<CatcherMaterialMappings>
+		<LeftHanded>
+			<Swap Original="gemShape_MAT" On="gemShapeLeft_MAT" Off="gemShape_MAT" />
+		</LeftHanded>	
+	</CatcherMaterialMappings>
+	
+	<!-- 
+		These particles get loaded per highway-view (but are custom guitar independent). 
+		This means we automatically get them loaded for each guitarist without per-guitarist references here.
+	-->
+	<Particles
+	
+		ParticleNoteStreakLensFlare="Wizardry/Particles/Note_Streak_Lens_Flare01.xml"
+		ParticleNoteStreakLensFlareOffset_Guitars1_Player0="-0.33f, -0.67f, -15.41f"
+		ParticleNoteStreakLensFlareOffset_Guitars2_Player0="-43.68f, -0.67f, -15.41f"
+		ParticleNoteStreakLensFlareOffset_Guitars2_Player1="43.11f, -0.67f, -15.41f"
+
+		ParticleMultiplierDrop="Wizardry/Particles/Donut_Cloud_Burst_Negative.xml"
+		ParticleMultiplierDropOffset_Guitars1_Player0="-1.56f, -0.16f, -1.0f"
+		ParticleMultiplierDropOffset_Guitars2_Player0="-43.16f, -0.30f, 3.24f"
+		ParticleMultiplierDropOffset_Guitars2_Player1="42.07f, -0.30f, 3.24f"
+
+		ParticleMultiplierDropOffset_Guitars1_Player0_Phone_Landscape="-4.5f, 7.5f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars1_Player0_Phone_Landscape_Touch="-12.0f, 7.0f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars1_Player0_Phone_Portrait="4.75f, 9.5f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars1_Player0_Phone_Portrait_Touch="4.75f, 15.75f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars1_Player0_Tablet_Landscape="-0.5f, -0.5f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars1_Player0_Tablet_Landscape_Touch="-5.75f, -0.5f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars1_Player0_ExternalDisplay_Landscape="0.0f, 0.0f, 0.0f"
+
+		ParticleMultiplierDropOffset_Guitars2_Player0_Phone_Landscape="0.0f, 0.0f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars2_Player0_Phone_Portrait="0.0f, 0.0f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars2_Player0_Tablet_Landscape="14.3f, 6.5f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars2_Player0_ExternalDisplay_Landscape="0.0f, 0.0f, 0.0f"
+
+		ParticleMultiplierDropOffset_Guitars2_Player1_Phone_Landscape="0.0f, 0.0f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars2_Player1_Phone_Portrait="0.0f, 0.0f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars2_Player1_Tablet_Landscape="-7.0f, 6.5f, 0.0f"
+		ParticleMultiplierDropOffset_Guitars2_Player1_ExternalDisplay_Landscape="0.0f, 0.0f, 0.0f"
+
+		ParticleYouRockPartI="Wizardry/Particles/Rewards_You_Rock_Effect.xml"
+		ParticleYouRockPartIOffset_Guitars1_Player0="0.0f, 0.0f, 0.0f"
+		ParticleYouRockPartIOffset_Guitars2_Player0="0.0f, 0.0f, 0.0f"
+		ParticleYouRockPartIOffset_Guitars2_Player1="0.0f, 0.0f, 0.0f"
+		
+		ParticleYouRockPartII="Wizardry/Particles/Rewards_You_Rock_Effect02.xml"
+		ParticleYouRockPartIIOffset_Guitars1_Player0="0.0f, 0.0f, 0.0f"
+		ParticleYouRockPartIIOffset_Guitars2_Player0="0.0f, 0.0f, 0.0f"
+		ParticleYouRockPartIIOffset_Guitars2_Player1="0.0f, 0.0f, 0.0f"
+
+		ParticleTouchButtonFailureGlow="Wizardry/Particles/TouchInput_HollowSquare_Effect_Red.xml"
+		ParticleTouchButtonFailureGlowOffset_Guitars1_Player0="0.0f, 0.0f, -5.0f"
+		ParticleTouchButtonFailureGlowOffset_Guitars2_Player0="0.0f, 0.0f, -5.0f"
+		ParticleTouchButtonFailureGlowOffset_Guitars2_Player1="0.0f, 0.0f, -5.0f"
+
+		ParticleTouchButtonFailureGlow_PhonePortrait="Wizardry/Particles/TouchInput_Portrait_Fail_Effect.xml"
+		ParticleTouchButtonFailureGlow_PhonePortraitOffset_Guitars1_Player0="0.0f, 0.0f, -5.0f"
+		ParticleTouchButtonFailureGlow_PhonePortraitOffset_Guitars2_Player0="0.0f, 0.0f, -5.0f"
+		ParticleTouchButtonFailureGlow_PhonePortraitOffset_Guitars2_Player1="0.0f, 0.0f, -5.0f"
+
+		ParticleTouchButtonFailureGlow_PhoneLandscape="Wizardry/Particles/TouchInput_HollowSquare_Effect_Red.xml"
+		ParticleTouchButtonFailureGlow_PhoneLandscapeOffset_Guitars1_Player0="0.0f, 0.0f, -5.0f"
+		ParticleTouchButtonFailureGlow_PhoneLandscapeOffset_Guitars2_Player0="0.0f, 0.0f, -5.0f"
+		ParticleTouchButtonFailureGlow_PhoneLandscapeOffset_Guitars2_Player1="0.0f, 0.0f, -5.0f"
+	/>
+
+   
+	<!-- HUD (FAKE) Social Msg generation -->
+	<HUDSocialMsgDuration>8.0f</HUDSocialMsgDuration>
+	<HUDSocialMsgTimeBase>60.0f</HUDSocialMsgTimeBase>
+	<HUDSocialMsgTimeSwing>30.0f</HUDSocialMsgTimeSwing>
+	<HUDNumSocialMsgs>34.0f</HUDNumSocialMsgs>
+</Config>
