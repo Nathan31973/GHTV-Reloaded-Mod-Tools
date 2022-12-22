@@ -49,6 +49,4 @@ Please report all bugs on the [Issue](https://github.com/Nathan31973/GHTV-Reload
 
 Check out [GHTV Reloaded discord](http://ghtv.reloaded.stickgaming.net)
 
-Source code coming soon
-
 Created in Unity 2022.1.21f1
