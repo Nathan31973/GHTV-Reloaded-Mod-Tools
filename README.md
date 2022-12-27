@@ -52,6 +52,8 @@ Please report all bugs on the [Issue](https://github.com/Nathan31973/GHTV-Reload
 ## Other
 [Builds/downloads](https://github.com/Nathan31973/GHTV-Reloaded-Mod-Tools/releases)
 
+[Trello](https://trello.com/b/TF0FCD5m/ghtv-reloaded-mod-tools)
+
 Check out [GHTV Reloaded discord](http://ghtv.reloaded.stickgaming.net)
 
 Created in Unity 2022.1.21f1
