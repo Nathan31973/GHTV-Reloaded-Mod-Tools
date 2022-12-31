@@ -71,7 +71,7 @@ public class GemChanger_Importer : MonoBehaviour
         //checking if we have internet connection
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            Debug.Log("Error. Check internet connection!");
+            Debug.Log("[GemChangerImporter] Error. Check internet connection!");
             GameObject a = Instantiate(MessageBox);
             a.GetComponent<GUI_MessageBox>().title = "No Active Internet Connection";
             a.GetComponent<GUI_MessageBox>().message = $"No internet connect exist\n\nMake sure you are connected to the internet and try again.";
@@ -79,7 +79,7 @@ public class GemChanger_Importer : MonoBehaviour
         }
         else
         {
-            Debug.Log("We have internet");
+            Debug.Log("[GemChangerImporter] We have internet");
             load = Instantiate(LoadingBox);
             load.GetComponent<GUI_MessageBox>().title = "Downloading";
             load.GetComponent<GUI_MessageBox>().message = "Please wait while we download Official GHTV Reloaded Gem Packs";
@@ -102,8 +102,7 @@ public class GemChanger_Importer : MonoBehaviour
     private void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
     {
         string fileProcessed = ((System.Net.WebClient)(sender)).QueryString["file"]; // Getting the local path if required
-        Debug.Log("Download Recevedbyte: " + e.BytesReceived);
-        Debug.Log("Download totalbyte: " + e.TotalBytesToReceive);
+        Debug.Log("[GemChangerImporter] Download Recevedbyte: " + e.BytesReceived + " Download totalbyte: " + e.TotalBytesToReceive);
         // use these variables if needed
         load.GetComponent<GUI_MessageBox>().message = $"Please wait while we download Official GHTV Reloaded Gem Packs\n\n Dowloaded: {e.ProgressPercentage}%";
         load.GetComponent<GUI_MessageBox>().addmessage();
@@ -114,7 +113,7 @@ public class GemChanger_Importer : MonoBehaviour
         webClient = null;
         isDownloading = false;
         load.GetComponent<GUI_MessageBox>().CloseAnim();
-        Debug.Log("Download completed!");
+        Debug.Log("[GemChangerImporter] Download completed!");
         //checking if we don't have an old one
         if(File.Exists(Application.persistentDataPath + $"\\GemMaker\\defaultpack\\GHTV-Reloaded-Official-Gem-Packs-main\\default.stickpack"))
         {
@@ -163,7 +162,7 @@ public class GemChanger_Importer : MonoBehaviour
                 {
                     if (nopackmessage != null)
                     {
-                        Debug.Log("[Gem Changer - Importer] No Gem Pack found");
+                        Debug.Log("[GemChangerImporter] No Gem Pack found");
                         nopackmessage = Instantiate(MessageBox);
                         GUI_MessageBox b = nopackmessage.GetComponent<GUI_MessageBox>();
                         b.title = "No Gem Pack Found";
@@ -176,7 +175,7 @@ public class GemChanger_Importer : MonoBehaviour
             {
                 if (e.Message.Contains("Could not find a part of the path"))
                 {
-                    Debug.Log("[Gem Changer - Importer] Can't find Path");
+                    Debug.Log("[GemChangerImporter] Can't find Path");
 
                 }
             }
@@ -200,7 +199,7 @@ public class GemChanger_Importer : MonoBehaviour
             //nuke the cache folder
             if (Directory.Exists($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache"))
             {
-                Debug.LogWarning("[GemChanger - Importer] Clearing Resource Pack Cache");
+                Debug.LogWarning("[GemChangerImporter] Clearing Resource Pack Cache");
                 Directory.Delete($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache", true);
             }
             yield return new WaitForEndOfFrame();
@@ -289,10 +288,10 @@ public class GemChanger_Importer : MonoBehaviour
             {
                 if (Directory.Exists($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE") | Directory.Exists($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE"))
                 {
-                    Debug.Log($"{path} Is valid");
+                    Debug.Log($"[GemChangerImporter] {path} Is valid");
                     userData.instance.LocalFilePath = path;
-                    Debug.Log($"{userData.instance.LocalFilePath} Is valid");
-                    Debug.Log("[GemChanger - Importer] - exporting " + packname);
+                    Debug.Log($"[GemChangerImporter] {userData.instance.LocalFilePath} Is valid");
+                    Debug.Log("[GemChangerImporter]  - exporting " + packname);
                     StartCoroutine(Extract($"{Application.persistentDataPath}/GemMaker/Resource Pack/{packname}.stickpack"));
                 }
                 else
@@ -306,7 +305,7 @@ public class GemChanger_Importer : MonoBehaviour
         }
         else if (Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLES02180/USRDIR/UPDATE") | Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE"))
         {
-            Debug.Log("[GemChanger - Importer] - exporting " + packname);
+            Debug.Log("[GemChangerImporter]  - exporting " + packname);
             StartCoroutine(Extract($"{Application.persistentDataPath}/GemMaker/Resource Pack/{packname}.stickpack"));
         }
         else
@@ -562,7 +561,7 @@ public class GemChanger_Importer : MonoBehaviour
         a.GetComponent<GUI_MessageBox>().title = "Exported Complete";
         a.GetComponent<GUI_MessageBox>().message = $"Custom Gems have been exported to Guitar Hero live.\n\nThe Next time you load the default highway or play GHL song the changes will be apply.";
         a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
-        Debug.LogWarning("[Gem Changer - Importer] Finish exporting texture");
+        Debug.LogWarning("[GemChangerImporter] Finish exporting texture");
     }
     public void ReturnToMainMenu()
     {

@@ -44,9 +44,9 @@ public class HopoPatch : MonoBehaviour
             {
                 if (Directory.Exists($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE") | Directory.Exists($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE"))
                 {
-                    Debug.Log($"{path} Is valid");
+                    Debug.Log($"[HopoPatch] {path} Is valid");
                     userData.instance.LocalFilePath = path;
-                    Debug.Log($"{userData.instance.LocalFilePath} Is valid");
+                    Debug.Log($"[HopoPatch] {userData.instance.LocalFilePath} Is valid");
                     if(method == 1)
                     {
                         CopyXML("Patch");
@@ -124,20 +124,20 @@ public class HopoPatch : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"[Hopo Pathc] A unknow type of {type}");
+            Debug.LogError($"[HopoPatch] A unknow type of {type}");
         }
     }
     private void CheckPath()
     {
         if(!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLES02180/USRDIR/UPDATE/OVERRIDE/CONFIGS/HUD/GUITAR") | !Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE/OVERRIDE/CONFIGS/HUD/GUITAR"))
         {
-            Debug.Log("[HOPO Patch] Creating dir");
+            Debug.Log("[HopoPatch] Creating dir");
             Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLES02180/USRDIR/UPDATE/OVERRIDE/CONFIGS/HUD/GUITAR");
             Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE/OVERRIDE/CONFIGS/HUD/GUITAR");
         }
         else
         {
-            Debug.Log("[HOPO Patch] Game path dir has already been made");
+            Debug.Log("[HopoPatch] Game path dir has already been made");
         }
     }
 

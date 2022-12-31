@@ -36,7 +36,7 @@ public class BootStrappedData : MonoBehaviour
         //check if a instance already exisit
         if(Instance != null)
         {
-            Debug.LogError("BootStrapped is alread loaded on " + gameObject.name);
+            Debug.LogError("[BootStrppedData] BootStrapped is alread loaded on " + gameObject.name);
             Destroy(gameObject);
             return;
         }

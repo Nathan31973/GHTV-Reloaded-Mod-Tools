@@ -224,7 +224,7 @@ public class GemsColour : MonoBehaviour
                 {
                     if (Directory.Exists($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE") | Directory.Exists($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE"))
                     {
-                        Debug.Log($"{path} Is valid");
+                        Debug.Log($"[Highway FX] {path} Is valid");
                         userData.instance.LocalFilePath = path;
                     }
                     else
@@ -238,7 +238,7 @@ public class GemsColour : MonoBehaviour
             //checking if path is vaild
             if (Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLES02180/USRDIR/UPDATE") | Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE"))
             {
-                Debug.Log($"{userData.instance.LocalFilePath} Is valid");
+                Debug.Log($"[Highway FX] {userData.instance.LocalFilePath} Is valid");
                 UnityToXML(userData.instance.LocalFilePath, GemBothSmashColour, "GEMBOTH_SMASH_EFFECT.XML");
                 UnityToXML(userData.instance.LocalFilePath, fireColour, "CATCHER_BLUE_FLAME_EFFECT.XML");
                 UnityToXML(userData.instance.LocalFilePath, GemDownSmashColour, "GEMDOWN_SMASH_EFFECT.XML");
@@ -261,7 +261,7 @@ public class GemsColour : MonoBehaviour
         }
         catch(Exception e)
         {
-            Debug.LogError(e.Message);
+            Debug.LogError("[Highway FX] " + e.Message);
             GameObject t = Instantiate(MessageBox);
             t.GetComponent<GUI_MessageBox>().title = "Failed To Save Colours";
             t.GetComponent<GUI_MessageBox>().message = $"An Error has occured while saving\nPlease try again\n\nERROR CODE: FXsysFailed";
@@ -279,7 +279,7 @@ public class GemsColour : MonoBehaviour
             return;
         }
 
-        Debug.LogWarning(filename +" "+"RGB COLOUR: " + ColourConverter(c));
+        Debug.LogWarning("[Highway FX] " + filename +" "+"RGB COLOUR: " + ColourConverter(c));
         var doc = XDocument.Load(Application.streamingAssetsPath + "/PARTICLES/"+ filename);
 
 

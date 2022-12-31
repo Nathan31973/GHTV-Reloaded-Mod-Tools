@@ -150,8 +150,8 @@ public class GemChanger : MonoBehaviour
         }
         else
         {
-            Debug.Log("Error. Platform isn't supported");
-            Debug.Log(Application.platform);
+            Debug.Log("[GemChanger] Error. Platform isn't supported");
+            Debug.Log("[GemChanger] " + Application.platform);
             GameObject a = Instantiate(messageBox);
             a.GetComponent<GUI_MessageBox>().title = "ERROR";
             a.GetComponent<GUI_MessageBox>().message = $"Gem Changer - Create isn't supported for your current OS\n\nGem Changer - Create is currently support Windows";
@@ -196,7 +196,7 @@ public class GemChanger : MonoBehaviour
         //checking if we have internet connection
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            Debug.Log("Error. Check internet connection!");
+            Debug.Log("[GemChanger] Error. Check internet connection!");
             GameObject a = Instantiate(messageBox);
             a.GetComponent<GUI_MessageBox>().title = "No Active Internet Connection";
             a.GetComponent<GUI_MessageBox>().message = $"No internet connect exist\n\nMake sure you are connected to the internet and try again.";
@@ -205,7 +205,7 @@ public class GemChanger : MonoBehaviour
         }
         else
         {
-            Debug.Log("We have internet");
+            Debug.Log("[GemChanger] We have internet");
 
             // Is file downloading yet?
             if (webClient != null)
@@ -236,8 +236,7 @@ public class GemChanger : MonoBehaviour
     private void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
     {
         string fileProcessed = ((System.Net.WebClient)(sender)).QueryString["file"]; // Getting the local path if required
-        Debug.Log("Download Recevedbyte: " + e.BytesReceived);
-        Debug.Log("Download totalbyte: " + e.TotalBytesToReceive);
+        Debug.Log("[GemChanger] Download Recevedbyte: " + e.BytesReceived + " Download totalbyte: " + e.TotalBytesToReceive);
         // use these variables if needed
         load.GetComponent<GUI_MessageBox>().message = $"Please wait while we download external files\n\n Dowloaded: {e.ProgressPercentage}%";
         load.GetComponent<GUI_MessageBox>().addmessage();
@@ -247,7 +246,7 @@ public class GemChanger : MonoBehaviour
     {
         webClient = null;
         isDownloading = false;
-        Debug.Log("Download completed!");
+        Debug.Log("[GemChanger] Download completed!");
 
         extractFile("GHLIMGConverter.zip");
     }
@@ -256,7 +255,7 @@ public class GemChanger : MonoBehaviour
     {
         webClient = null;
         isDownloading = false;
-        Debug.Log("Download completed!");
+        Debug.Log("[GemChanger] Download completed!");
     }
 
     private void extractFile(string filename)
@@ -276,7 +275,7 @@ public class GemChanger : MonoBehaviour
         string a = ini.IniReadValue("path", "PVRTexToolCLI");
         if (a.Contains("PVRTexToolCLI.exe"))
         {
-            Debug.Log("User has PVRTextToolCLIInstalled");
+            Debug.Log("[GemChanger] User has PVRTextToolCLIInstalled");
             return "INI";
         }
         else
@@ -745,9 +744,9 @@ public class GemChanger : MonoBehaviour
             {
                 if (Directory.Exists($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE") | Directory.Exists($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE"))
                 {
-                    Debug.Log($"{path} Is valid");
+                    Debug.Log($"[GemChanger] {path} Is valid");
                     userData.instance.LocalFilePath = path;
-                    Debug.Log($"{userData.instance.LocalFilePath} Is valid");
+                    Debug.Log($"[GemChanger] {userData.instance.LocalFilePath} Is valid");
                     done();
                 }
                 else
@@ -845,19 +844,19 @@ public class GemChanger : MonoBehaviour
                 if (file != null)
                 {
                     runbatfile(file);
-                    Debug.Log("[GemChanger]Running batfile: " + file);
+                    Debug.Log("[GemChanger] Running batfile: " + file);
                 }
                 else
                 {
                     filesFailed++;
-                    Debug.Log("[GemChanger]Batfile faild to located");
+                    Debug.Log("[GemChanger] Batfile faild to located");
                 }
             }
             catch(Exception e)
             {
                 Debug.LogError(e);
                 filesFailed++;
-                Debug.Log("[GemChanger]Batfile faild create gem IMG");
+                Debug.Log("[GemChanger] Batfile faild create gem IMG");
             }
         }
         if(filesFailed >= filesnum)
@@ -895,7 +894,7 @@ public class GemChanger : MonoBehaviour
         System.Diagnostics.Process bat = System.Diagnostics.Process.Start(batinfo);
         bat.WaitForExit();
         File.Delete(batfile);
-        Debug.Log("bat file done");
+        Debug.Log("[GemChanger] bat file done");
     }
 
     private IEnumerator AddToGHL()
@@ -944,7 +943,7 @@ public class GemChanger : MonoBehaviour
         int num = 0;
 
         //removing the old gems if placed
-        Debug.Log("[Gem Changer] Removing old gems");
+        Debug.Log("[GemChanger] Removing old gems");
         foreach (string version in GameVersion)
         {
             if (Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS"))
@@ -1136,7 +1135,7 @@ public class GemChanger : MonoBehaviour
         a.GetComponent<GUI_MessageBox>().title = "Exported Complete";
         a.GetComponent<GUI_MessageBox>().message = $"Custom Gems have been exported to Guitar Hero live.\n\nThe Next time you load the default highway or play GHL song the changes will be apply.";
         a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
-        Debug.LogWarning("[Gem Changer]Finish exporting texture");
+        Debug.LogWarning("[GemChanger] Finish exporting texture");
     }
 
     public string BatchFileMaker(string inputFile, string outputFile, string batname, int mipmap, int width, int height)
@@ -1144,7 +1143,7 @@ public class GemChanger : MonoBehaviour
         //check if input file exist
         if (!File.Exists(inputFile + ".png"))
         {
-            Debug.Log("[Gem Changer]Input file doesn't exist: " + inputFile);
+            Debug.Log("[GemChanger] Input file doesn't exist: " + inputFile);
             return null;
         }
         //checking if the file exisit
@@ -1165,7 +1164,7 @@ public class GemChanger : MonoBehaviour
         }
         else
         {
-            Debug.Log("[Gem Changer]Failed to create bat file: " + batname + ".bat");
+            Debug.Log("[GemChanger] Failed to create bat file: " + batname + ".bat");
             return null;
         }
     }
@@ -1210,7 +1209,7 @@ public class GemChanger : MonoBehaviour
         };
         File.WriteAllLinesAsync($"{Application.persistentDataPath}/GemMaker/Packs/{packName}/Credit.dat", lines);
 
-        Debug.Log("[GemChanger]finish creating Credit and cover image");
+        Debug.Log("[GemChanger] finish creating Credit and cover image");
         StartCoroutine(CreateZip($"{Application.persistentDataPath}/GemMaker/Packs/{packName}", packName));
     }
 
@@ -1395,7 +1394,7 @@ public class GemChanger : MonoBehaviour
         }
 
         ZipFile.CreateFromDirectory(startPath, zipPath);
-        Debug.Log("[GemChanger]Finish creating gem pack");
+        Debug.Log("[GemChanger] Finish creating gem pack");
 
         //deleting temp file
         Directory.Delete($"{Application.persistentDataPath}/GemMaker/Packs", true);

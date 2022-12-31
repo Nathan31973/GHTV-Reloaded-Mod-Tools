@@ -29,7 +29,7 @@ public class MainSetting : MonoBehaviour
         {
             if (Directory.Exists($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE") | Directory.Exists($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE"))
             {
-                Debug.Log($"{path} Is valid");
+                Debug.Log($"[MainSettings] {path} Is valid");
                 userData.instance.LocalFilePath = path;
             }
             else
@@ -43,6 +43,16 @@ public class MainSetting : MonoBehaviour
     public void ClearCache()
     {
         StartCoroutine(Clearing());
+    }
+    public void ClearHyperSpeedCache()
+    {
+        if (Directory.Exists(Application.persistentDataPath + "/External_Tools/HyperSpeed"))
+        {
+            Directory.Delete(Application.persistentDataPath + "/External_Tools/HyperSpeed", true);
+        }
+        GameObject t = Instantiate(MessageBox);
+        t.GetComponent<GUI_MessageBox>().title = "HyperSpeed Cache Clear";
+        t.GetComponent<GUI_MessageBox>().message = $"";
     }
     private IEnumerator Clearing()
     {

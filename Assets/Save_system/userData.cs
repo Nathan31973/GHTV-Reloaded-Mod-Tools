@@ -7,6 +7,7 @@ public class userData : MonoBehaviour, IDataPersistence
     public static userData instance { get; private set; }
     public string LocalFilePath;
     public bool hasDownloadedDefaultAtLeastOnce;
+    public long hyperspeedLastDL;
 
     private void Awake()
     {
@@ -14,7 +15,7 @@ public class userData : MonoBehaviour, IDataPersistence
         //check if a instance already exisit
         if (instance != null)
         {
-            Debug.LogError("PlayerSave is alread loaded on " + gameObject.name);
+            Debug.LogError("[userData] PlayerSave is alread loaded on " + gameObject.name);
             Destroy(gameObject);
             return;
         }
@@ -25,10 +26,12 @@ public class userData : MonoBehaviour, IDataPersistence
     {
         this.LocalFilePath = data.LocalFilePath;
         this.hasDownloadedDefaultAtLeastOnce = data.hasDownloadedDefaultAtLeastOnce;
+        this.hyperspeedLastDL = data.hyperspeedLastDL;
     }
     public void SaveData(ref GameData data)
     {
         data.LocalFilePath = this.LocalFilePath;
         data.hasDownloadedDefaultAtLeastOnce = this.hasDownloadedDefaultAtLeastOnce;
+        data.hyperspeedLastDL = this.hyperspeedLastDL;
     }
 }

@@ -9,14 +9,14 @@ public class DiscordController : MonoBehaviour
     public static DiscordController instance { get; private set; }
     public Discord.Discord discord;
     private bool isRunningDiscord = false;
-    private long DiscordTOKEN = 0000000000000;
+    private long DiscordTOKEN = 000000000000;
     private void Awake()
     {
 
         //check if a instance already exisit
         if (instance != null)
         {
-            Debug.LogError("DiscordController is alread loaded on " + gameObject.name);
+            Debug.LogError("[Discord] DiscordController is alread loaded on " + gameObject.name);
             Destroy(gameObject);
             return;
         }
@@ -30,7 +30,7 @@ public class DiscordController : MonoBehaviour
         }
         if (discord == null)
         {
-            Debug.LogWarning("Discord Isn't running on the client Device");
+            Debug.LogWarning("[Discord] Discord Isn't running on the client Device");
             isRunningDiscord = false;
             return;
         }
@@ -68,11 +68,11 @@ public class DiscordController : MonoBehaviour
             {
                 if (result == Discord.Result.Ok)
                 {
-                    Debug.LogFormat("Connected to Client Discord");
+                    Debug.Log("[Discord] Connected to Client Discord");
                 }
                 else
                 {
-                    Debug.Log("Another Discord App is connected to the Client Discord");
+                    Debug.Log("[Discord] Another Discord App is connected to the Client Discord");
                 }
             });
 
@@ -96,11 +96,11 @@ public class DiscordController : MonoBehaviour
             {
                 if (res == Discord.Result.Ok)
                 {
-                    Debug.Log("Discord status Set!");
+                    Debug.Log("[Discord] Discord status Set!");
                 }
                 else
                 {
-                    Debug.LogError("Discord status Failed!");
+                    Debug.LogError("[Discord] Discord status Failed!");
                 }
             });
         }

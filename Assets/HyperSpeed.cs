@@ -34,6 +34,8 @@ public class HyperSpeed : MonoBehaviour
     private bool downloadDone = false;
     private GameObject load;
 
+    public DateTime lastCheck;
+    public DateTime dt;
     private void Start()
     {
         DiscordController.instance.UpdateDiscordActivity("Hyper Speed Changer", "Adjusting the highway speed for GHL", "hyperspeed", "Hyper Speed Changer");
@@ -41,6 +43,34 @@ public class HyperSpeed : MonoBehaviour
         slider.value = hyperSpeed;
         slider.maxValue = maxSpeed;
         slider.minValue = minSpeed;
+
+        //checking if time has been more than a week or it a wendsday
+        lastCheck = UnixTimeToDateTime(userData.instance.hyperspeedLastDL);
+        dt = DateTime.Now;
+        if (DateTime.Now > lastCheck.Date.AddDays(7))
+        {
+            Debug.LogWarning("[HyperSpeed] A week has past since we last cache, deleting hyperspeed cache");
+            if(Directory.Exists(Application.persistentDataPath + "/External_Tools/HyperSpeed"))
+            {
+                Directory.Delete(Application.persistentDataPath + "/External_Tools/HyperSpeed", true);
+            }
+            userData.instance.hyperspeedLastDL = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+        }
+        else if ((dt.Hour >= 10 && dt.Hour <= 12) && dt.DayOfWeek == DayOfWeek.Wednesday)
+        {
+            Debug.LogWarning("[HyperSpeed] It the timeframe when GHTV get new content deleting hyperspeed cache");
+            if (Directory.Exists(Application.persistentDataPath + "/External_Tools/HyperSpeed"))
+            {
+                Directory.Delete(Application.persistentDataPath + "/External_Tools/HyperSpeed", true);
+            }
+            userData.instance.hyperspeedLastDL = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+        }
+    }
+
+    public static DateTime UnixTimeToDateTime(long unixtime)
+    {
+        var dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+        return dtDateTime.AddMilliseconds(unixtime).ToLocalTime();
     }
 
     private void Update()
@@ -65,7 +95,7 @@ public class HyperSpeed : MonoBehaviour
             {
                 if (Directory.Exists($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE") | Directory.Exists($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE"))
                 {
-                    Debug.Log($"{path} Is valid");
+                    Debug.Log($"[HyperSpeed] {path} Is valid");
                     userData.instance.LocalFilePath = path;
                 }
                 else
@@ -79,7 +109,7 @@ public class HyperSpeed : MonoBehaviour
         //checking if path is vaild
         if (Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLES02180/USRDIR/UPDATE") | Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE"))
         {
-            Debug.Log($"{userData.instance.LocalFilePath} Is valid");
+            Debug.Log($"[HyperSpeed] {userData.instance.LocalFilePath} Is valid");
             StartCoroutine(SaveToDisk(userData.instance.LocalFilePath));
         }
         else
@@ -99,6 +129,7 @@ public class HyperSpeed : MonoBehaviour
             GameObject h = Instantiate(Message);
             h.GetComponent<GUI_MessageBox>().title = "Failed To Save Hyper Speed";
             h.GetComponent<GUI_MessageBox>().message = $"An Error has occured while saving\nPlease try again\n\nERROR CODE: HSsysNoneFailed";
+            Debug.LogError("[HyperSpeed] path is null while saving");
             yield break;
         }
         if (!Directory.Exists(Application.persistentDataPath + "/External_Tools/HyperSpeed/OVERRIDE/TRACKS_CLEAN"))
@@ -116,6 +147,7 @@ public class HyperSpeed : MonoBehaviour
             load.GetComponent<GUI_MessageBox>().title = "Saving Hyper Speed";
             load.GetComponent<GUI_MessageBox>().message = "Please wait....";
         }
+        Debug.Log("[HyperSpeed] Copying trackconfig to game");
         var directories = Directory.GetDirectories(Application.persistentDataPath + "/External_Tools/HyperSpeed/OVERRIDE/TRACKS_CLEAN");
         foreach (var d in directories)
         {
@@ -156,7 +188,7 @@ public class HyperSpeed : MonoBehaviour
 
         load.GetComponent<GUI_MessageBox>().CloseAnim();
         yield return new WaitForSeconds(1f);
-
+        Debug.Log("[HyperSpeed] Finished Copying");
         GameObject t = Instantiate(Message);
         t.GetComponent<GUI_MessageBox>().title = "Hyper Speed Saved!";
         t.GetComponent<GUI_MessageBox>().message = $"Your Hyper been save to your Guitar Hero Live game.\n\nThe next song you load your Hyper Speed will be apply";
@@ -222,7 +254,7 @@ public class HyperSpeed : MonoBehaviour
             //checking if we have internet connection
             if (Application.internetReachability == NetworkReachability.NotReachable)
             {
-                Debug.Log("Error. Check internet connection!");
+                Debug.Log("[HyperSpeed] Error. Check internet connection!");
                 GameObject a = Instantiate(Message);
                 a.GetComponent<GUI_MessageBox>().title = "No Active Internet Connection";
                 a.GetComponent<GUI_MessageBox>().message = $"No internet connect exist\n\nMake sure you are connected to the internet and try again.";
@@ -231,7 +263,7 @@ public class HyperSpeed : MonoBehaviour
             }
             else
             {
-                Debug.Log("We have internet");
+                Debug.Log("[HyperSpeed] We have internet");
             }
             // Is file downloading yet?
             if (webClient != null)
@@ -248,8 +280,7 @@ public class HyperSpeed : MonoBehaviour
     void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
     {
         string fileProcessed = ((System.Net.WebClient)(sender)).QueryString["file"]; // Getting the local path if required   
-        Debug.Log("Download Recevedbyte: " + e.BytesReceived);
-        Debug.Log("Download totalbyte: " + e.TotalBytesToReceive);
+        Debug.Log("[HyperSpeed] Download Recevedbyte: " + e.BytesReceived + " Download totalbyte: " + e.TotalBytesToReceive);
         // use these variables if needed
         load.GetComponent<GUI_MessageBox>().message = $"Downloading Hyper Speed data\n\n Dowloaded: {e.ProgressPercentage}%";
         load.GetComponent<GUI_MessageBox>().addmessage();
@@ -260,7 +291,7 @@ public class HyperSpeed : MonoBehaviour
     {
         webClient = null;
         Debug.LogWarning(e);
-        Debug.Log("Download completed!");
+        Debug.Log("[HyperSpeed] Download completed!");
         extractFile("Hyperspeed.zip");
     }
 
