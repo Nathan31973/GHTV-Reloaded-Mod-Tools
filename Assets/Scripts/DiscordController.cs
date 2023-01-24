@@ -9,7 +9,7 @@ public class DiscordController : MonoBehaviour
     public static DiscordController instance { get; private set; }
     public Discord.Discord discord;
     private bool isRunningDiscord = false;
-    private long DiscordTOKEN = 000000000000;
+    private long DiscordTOKEN = 0000000000000000000;
     private void Awake()
     {
 
@@ -27,6 +27,7 @@ public class DiscordController : MonoBehaviour
         }
         catch (Exception e)
         {
+            Debug.LogError("[DiscordController] " + e.Message);
         }
         if (discord == null)
         {
@@ -36,6 +37,7 @@ public class DiscordController : MonoBehaviour
         }
         else
         {
+            Debug.LogWarning("[Discord] Discord is running on the client Device");
             isRunningDiscord = true;
         }
     }

@@ -64,12 +64,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   packName: 
   Creator: 
+  version: 
   PackName: {fileID: 1097093659195984933}
   PackRawImg: {fileID: 6657041123983069838}
   PackIcon: {fileID: 0}
   button: {fileID: 7165171419677235136}
   host: {fileID: 0}
   MessageBox: {fileID: 4620335486015115378, guid: cba57f4624831f344a66effe0e867ee4, type: 3}
+  MessageBox2: {fileID: 5772352612857925602, guid: a1e31321f69abd74fb3876a4fb29c121, type: 3}
 --- !u!114 &3506739541409227100
 MonoBehaviour:
   m_ObjectHideFlags: 0

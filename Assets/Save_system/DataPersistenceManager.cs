@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -93,7 +94,11 @@ public class DataPersistenceManager : MonoBehaviour
     //auto save when quitting the app
     private void OnApplicationQuit()
     {
-        SaveGame();
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name != "Setup")
+        {
+            SaveGame();
+        }
     }
     private List<IDataPersistence> FindAllDataPresistenceObjects()
     {

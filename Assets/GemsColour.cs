@@ -41,10 +41,13 @@ public class GemsColour : MonoBehaviour
 
     public GameObject MessageBox;
     public GameObject fadeToBlack;
+    private Translater T;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        T = Translater.instance;
         DiscordController.instance.UpdateDiscordActivity("Highway FX Changer", "Changing the colour of the highway FX", "highway_fx", "Highway FX Changer");
         GemBothSmashFlex.gameObject.SetActive(true);
         GemDownSmashFlex.gameObject.SetActive(false);
@@ -230,8 +233,8 @@ public class GemsColour : MonoBehaviour
                     else
                     {
                         GameObject t = Instantiate(MessageBox);
-                        t.GetComponent<GUI_MessageBox>().title = "Invalided Path";
-                        t.GetComponent<GUI_MessageBox>().message = $"Please make sure you have selected your RPCS3 Root folder!";
+                        t.GetComponent<GUI_MessageBox>().title = T.getText("ERROR_INVAL_PATH");
+                        t.GetComponent<GUI_MessageBox>().message = T.getText("STR_RPCS3_RIGHT_FOLD");
                     }
                 }
             }
@@ -245,16 +248,16 @@ public class GemsColour : MonoBehaviour
                 UnityToXML(userData.instance.LocalFilePath, GemUpSmashColour, "GEMUP_SMASH_EFFECT.XML");
                 UnityToXML(userData.instance.LocalFilePath, OpenGemSmashColour, "OPEN_GEM_SMASH_EFFECT.XML");
                 GameObject a = Instantiate(MessageBox);
-                a.GetComponent<GUI_MessageBox>().title = "Colours Saved!!";
-                a.GetComponent<GUI_MessageBox>().message = $"Your custom colour have been save to your Guitar Hero Live game. \n\nColour will be change the next time you launch GHL/GHTV from the main menu";
+                a.GetComponent<GUI_MessageBox>().title = T.getText("HIGH_FX_STR_SAVED");
+                a.GetComponent<GUI_MessageBox>().message = T.getText("HIGH_FX_STR_SAVED_DES");
                 a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
             }
             else
             {
                 userData.instance.LocalFilePath = "TEST";
                 GameObject t = Instantiate(MessageBox);
-                t.GetComponent<GUI_MessageBox>().title = "Invalided Path";
-                t.GetComponent<GUI_MessageBox>().message = $"Please make sure you have selected your RPCS3 Root folder!";
+                t.GetComponent<GUI_MessageBox>().title = T.getText("ERROR_INVAL_PATH");
+                t.GetComponent<GUI_MessageBox>().message = T.getText("STR_RPCS3_RIGHT_FOLD");
             }
 
 
@@ -263,19 +266,32 @@ public class GemsColour : MonoBehaviour
         {
             Debug.LogError("[Highway FX] " + e.Message);
             GameObject t = Instantiate(MessageBox);
-            t.GetComponent<GUI_MessageBox>().title = "Failed To Save Colours";
-            t.GetComponent<GUI_MessageBox>().message = $"An Error has occured while saving\nPlease try again\n\nERROR CODE: FXsysFailed";
+            t.GetComponent<GUI_MessageBox>().title = T.getText("HIGH_FX_STR_SAVED_FAILED");
+            t.GetComponent<GUI_MessageBox>().message = T.getText("HIGH_FX_STR_SAVED_FAILED_DES");
             
         }
     }
     public void UnityToXML(string path, Color32 c, string filename)
     {
-
+        string region = "";
+        if (userData.instance.gameVersion == userData.Version.PAL || userData.instance.gameVersion == userData.Version.Lite)
+        {
+            region = "BLES02180";
+        }
+        else if (userData.instance.gameVersion == userData.Version.USA)
+        {
+            region = "BLUS31556";
+        }
+        else
+        {
+            Debug.LogError("[HyperSpeed] USER HASN'T SELECTED A GAME REGION");
+            return;
+        }
         if (path == null || path == "")
         {
             GameObject t = Instantiate(MessageBox);
-            t.GetComponent<GUI_MessageBox>().title = "Failed To Save Hyper Speed";
-            t.GetComponent<GUI_MessageBox>().message = $"An Error has occured while saving\nPlease try again\n\nERROR CODE: HSsysNoneFailed";
+            t.GetComponent<GUI_MessageBox>().title = T.getText("HIGH_FX_STR_SAVED_FAILED");
+            t.GetComponent<GUI_MessageBox>().message = T.getText("HIGH_FX_STR_SAVED_FAILED_DES"); 
             return;
         }
 
@@ -319,16 +335,11 @@ public class GemsColour : MonoBehaviour
 
         //save the XML back as file
         //checking if directory exist
-        if (!Directory.Exists($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE/OVERRIDE/WIZARDRY/PARTICLES")) ;
+        if (!Directory.Exists($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/WIZARDRY/PARTICLES")) ;
         {
-            Directory.CreateDirectory($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE/OVERRIDE/WIZARDRY/PARTICLES");
+            Directory.CreateDirectory($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/WIZARDRY/PARTICLES");
         }
-        if (!Directory.Exists($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE/OVERRIDE/WIZARDRY/PARTICLES")) ;
-        {
-            Directory.CreateDirectory($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE/OVERRIDE/WIZARDRY/PARTICLES");
-        }
-        doc.Save($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE/OVERRIDE/WIZARDRY/PARTICLES/{filename}");
-        doc.Save($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE/OVERRIDE/WIZARDRY/PARTICLES/{filename}");
+        doc.Save($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/WIZARDRY/PARTICLES/{filename}");
 
     }
     string ColourConverter(Color32 c)
@@ -341,5 +352,37 @@ public class GemsColour : MonoBehaviour
         a.gameObject.GetComponent<FadeToBlack>().levelToChangeScene = "Main Menu";
         a.GetComponent<FadeToBlack>().anim.clip = a.GetComponent<FadeToBlack>().animClip[1];
         a.GetComponent<FadeToBlack>().anim.Play();
+    }
+
+    public void removeCustomFX()
+    {
+        string region = "";
+        if (userData.instance.gameVersion == userData.Version.PAL || userData.instance.gameVersion == userData.Version.Lite)
+        {
+            region = "BLES02180";
+        }
+        else if (userData.instance.gameVersion == userData.Version.USA)
+        {
+            region = "BLUS31556";
+        }
+        else
+        {
+            Debug.LogError("[HyperSpeed] USER HASN'T SELECTED A GAME REGION");
+            return;
+        }
+        string[] files = { "GEMBOTH_SMASH_EFFECT.XML", "CATCHER_BLUE_FLAME_EFFECT.XML",
+            "GEMDOWN_SMASH_EFFECT.XML", "GEMUP_SMASH_EFFECT.XML", "OPEN_GEM_SMASH_EFFECT.XML"};
+        foreach(string file in files)
+        {
+            if(File.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/WIZARDRY/PARTICLES/{file}"))
+            {
+                File.Delete($"{userData.instance.LocalFilePath}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/WIZARDRY/PARTICLES/{file}");
+            }
+        }
+        GameObject a = Instantiate(MessageBox);
+        a.GetComponent<GUI_MessageBox>().title = T.getText("HIGH_FX_STR_RESTORED");
+        a.GetComponent<GUI_MessageBox>().message = T.getText("HIGH_FX_STR_RESTORED_DES");
+        a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
+
     }
 }

@@ -15,17 +15,19 @@ public class GemChanger : MonoBehaviour
     private WebClient webClient = null;
     public GameObject UI;
     public GameObject messageBox;
+    public GameObject messageBox2;
     public GameObject loadingBox;
     public GameObject messageBoxWithText;
     public GameData GemcreatorMenu;
     public GameObject fadeToBlack;
     private GameObject load;
     public Button openstrumbutton;
+    public Button trailsButton;
     private GameObject Textbox;
 
     [Header("UI")]
     public Toggle ModeToggleSwitch;
-
+    public Toggle gemBoxToggle;
     public Animation black;
 
     public NoteType noteType;
@@ -41,14 +43,18 @@ public class GemChanger : MonoBehaviour
 
     [Header("Settings")]
     public int TextureWidth = 256;
-    public int TextureHeight = 256;
 
+    public int TextureHeight = 256;
 
     [Header("gems")]
     public GameObject Gem;
 
     public GameObject OpenGem;
     public GameObject OpenGemOther;
+
+    public GameObject GemBox;
+
+    public List<GameObject> Trails;
 
     [Header("Default Gem Texture")]
     public Texture openGemDefault;
@@ -72,8 +78,14 @@ public class GemChanger : MonoBehaviour
     public Texture gemRightStreakDefault;
     public Texture gemLeftStreakDefault;
 
+    public Texture gemBoxDefault;
+
+    public Texture trailDefault;
+    public Texture trailHeroDefault;
+
     [Header("User Texture")]
     public Texture openGem;
+
     public Texture openGemHeroActive;
     public Texture openGemHeroCollect;
     public Texture openGemStreak;
@@ -93,10 +105,26 @@ public class GemChanger : MonoBehaviour
     public Texture gemRightSreak;
     public Texture gemLeftStreak;
 
+    public Texture gemBox;
+
+    public Texture trail;
+    public Texture trailHero;
+
     public bool isDownloading = false;
     public List<string> Highways;
+    public List<string> OnDiskHighways;
     private bool DoneConverting = false;
     private bool userWantToConvert = false;
+    private Translater T;
+
+    //private void Awake()
+    //{
+    //    //make highway list all uppercase
+    //    for (int i = 0; i < Highways.Count; i++)
+    //    {
+    //        Highways[i] = Highways[i].ToUpper();
+    //    }
+    //}
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -121,6 +149,7 @@ public class GemChanger : MonoBehaviour
     private void Start()
     {
         //we need the highway names to be caps
+        T = Translater.instance;
         Highways = Highways.ConvertAll(d => d.ToUpper());
         resetGemToDefault();
         DiscordController.instance.UpdateDiscordActivity("Gem Changer", "Selection an Option", "gem_changer", "Gem Changer");
@@ -153,8 +182,8 @@ public class GemChanger : MonoBehaviour
             Debug.Log("[GemChanger] Error. Platform isn't supported");
             Debug.Log("[GemChanger] " + Application.platform);
             GameObject a = Instantiate(messageBox);
-            a.GetComponent<GUI_MessageBox>().title = "ERROR";
-            a.GetComponent<GUI_MessageBox>().message = $"Gem Changer - Create isn't supported for your current OS\n\nGem Changer - Create is currently support Windows";
+            a.GetComponent<GUI_MessageBox>().title = T.getText("STR_ERROR");
+            a.GetComponent<GUI_MessageBox>().message = T.getText("GEM_CREATOR_PLATFORM_ISNT_SUPPORTED");
             a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
         }
     }
@@ -180,6 +209,11 @@ public class GemChanger : MonoBehaviour
 
         gemLeftStreak = gemLeftStreakDefault;
         gemRightSreak = gemRightStreakDefault;
+
+        gemBox = gemBoxDefault;
+
+        trail = trailDefault;
+        trailHero = trailHeroDefault;
         UpdateGem();
     }
 
@@ -198,8 +232,8 @@ public class GemChanger : MonoBehaviour
         {
             Debug.Log("[GemChanger] Error. Check internet connection!");
             GameObject a = Instantiate(messageBox);
-            a.GetComponent<GUI_MessageBox>().title = "No Active Internet Connection";
-            a.GetComponent<GUI_MessageBox>().message = $"No internet connect exist\n\nMake sure you are connected to the internet and try again.";
+            a.GetComponent<GUI_MessageBox>().title = T.getText("NET_COM_NONE_ACTIVE");
+            a.GetComponent<GUI_MessageBox>().message = T.getText("NET_COM_NONE_ACTIVE_DES");
             a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
             return;
         }
@@ -238,7 +272,7 @@ public class GemChanger : MonoBehaviour
         string fileProcessed = ((System.Net.WebClient)(sender)).QueryString["file"]; // Getting the local path if required
         Debug.Log("[GemChanger] Download Recevedbyte: " + e.BytesReceived + " Download totalbyte: " + e.TotalBytesToReceive);
         // use these variables if needed
-        load.GetComponent<GUI_MessageBox>().message = $"Please wait while we download external files\n\n Dowloaded: {e.ProgressPercentage}%";
+        load.GetComponent<GUI_MessageBox>().message = $"{T.getText("NET_COM_DOWNLOADING_EXTERNAL")}\n\n{T.getText("STR_DOWNLOADED")} {e.ProgressPercentage}%";
         load.GetComponent<GUI_MessageBox>().addmessage();
     }
 
@@ -287,8 +321,8 @@ public class GemChanger : MonoBehaviour
     private void Step2()
     {
         GameObject a = Instantiate(messageBox);
-        a.GetComponent<GUI_MessageBox>().title = "External Tool Require - PART 1";
-        a.GetComponent<GUI_MessageBox>().message = $"We need you to install an external tool to allow us to save your custom gems to Guitar Hero Live.\n\nClick Continue Download once downloaded install the program\n\nIf this is already install you can skip this step";
+        a.GetComponent<GUI_MessageBox>().title = T.getText("GEM_CREATOR_EXT_PT1");
+        a.GetComponent<GUI_MessageBox>().message = T.getText("GEM_CREATOR_EXT_PT1_DES");
         a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(WaitForUserToInstall);
     }
 
@@ -307,16 +341,16 @@ public class GemChanger : MonoBehaviour
     private IEnumerator Waitfordownload(int type)
     {
         load = Instantiate(loadingBox);
-        load.GetComponent<GUI_MessageBox>().title = "Downloading";
-        load.GetComponent<GUI_MessageBox>().message = "Please wait while we download external files";
+        load.GetComponent<GUI_MessageBox>().title = T.getText("STR_DOWNLOAD");
+        load.GetComponent<GUI_MessageBox>().message = T.getText("NET_COM_DOWNLOADING_EXTERNAL");
         yield return new WaitUntil(() => isDownloading == false);
         load.GetComponent<GUI_MessageBox>().CloseAnim();
         yield return new WaitForSeconds(1f);
         if (type == 1)
         {
             GameObject a = Instantiate(messageBox);
-            a.GetComponent<GUI_MessageBox>().title = "External Tool Require - PART 2";
-            a.GetComponent<GUI_MessageBox>().message = $"Once the install has complete\n\nClick Continue to locate the PVRTextToolCLI.exe\n\nIf you have installed it to the default path we will auto located.";
+            a.GetComponent<GUI_MessageBox>().title = T.getText("GEM_CREATOR_EXT_PT2");
+            a.GetComponent<GUI_MessageBox>().message = T.getText("GEM_CREATOR_EXT_PT2_DES");
             a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(OpenFileExplore);
         }
     }
@@ -330,8 +364,8 @@ public class GemChanger : MonoBehaviour
             a = " C:\\Imagination Technologies\\PowerVR_Graphics\\PowerVR_Tools\\PVRTexTool\\CLI\\Windows_x86_64\\PVRTexToolCLI.exe";
             ini.IniWriteValue("path", "PVRTexToolCLI", a);
             GameObject b = Instantiate(messageBox);
-            b.GetComponent<GUI_MessageBox>().title = "External Tool successfully located";
-            b.GetComponent<GUI_MessageBox>().message = $"We manage to auto located the external tool on your device!!!";
+            b.GetComponent<GUI_MessageBox>().title = T.getText("GEM_CREATOR_EXT_TOOL_FOUND");
+            b.GetComponent<GUI_MessageBox>().message = T.getText("GEM_CREATOR_EXT_TOOL_FOUND_DES");
             b.GetComponent<GUI_MessageBox>().button.onClick.AddListener(main);
         }
         else
@@ -346,15 +380,15 @@ public class GemChanger : MonoBehaviour
                     a = path;
                     ini.IniWriteValue("path", "PVRTexToolCLI", " " + a);
                     GameObject c = Instantiate(messageBox);
-                    c.GetComponent<GUI_MessageBox>().title = "External Tool successfully located";
-                    c.GetComponent<GUI_MessageBox>().message = $"We manage to located the external tool!!!";
+                    c.GetComponent<GUI_MessageBox>().title = T.getText("GEM_CREATOR_EXT_TOOL_FOUND");
+                    c.GetComponent<GUI_MessageBox>().message = T.getText("GEM_CREATOR_EXT_TOOL_FOUND_DES");
                     c.GetComponent<GUI_MessageBox>().button.onClick.AddListener(main);
                 }
                 else
                 {
                     GameObject a = Instantiate(messageBox);
-                    a.GetComponent<GUI_MessageBox>().title = "External Tool Require";
-                    a.GetComponent<GUI_MessageBox>().message = $"We need you to install an external tool to allow us to save your custom gems to Guitar Hero Live.\n\nClick Continue to open the download page\n\nMAKE SURE YOUR INSTALL PVR V4.0";
+                    a.GetComponent<GUI_MessageBox>().title = T.getText("GEM_CREATOR_EXT_TOOL_REQ");
+                    a.GetComponent<GUI_MessageBox>().message = T.getText("GEM_CREATOR_EXT_TOOL_REQ_DES");
                     a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(OpenFileExplore);
                 }
             }
@@ -368,15 +402,15 @@ public class GemChanger : MonoBehaviour
 
     public void ChangeLeftHandedImage()
     {
-        var paths = StandaloneFileBrowser.OpenFilePanel("Select your Left handed gem texture", "", "png", false);
+        var paths = StandaloneFileBrowser.OpenFilePanel(T.getText("GEM_CREATOR_SEL_LEFT_HND"), "", "png", false);
         foreach (var path in paths)
         {
             var loader = new WWW(path);
             if (!CheckUploadedSize(loader))
             {
                 GameObject a = Instantiate(messageBox);
-                a.GetComponent<GUI_MessageBox>().title = "Invalided Image";
-                a.GetComponent<GUI_MessageBox>().message = $"Make Sure your uploaded image is 512X512 \n\nPlease try again";
+                a.GetComponent<GUI_MessageBox>().title = T.getText("STR_INVALID_IMG");
+                a.GetComponent<GUI_MessageBox>().message = T.getText("STR_IMG_TOOLTIP");
                 return;
             }
             ModeToggleSwitch.isOn = true;
@@ -431,15 +465,15 @@ public class GemChanger : MonoBehaviour
 
     public void ChangeOpenStrumImage()
     {
-        var paths = StandaloneFileBrowser.OpenFilePanel("Select your open gem texture", "", "png", false);
+        var paths = StandaloneFileBrowser.OpenFilePanel(T.getText("GEM_CREATOR_SEL_OPEN"), "", "png", false);
         foreach (var path in paths)
         {
             var loader = new WWW(path);
             if (!CheckUploadedSize(loader))
             {
                 GameObject a = Instantiate(messageBox);
-                a.GetComponent<GUI_MessageBox>().title = "Invalided Image";
-                a.GetComponent<GUI_MessageBox>().message = $"Make Sure your uploaded image is 256X256 \n\nPlease try again";
+                a.GetComponent<GUI_MessageBox>().title = T.getText("STR_INVALID_IMG");
+                a.GetComponent<GUI_MessageBox>().message = T.getText("STR_IMG_TOOLTIP");
                 return;
             }
             if (noteType == NoteType.Normal)
@@ -482,17 +516,78 @@ public class GemChanger : MonoBehaviour
         }
     }
 
-    public void ChangeRightHandedImage()
+    public void ChangeGemBoxImage()
     {
-        var paths = StandaloneFileBrowser.OpenFilePanel("Select your Right hadned gem texture", "", "png", false);
+        var paths = StandaloneFileBrowser.OpenFilePanel(T.getText("GEM_CREATOR_SEL_BOX"), "", "png", false);
         foreach (var path in paths)
         {
             var loader = new WWW(path);
             if (!CheckUploadedSize(loader))
             {
                 GameObject a = Instantiate(messageBox);
-                a.GetComponent<GUI_MessageBox>().title = "Invalided Image";
-                a.GetComponent<GUI_MessageBox>().message = $"Make Sure your uploaded image is 256X256 \n\nPlease try again";
+                a.GetComponent<GUI_MessageBox>().title = T.getText("STR_INVALID_IMG");
+                a.GetComponent<GUI_MessageBox>().message = T.getText("STR_IMG_TOOLTIP");
+                return;
+            }
+
+            gemBox = loader.texture;
+            gemBoxToggle.isOn = true;
+            if (!Directory.Exists(Application.persistentDataPath + @"/GemMaker/Texture"))
+            {
+               Directory.CreateDirectory(Application.persistentDataPath + @"/GemMaker/Texture");
+            }
+            File.Copy(path, Application.persistentDataPath + "\\GemMaker\\Texture\\GemBox.png", true);
+
+            UpdateGem();
+        }
+    }
+
+    public void ChangeTrailImage()
+    {
+        var paths = StandaloneFileBrowser.OpenFilePanel(T.getText("GEM_CREATOR_SEL_TRAIL"), "", "png", false);
+        foreach (var path in paths)
+        {
+            var loader = new WWW(path);
+            if (!CheckUploadedSizeTrail(loader))
+            {
+                GameObject a = Instantiate(messageBox);
+                a.GetComponent<GUI_MessageBox>().title = T.getText("STR_INVALID_IMG");
+                a.GetComponent<GUI_MessageBox>().message = T.getText("STR_IMG_TOOLTIP_64");
+                return;
+            }
+            if (noteType == NoteType.Normal)
+            {
+                trail = loader.texture;
+                if (!Directory.Exists(Application.persistentDataPath + @"/GemMaker/Texture"))
+                {
+                    Directory.CreateDirectory(Application.persistentDataPath + @"/GemMaker/Texture");
+                }
+                File.Copy(path, Application.persistentDataPath + "\\GemMaker\\Texture\\Trail.png", true);
+            }
+            else if (noteType == NoteType.HeroPowerActive)
+            {
+                trailHero = loader.texture;
+                if (!Directory.Exists(Application.persistentDataPath + @"/GemMaker/Texture"))
+                {
+                    Directory.CreateDirectory(Application.persistentDataPath + @"/GemMaker/Texture");
+                }
+                File.Copy(path, Application.persistentDataPath + "\\GemMaker\\Texture\\TrailHero.png", true);
+            }
+            UpdateGem();
+        }
+    }
+
+    public void ChangeRightHandedImage()
+    {
+        var paths = StandaloneFileBrowser.OpenFilePanel(T.getText("GEM_CREATOR_SEL_RIGHT_HND"), "", "png", false);
+        foreach (var path in paths)
+        {
+            var loader = new WWW(path);
+            if (!CheckUploadedSize(loader))
+            {
+                GameObject a = Instantiate(messageBox);
+                a.GetComponent<GUI_MessageBox>().title = T.getText("STR_INVALID_IMG");
+                a.GetComponent<GUI_MessageBox>().message = T.getText("STR_IMG_TOOLTIP");
                 return;
             }
 
@@ -546,7 +641,6 @@ public class GemChanger : MonoBehaviour
         }
     }
 
-
     public void DropDownGemType(int num)
     {
         noteType = (NoteType)num;
@@ -556,8 +650,23 @@ public class GemChanger : MonoBehaviour
     private void UpdateGem()
     {
         OpenGem.GetComponent<Renderer>().material.mainTexture = openGem;
+        GemBox.GetComponent<Renderer>().material.mainTexture = gemBox;
+        if(gemBoxToggle.isOn)
+        {
+            GemBox.SetActive(true);
+        }
+        else
+        {
+            GemBox.SetActive(false);
+        }
         if (noteType == NoteType.Normal)
         {
+            foreach(GameObject trailOBJ in Trails)
+            {
+                trailOBJ.SetActive(true);
+                trailOBJ.GetComponent<Renderer>().material.mainTexture = trail;
+            }
+            trailsButton.interactable = true;
             OpenGem.SetActive(true);
             OpenGemOther.SetActive(false);
             openstrumbutton.interactable = true;
@@ -573,6 +682,12 @@ public class GemChanger : MonoBehaviour
         }
         else if (noteType == NoteType.HeroPowerCollect)
         {
+            foreach (GameObject trailOBJ in Trails)
+            {
+                trailOBJ.SetActive(false);
+                
+            }
+            trailsButton.interactable = false;
             OpenGem.SetActive(false);
             OpenGemOther.SetActive(true);
             openstrumbutton.interactable = true;
@@ -588,6 +703,12 @@ public class GemChanger : MonoBehaviour
         }
         else if (noteType == NoteType.HeroPowerActive)
         {
+            foreach (GameObject trailOBJ in Trails)
+            {
+                trailOBJ.SetActive(true);
+                trailOBJ.GetComponent<Renderer>().material.mainTexture = trailHero;
+            }
+            trailsButton.interactable = true;
             OpenGem.SetActive(false);
             OpenGemOther.SetActive(true);
             openstrumbutton.interactable = true;
@@ -603,6 +724,12 @@ public class GemChanger : MonoBehaviour
         }
         else if (noteType == NoteType.Hopo)
         {
+            foreach (GameObject trailOBJ in Trails)
+            {
+                trailOBJ.SetActive(false);
+                
+            }
+            trailsButton.interactable = false;
             OpenGem.SetActive(false);
             OpenGemOther.SetActive(false);
             openstrumbutton.interactable = false;
@@ -617,6 +744,12 @@ public class GemChanger : MonoBehaviour
         }
         else if (noteType == NoteType.Streak)
         {
+            foreach (GameObject trailOBJ in Trails)
+            {
+                trailOBJ.SetActive(false);
+                
+            }
+            trailsButton.interactable = false;
             openstrumbutton.interactable = true;
             OpenGem.SetActive(false);
             OpenGemOther.SetActive(true);
@@ -635,6 +768,14 @@ public class GemChanger : MonoBehaviour
     private bool CheckUploadedSize(WWW text)
     {
         if (text.texture.width == TextureWidth && text.texture.height == TextureHeight)
+        {
+            return true;
+        }
+        else return false;
+    }
+    private bool CheckUploadedSizeTrail(WWW text)
+    {
+        if (text.texture.width == 64 && text.texture.height == 64)
         {
             return true;
         }
@@ -662,11 +803,23 @@ public class GemChanger : MonoBehaviour
         string OpenGemHeroCollectIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemHeroPowerCollect";
         string OpenGemHeroActiveIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemHeroPowerActive";
         string OpenGemStreakIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemStreak";
+
+        string GemBox = Application.persistentDataPath + $"/GemMaker/Texture/GemBox";
+
+        string trailIMG = Application.persistentDataPath + $"/GemMaker/Texture/Trail";
+        string trailHeroIMG = Application.persistentDataPath + $"/GemMaker/Texture/TrailHero";
         //clean up
+        if (File.Exists($"{trailIMG}.png"))
+        {
+            File.Delete(trailIMG + ".png");
+        }
+        if (File.Exists($"{trailHeroIMG}.png"))
+        {
+            File.Delete(trailHeroIMG + ".png");
+        }
         if (File.Exists($"{RighGemImg}.png"))
         {
             File.Delete(RighGemImg + ".png");
-
         }
         if (File.Exists($"{LeftGemIMG}.png"))
         {
@@ -720,6 +873,10 @@ public class GemChanger : MonoBehaviour
         {
             File.Delete(OpenGemStreakIMG + ".png");
         }
+        if(File.Exists($"{GemBox}.png"))
+        {
+            File.Delete($"{GemBox}.png");
+        }
 
         resetGemToDefault();
         ModeToggleSwitch.isOn = false;
@@ -753,29 +910,29 @@ public class GemChanger : MonoBehaviour
                 {
                     GameObject t = Instantiate(messageBox);
                     userData.instance.LocalFilePath = "TEST";
-                    t.GetComponent<GUI_MessageBox>().title = "Invalided Path";
-                    t.GetComponent<GUI_MessageBox>().message = $"Please make sure you have selected your RPCS3 Root folder!";
+                    t.GetComponent<GUI_MessageBox>().title = T.getText("ERROR_INVAL_PATH");
+                    t.GetComponent<GUI_MessageBox>().message = T.getText("STR_RPCS3_RIGHT_FOLD");
                 }
             }
         }
         else if (Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLES02180/USRDIR/UPDATE") | Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE"))
         {
-           StartCoroutine(done());
+            StartCoroutine(done());
         }
         else
         {
             GameObject t = Instantiate(messageBox);
             userData.instance.LocalFilePath = "TEST";
-            t.GetComponent<GUI_MessageBox>().title = "Invalided Path";
-            t.GetComponent<GUI_MessageBox>().message = $"Please make sure you have selected your RPCS3 Root folder!";
+            t.GetComponent<GUI_MessageBox>().title = T.getText("ERROR_INVAL_PATH");
+            t.GetComponent<GUI_MessageBox>().message = T.getText("STR_RPCS3_RIGHT_FOLD");
         }
     }
 
     public IEnumerator done()
     {
         load = Instantiate(loadingBox);
-        load.GetComponent<GUI_MessageBox>().title = "Converting";
-        load.GetComponent<GUI_MessageBox>().message = "Please wait while convert your textures.";
+        load.GetComponent<GUI_MessageBox>().title = T.getText("STR_CONVERTING");
+        load.GetComponent<GUI_MessageBox>().message = T.getText("GEM_CREATOR_CONVERTING_TEX");
 
         string RighGemImg = Application.persistentDataPath + $"/GemMaker/Texture/GemRight";
         string LeftGemIMG = Application.persistentDataPath + $"/GemMaker/Texture/GemLeft";
@@ -796,43 +953,69 @@ public class GemChanger : MonoBehaviour
         string OpenGemHeroCollectIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemHeroPowerCollect";
         string OpenGemHeroActiveIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemHeroPowerActive";
         string OpenGemStreakIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemStreak";
+        string GemBoxIMG = Application.persistentDataPath + $"/GemMaker/Texture/GemBox";
 
-        if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/PRIMARY/TEXTURES/"))
+        string trailIMG = Application.persistentDataPath + $"/GemMaker/Texture/Trail";
+        string trailHeroIMG = Application.persistentDataPath + $"/GemMaker/Texture/TrailHero";
+
+        string region = "";
+
+        ////for updating from older version of the tool
+        if (userData.instance.gameVersion == userData.Version.PAL || userData.instance.gameVersion == userData.Version.Lite)
         {
-            Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/PRIMARY/TEXTURES/");
+            region = "BLES02180";
         }
-        if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLES02180/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/PRIMARY/TEXTURES/"))
+        else if (userData.instance.gameVersion == userData.Version.USA)
         {
-            Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/BLES02180/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/PRIMARY/TEXTURES/");
+            region = "BLUS31556";
+        }
+        else
+        {
+            Debug.LogError("[HopoPatch] USER HASN'T SELECTED A GAME REGION");
+        }
+
+        if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/PRIMARY/TEXTURES/"))
+        {
+            Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/PRIMARY/TEXTURES/");
+        }
+        if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/"))
+        {
+            Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/");
         }
         List<string> gembatchfiles = new List<string>();
-        gembatchfiles.Add(BatchFileMaker(RighGemImg, RighGemImg, "GemRight", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(RighGemImg, RighGemImg, "GemRight", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(LeftGemIMG, LeftGemIMG, "GemLeft", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(LeftGemIMG, LeftGemIMG, "GemLeft", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(LeftHeroActiveIMG, LeftHeroActiveIMG, "GemLeftHeroPowerActive", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(LeftHeroActiveIMG, LeftHeroActiveIMG, "GemLeftHeroPowerActive", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(RightHeroActiveIMG, RightHeroActiveIMG, "GemRightHeroPowerActive", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(RightHeroActiveIMG, RightHeroActiveIMG, "GemRightHeroPowerActive", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(LeftHeroCollectIMG, LeftHeroCollectIMG, "GemLeftHeroPowerCollect", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(LeftHeroCollectIMG, LeftHeroCollectIMG, "GemLeftHeroPowerCollect", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(RightHeroCollectIMG, RightHeroCollectIMG, "GemRightHeroPowerCollect", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(RightHeroCollectIMG, RightHeroCollectIMG, "GemRightHeroPowerCollect", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(LeftStreakIMG, LeftStreakIMG, "GemLeftStreak", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(LeftStreakIMG, LeftStreakIMG, "GemLeftStreak", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(RightStreakIMG, RightStreakIMG, "GemRightStreak", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(RightStreakIMG, RightStreakIMG, "GemRightStreak", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(LeftHopoIMG, LeftHopoIMG, "GemLeftHopo", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(LeftHopoIMG, LeftHopoIMG, "GemLeftHopo", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(RightHopoIMG, RightHopoIMG, "GemRightHopo", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(RightHopoIMG, RightHopoIMG, "GemRightHopo", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(OpenGemIMG, OpenGemIMG, "OpenGem", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(OpenGemIMG, OpenGemIMG, "OpenGem", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(OpenGemHeroCollectIMG, OpenGemHeroCollectIMG, "OpenGemHeroPowerCollect", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(OpenGemHeroCollectIMG, OpenGemHeroCollectIMG, "OpenGemHeroPowerCollect", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(OpenGemHeroActiveIMG, OpenGemHeroActiveIMG, "OpenGemHeroPowerActive", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(OpenGemHeroActiveIMG, OpenGemHeroActiveIMG, "OpenGemHeroPowerActive", "BC1", 6, 256, 256));
         yield return new WaitForEndOfFrame();
-        gembatchfiles.Add(BatchFileMaker(OpenGemStreakIMG, OpenGemStreakIMG, "OpenGemStreak", 6, 256, 256));
+        gembatchfiles.Add(BatchFileMaker(OpenGemStreakIMG, OpenGemStreakIMG, "OpenGemStreak", "BC1", 6, 256, 256));
+        yield return new WaitForEndOfFrame();
+        gembatchfiles.Add(BatchFileMaker(GemBoxIMG, GemBoxIMG, "GemBox", "BC3", 6, 256, 256));
+        yield return new WaitForEndOfFrame();
+        gembatchfiles.Add(BatchFileMaker(trailIMG, trailIMG, "Trail", "BC3", 4, 64, 64));
+        yield return new WaitForEndOfFrame();
+        gembatchfiles.Add(BatchFileMaker(trailHeroIMG, trailHeroIMG, "TrailHero", "BC3", 4, 64, 64));
         yield return new WaitForEndOfFrame();
         int filesnum = gembatchfiles.Count;
         int filesFailed = 0;
@@ -852,18 +1035,18 @@ public class GemChanger : MonoBehaviour
                     Debug.Log("[GemChanger] Batfile faild to located");
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.LogError(e);
                 filesFailed++;
                 Debug.Log("[GemChanger] Batfile faild create gem IMG");
             }
         }
-        if(filesFailed >= filesnum)
+        if (filesFailed >= filesnum)
         {
             GameObject a = Instantiate(messageBox);
-            a.GetComponent<GUI_MessageBox>().title = "Convert Failed";
-            a.GetComponent<GUI_MessageBox>().message = $"Failed to Convert your textures\n\nCheck if you have Python 3.1 installed";
+            a.GetComponent<GUI_MessageBox>().title = T.getText("STR_CONVERT_FAIL");
+            a.GetComponent<GUI_MessageBox>().message = T.getText("GEM_CREATOR_CONVERTING_FAIL");
             a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
             yield return null;
         }
@@ -873,17 +1056,16 @@ public class GemChanger : MonoBehaviour
             yield return new WaitForSeconds(1);
             StartCoroutine(AddToGHL());
         }
-        else if(userWantToConvert)
+        else if (userWantToConvert)
         {
             load.GetComponent<GUI_MessageBox>().CloseAnim();
             yield return new WaitForSeconds(1);
             Textbox = Instantiate(messageBoxWithText);
-            Textbox.GetComponent<GUI_MessageBox>().title = "Create Gem Pack";
-            Textbox.GetComponent<GUI_MessageBox>().message = $"Before we can create your pack, We need some details";
+            Textbox.GetComponent<GUI_MessageBox>().title = T.getText("GEM_CREATOR_CONVERT_DONE");
+            Textbox.GetComponent<GUI_MessageBox>().message = T.getText("GEM_CREATOR_CONVERT_DONE_DES");
             Textbox.GetComponent<GemChanger_CreateTexturePack_MessageBox>().host = this;
             userWantToConvert = false;
         }
-        
     }
 
     private void runbatfile(string batfile)
@@ -900,8 +1082,8 @@ public class GemChanger : MonoBehaviour
     private IEnumerator AddToGHL()
     {
         load = Instantiate(loadingBox);
-        load.GetComponent<GUI_MessageBox>().title = "Exporting";
-        load.GetComponent<GUI_MessageBox>().message = "Please wait while Export your textures.";
+        load.GetComponent<GUI_MessageBox>().title = T.getText("STR_EXPORTING");
+        load.GetComponent<GUI_MessageBox>().message = T.getText("GEM_IMPORTER_EXPORTING");
         yield return new WaitForSeconds(8);
 
         //checking if img files exist
@@ -934,109 +1116,230 @@ public class GemChanger : MonoBehaviour
         string OpenGemHeroCollectIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemHeroPowerCollect";
         string OpenGemHeroActiveIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemHeroPowerActive";
         string OpenGemStreakIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemStreak";
-        //loop though the list of loc so it apply to GHTV and GHL gems
+        string GemBoxIMG = Application.persistentDataPath + $"/GemMaker/Texture/GemBox";
 
-        List<string> GameVersion = new List<string>();
-        GameVersion.Add("BLES02180");
-        GameVersion.Add("BLUS31556");
+        string trailIMG = Application.persistentDataPath + $"/GemMaker/Texture/Trail";
+        string trailHeroIMG = Application.persistentDataPath + $"/GemMaker/Texture/TrailHero";
+
+        //for updating from older version of the tool
+        string version = "";
+        if (userData.instance.gameVersion == userData.Version.PAL || userData.instance.gameVersion == userData.Version.Lite)
+        {
+            version = "BLES02180";
+        }
+        else if (userData.instance.gameVersion == userData.Version.USA)
+        {
+            version = "BLUS31556";
+        }
+        else
+        {
+            Debug.LogError("[HopoPatch] USER HASN'T SELECTED A GAME REGION");
+        }
         //all highways of GHL
         int num = 0;
-
+        int assets = Highways.Count + 2;
         //removing the old gems if placed
         Debug.Log("[GemChanger] Removing old gems");
-        foreach (string version in GameVersion)
+
+        if (Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS"))
         {
-            if (Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS"))
-            {
-                Directory.Delete($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS", true);
-            }
+            Directory.Delete($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS", true);
+        }
+        string cache = $"{T.getText("GEM_IMPORTER_EXPORTING")}\n\n{T.getText("STR_CONVERTED")} ";
+
+
+        //trails
+        //CHECKING IF Folder EXIST
+        if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/"))
+        {
+            Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/");
+        }
+        if (File.Exists($"{trailHeroIMG}.IMG"))
+        {
+            File.Copy($"{trailHeroIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_CYAN.IMG", true);
         }
 
-        foreach (string highway in Highways)
+        if (File.Exists($"{trailIMG}.IMG"))
+        {
+            File.Copy($"{trailIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}//USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_GREY.IMG", true);
+        }
+
+        foreach(string highway in Highways)
         {
             yield return new WaitForEndOfFrame();
-            load.GetComponent<GUI_MessageBox>().message = $"Please wait while Export your textures to Guitar Hero Live\n\nConverted: {num}/{Highways.Count}";
+            load.GetComponent<GUI_MessageBox>().message = $"{cache}{num}/{assets}";
             load.GetComponent<GUI_MessageBox>().addmessage();
             num++;
-            foreach (string version in GameVersion)
+
+            //CHECKING IF Folder EXIST
+            if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/"))
             {
-                //CHECKING IF Folder EXIST
-                if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/"))
-                {
-                    Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/");
-                }
-
-                //checking if IMG exist from the bat file. this allow users to only update certain textures
-                if (File.Exists($"{RighGemImg}.IMG"))
-                {
-                    File.Copy($"{RighGemImg}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEM_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{LeftGemIMG}.IMG"))
-                {
-                    File.Copy($"{LeftGemIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMLEFT_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{LeftHeroActiveIMG}.IMG"))
-                {
-                    File.Copy($"{LeftHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHEROACTIVELEFT_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{RightHeroActiveIMG}.IMG"))
-                {
-                    File.Copy($"{RightHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHEROACTIVE_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{LeftHeroCollectIMG}.IMG"))
-                {
-                    File.Copy($"{LeftHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHEROCOLLECTLEFT_COL_SRGB_00.1001.IMG", true);
-                }
-                if (File.Exists($"{RightHeroCollectIMG}.IMG"))
-                {
-                    File.Copy($"{RightHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHEROCOLLECT_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{LeftStreakIMG}.IMG"))
-                {
-                    File.Copy($"{LeftStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMSTREAKLEFT_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{RightStreakIMG}.IMG"))
-                {
-                    File.Copy($"{RightStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMSTREAK_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{LeftHopoIMG}.IMG"))
-                {
-                    File.Copy($"{LeftHopoIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHOPOLEFT_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{RightHopoIMG}.IMG"))
-                {
-                    File.Copy($"{RightHopoIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHOPO_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{OpenGemIMG}.IMG"))
-                {
-                    File.Copy($"{OpenGemIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_STRUM_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{OpenGemHeroCollectIMG}.IMG"))
-                {
-                    File.Copy($"{OpenGemHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_STRUMHEROCOLLECT_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{OpenGemHeroActiveIMG}.IMG"))
-                {
-                    File.Copy($"{OpenGemHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_STRUMHEROACTIVE_COL_SRGB_00.1001.IMG", true);
-                }
-
-                if (File.Exists($"{OpenGemStreakIMG}.IMG"))
-                {
-                    File.Copy($"{OpenGemStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_STRUMSTREAK_COL_SRGB_00.1001.IMG", true);
-                }
+                Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/");
             }
 
+            //checking if IMG exist from the bat file. this allow users to only update certain textures
+            if (File.Exists($"{RighGemImg}.IMG"))
+            {
+                File.Copy($"{RighGemImg}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEM_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{LeftGemIMG}.IMG"))
+            {
+                File.Copy($"{LeftGemIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMLEFT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{LeftHeroActiveIMG}.IMG"))
+            {
+                File.Copy($"{LeftHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHEROACTIVELEFT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{RightHeroActiveIMG}.IMG"))
+            {
+                File.Copy($"{RightHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHEROACTIVE_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{LeftHeroCollectIMG}.IMG"))
+            {
+                File.Copy($"{LeftHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHEROCOLLECTLEFT_COL_SRGB_00.1001.IMG", true);
+            }
+            if (File.Exists($"{RightHeroCollectIMG}.IMG"))
+            {
+                File.Copy($"{RightHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHEROCOLLECT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{LeftStreakIMG}.IMG"))
+            {
+                File.Copy($"{LeftStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMSTREAKLEFT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{RightStreakIMG}.IMG"))
+            {
+                File.Copy($"{RightStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMSTREAK_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{LeftHopoIMG}.IMG"))
+            {
+                File.Copy($"{LeftHopoIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHOPOLEFT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{RightHopoIMG}.IMG"))
+            {
+                File.Copy($"{RightHopoIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHOPO_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{OpenGemIMG}.IMG"))
+            {
+                File.Copy($"{OpenGemIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_STRUM_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{OpenGemHeroCollectIMG}.IMG"))
+            {
+                File.Copy($"{OpenGemHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_STRUMHEROCOLLECT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{OpenGemHeroActiveIMG}.IMG"))
+            {
+                File.Copy($"{OpenGemHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_STRUMHEROACTIVE_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{OpenGemStreakIMG}.IMG"))
+            {
+                File.Copy($"{OpenGemStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_STRUMSTREAK_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{GemBoxIMG}.IMG"))
+            {
+                File.Copy($"{GemBoxIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/CATCHER_{highway}_BOX_COL_SRGB_00.1001.IMG", true);
+            }
+        }
+        
+        foreach (string highway in OnDiskHighways)
+        {
+            yield return new WaitForEndOfFrame();
+            load.GetComponent<GUI_MessageBox>().message = $"{cache}{num}/{assets}";
+            load.GetComponent<GUI_MessageBox>().addmessage();
+            num++;
+
+            //CHECKING IF Folder EXIST
+            if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/"))
+            {
+                Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/");
+            }
+
+            //checking if IMG exist from the bat file. this allow users to only update certain textures
+            if (File.Exists($"{RighGemImg}.IMG"))
+            {
+                File.Copy($"{RighGemImg}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEM_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{LeftGemIMG}.IMG"))
+            {
+                File.Copy($"{LeftGemIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMLEFT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{LeftHeroActiveIMG}.IMG"))
+            {
+                File.Copy($"{LeftHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHEROACTIVELEFT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{RightHeroActiveIMG}.IMG"))
+            {
+                File.Copy($"{RightHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHEROACTIVE_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{LeftHeroCollectIMG}.IMG"))
+            {
+                File.Copy($"{LeftHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHEROCOLLECTLEFT_COL_SRGB_00.1001.IMG", true);
+            }
+            if (File.Exists($"{RightHeroCollectIMG}.IMG"))
+            {
+                File.Copy($"{RightHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHEROCOLLECT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{LeftStreakIMG}.IMG"))
+            {
+                File.Copy($"{LeftStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMSTREAKLEFT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{RightStreakIMG}.IMG"))
+            {
+                File.Copy($"{RightStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMSTREAK_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{LeftHopoIMG}.IMG"))
+            {
+                File.Copy($"{LeftHopoIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHOPOLEFT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{RightHopoIMG}.IMG"))
+            {
+                File.Copy($"{RightHopoIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEMHOPO_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{OpenGemIMG}.IMG"))
+            {
+                File.Copy($"{OpenGemIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_STRUM_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{OpenGemHeroCollectIMG}.IMG"))
+            {
+                File.Copy($"{OpenGemHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_STRUMHEROCOLLECT_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{OpenGemHeroActiveIMG}.IMG"))
+            {
+                File.Copy($"{OpenGemHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_STRUMHEROACTIVE_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{OpenGemStreakIMG}.IMG"))
+            {
+                File.Copy($"{OpenGemStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_STRUMSTREAK_COL_SRGB_00.1001.IMG", true);
+            }
+
+            if (File.Exists($"{GemBoxIMG}.IMG"))
+            {
+                File.Copy($"{GemBoxIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/CATCHER_{highway}_BOX_COL_SRGB_00.1001.IMG", true);
+            }
 
         }
 
@@ -1047,6 +1350,20 @@ public class GemChanger : MonoBehaviour
             File.Delete(RighGemImg + ".png");
             File.Delete(RighGemImg + ".IMG");
         }
+
+        yield return new WaitForEndOfFrame();
+        if (File.Exists($"{trailIMG}.IMG"))
+        {
+            File.Delete(trailIMG + ".png");
+            File.Delete(trailIMG + ".IMG");
+        }
+        yield return new WaitForEndOfFrame();
+        if (File.Exists($"{trailHeroIMG}.IMG"))
+        {
+            File.Delete(trailHeroIMG + ".png");
+            File.Delete(trailHeroIMG + ".IMG");
+        }
+
         yield return new WaitForEndOfFrame();
         if (File.Exists($"{LeftGemIMG}.IMG"))
         {
@@ -1086,7 +1403,6 @@ public class GemChanger : MonoBehaviour
         yield return new WaitForEndOfFrame();
         if (File.Exists($"{RightStreakIMG}.IMG"))
         {
-            
             File.Delete(RightStreakIMG + ".png");
             File.Delete(RightStreakIMG + ".IMG");
         }
@@ -1126,25 +1442,50 @@ public class GemChanger : MonoBehaviour
             File.Delete(OpenGemStreakIMG + ".png");
             File.Delete(OpenGemStreakIMG + ".IMG");
         }
-
+        yield return new WaitForEndOfFrame();
+        if (File.Exists($"{GemBoxIMG}.IMG"))
+        {
+            File.Delete(GemBoxIMG + ".png");
+            File.Delete(GemBoxIMG + ".IMG");
+        }
 
         load.GetComponent<GUI_MessageBox>().CloseAnim();
         yield return new WaitForSeconds(1);
         //finish message
         GameObject a = Instantiate(messageBox);
-        a.GetComponent<GUI_MessageBox>().title = "Exported Complete";
-        a.GetComponent<GUI_MessageBox>().message = $"Custom Gems have been exported to Guitar Hero live.\n\nThe Next time you load the default highway or play GHL song the changes will be apply.";
+        a.GetComponent<GUI_MessageBox>().title = T.getText("STR_EXPORTDONE");
+        a.GetComponent<GUI_MessageBox>().message = T.getText("GEM_IMPORTER_EXPORT_DONE");
         a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
         Debug.LogWarning("[GemChanger] Finish exporting texture");
     }
 
-    public string BatchFileMaker(string inputFile, string outputFile, string batname, int mipmap, int width, int height)
+    public string BatchFileMaker(string inputFile, string outputFile, string batname, string format, int mipmap, int width, int height)
     {
         //check if input file exist
         if (!File.Exists(inputFile + ".png"))
         {
             Debug.Log("[GemChanger] Input file doesn't exist: " + inputFile);
             return null;
+        }
+        //finding python exe
+        string[] pyhtonsver = { "Python310", "Python311", "Python39", "Python312", "Python31", "Python32", "Python33", "Python34", "Python35", "Python36", "Python37", "Python38" };
+        string str = "python";
+        bool foundpy = false;
+        Debug.Log("[GemChanger] We are going to find python preinstall");
+        foreach(string py in pyhtonsver )
+        {
+            
+            if (File.Exists(Environment.ExpandEnvironmentVariables($"%localappdata%/Programs/Python/{py}/python.exe")))
+            {
+                Debug.Log("[GemChanger] We auto found python " + $"%localappdata%/Programs/Python/{py}/python.exe");
+                str = Environment.ExpandEnvironmentVariables($"%localappdata%/Programs/Python/{py}/python.exe");
+                foundpy = true;
+                break;
+            }
+        }
+        if(!foundpy)
+        {
+            Debug.LogError("[GemChanger] We didn't auto find python using fail safe");
         }
         //checking if the file exisit
         if (File.Exists($"{Application.persistentDataPath}/External_Tools/GHLIMGConverter-master/{batname}.bat"))
@@ -1153,7 +1494,7 @@ public class GemChanger : MonoBehaviour
         }
         string[] lines =
         {
-            "@echo off", $"python ghl_img_converter.py  %1 convert"  + $@" ""{inputFile}.png"" " + $@"--output ""{outputFile}.IMG"" --platform ps3 --width {width} --height {height} --format BC1 --mipmap {mipmap}"
+            "@echo off", $"python ghl_img_converter.py  %1 convert"  + $@" ""{inputFile}.png"" " + $@"--output ""{outputFile}.IMG"" --platform ps3 --width {width} --height {height} --format {format} --mipmap {mipmap}"
         };
         File.WriteAllLinesAsync($"{Application.persistentDataPath}/External_Tools/GHLIMGConverter-master/{batname}.bat", lines);
 
@@ -1164,16 +1505,17 @@ public class GemChanger : MonoBehaviour
         }
         else
         {
-            Debug.Log("[GemChanger] Failed to create bat file: " + batname + ".bat");
+            Debug.LogError("[GemChanger] Failed to create bat file: " + batname + ".bat");
             return null;
         }
     }
 
     public void ConvertToPackDetails()
     {
-       userWantToConvert = true;
-       StartCoroutine(done());
+        userWantToConvert = true;
+        StartCoroutine(done());
     }
+
     public void premakeZipFile(string packName, string creator)
     {
         //copy IMG to a folder that has this file sturcter
@@ -1183,24 +1525,28 @@ public class GemChanger : MonoBehaviour
         // - /Texutre/THE_TEXTURE.IMG
         //filetype packname.stickpack
 
-        //setting Texture to the default one
-
+        //setting Texture to the default pos
         noteType = NoteType.Normal;
+        ModeToggleSwitch.isOn = false;
+        gemBoxToggle.isOn = false;
         UpdateGem();
-        if(!Directory.Exists($"{Application.persistentDataPath}/GemMaker/Exported Pack"))
+
+        if (!Directory.Exists($"{Application.persistentDataPath}/GemMaker/Exported Pack"))
         {
             Directory.CreateDirectory($"{Application.persistentDataPath}/GemMaker/Exported Pack");
         }
         Directory.CreateDirectory($"{Application.persistentDataPath}/GemMaker/Packs/{packName}");
         //dissable UI
         UI.SetActive(false);
+
+        //settings the gems to default state
+
+
         ScreenShotHandler.TakeScreenshot_static($"{Application.persistentDataPath}/GemMaker/Packs/{packName}/Cover", 1280, 720);
         UI.SetActive(true);
         load = Instantiate(loadingBox);
-        load.GetComponent<GUI_MessageBox>().title = "Creating Gem Pack";
-        load.GetComponent<GUI_MessageBox>().message = "Please wait while we create your gem pack.";
-
-       
+        load.GetComponent<GUI_MessageBox>().title = T.getText("GEM_CREATOR_CREATE_PACK");
+        load.GetComponent<GUI_MessageBox>().message = T.getText("GEM_CREATOR_CREATE_PACK_DES");
 
         //credit file
         string[] lines =
@@ -1215,7 +1561,6 @@ public class GemChanger : MonoBehaviour
 
     private IEnumerator CreateZip(string dir, string packName)
     {
-
         string RighGemImg = Application.persistentDataPath + $"/GemMaker/Texture/GemRight";
         string LeftGemIMG = Application.persistentDataPath + $"/GemMaker/Texture/GemLeft";
 
@@ -1235,8 +1580,36 @@ public class GemChanger : MonoBehaviour
         string OpenGemHeroCollectIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemHeroPowerCollect";
         string OpenGemHeroActiveIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemHeroPowerActive";
         string OpenGemStreakIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemStreak";
+        string GemBoxIMG = Application.persistentDataPath + $"/GemMaker/Texture/GemBox";
+
+        string trailIMG = Application.persistentDataPath + $"/GemMaker/Texture/Trail";
+        string trailHeroIMG = Application.persistentDataPath + $"/GemMaker/Texture/TrailHero";
+
+        yield return new WaitForEndOfFrame();
+        if(File.Exists($"{Application.persistentDataPath}/GemMaker/Packs/{packName}/Cover.png"))
+        {
+            File.Copy($"{Application.persistentDataPath}/GemMaker/Packs/{packName}/Cover.png", $"{Application.persistentDataPath}/GemMaker/Exported Pack/{packName}_cover.png", true);
+        }
 
 
+
+
+
+        yield return new WaitForEndOfFrame();
+        if (File.Exists($"{trailIMG}.IMG"))
+        {
+            File.Copy($"{trailIMG}.IMG", $"{dir}/Trail.IMG", true);
+        }
+        yield return new WaitForEndOfFrame();
+        if (File.Exists($"{trailHeroIMG}.IMG"))
+        {
+            File.Copy($"{trailHeroIMG}.IMG", $"{dir}/TrailHero.IMG", true);
+        }
+        yield return new WaitForEndOfFrame();
+        if (File.Exists($"{GemBoxIMG}.IMG"))
+        {
+            File.Copy($"{GemBoxIMG}.IMG", $"{dir}/GemBox.IMG", true);
+        }
         yield return new WaitForEndOfFrame();
         if (File.Exists($"{RighGemImg}.IMG"))
         {
@@ -1308,9 +1681,22 @@ public class GemChanger : MonoBehaviour
             File.Copy($"{OpenGemStreakIMG}.IMG", $"{dir}/OpenGemStreak.IMG", true);
         }
 
-
-
         //clean up
+        if (File.Exists($"{trailIMG}.IMG"))
+        {
+            File.Delete(trailIMG + ".IMG");
+        }
+        yield return new WaitForEndOfFrame();
+        if (File.Exists($"{trailHeroIMG}.IMG"))
+        {
+            File.Delete(trailHeroIMG + ".IMG");
+        }
+        yield return new WaitForEndOfFrame();
+        if (File.Exists($"{GemBoxIMG}.IMG"))
+        {
+            File.Delete(GemBoxIMG + ".IMG");
+        }
+        yield return new WaitForEndOfFrame();
         if (File.Exists($"{RighGemImg}.IMG"))
         {
             File.Delete(RighGemImg + ".IMG");
@@ -1381,14 +1767,11 @@ public class GemChanger : MonoBehaviour
             File.Delete(OpenGemStreakIMG + ".IMG");
         }
 
-
-
-
         string startPath = $@"{Application.persistentDataPath}\GemMaker\Packs\{packName}";
         string zipPath = $@"{Application.persistentDataPath}\GemMaker\Exported Pack\{packName}.stickpack";
-        
+
         //checking if existing one exist
-        if(File.Exists(zipPath))
+        if (File.Exists(zipPath))
         {
             File.Delete(zipPath);
         }
@@ -1401,14 +1784,23 @@ public class GemChanger : MonoBehaviour
         load.GetComponent<GUI_MessageBox>().CloseAnim();
 
         GameObject a = Instantiate(messageBox);
-        a.GetComponent<GUI_MessageBox>().title = "Gem Pack Created";
-        a.GetComponent<GUI_MessageBox>().message = $"Your Gem pack {packName} has been created";
+        a.GetComponent<GUI_MessageBox>().title = T.getText("GEM_CREATOR_CREATED_PACK");
+        a.GetComponent<GUI_MessageBox>().message = $"{T.getText("GEM_CREATOR_CREATED_PACK_DES1")} {packName} {T.getText("GEM_CREATOR_CREATED_PACK_DES2")}";
         a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(opengempackdir);
     }
 
     public void opengempackdir()
     {
         Application.OpenURL($@"{Application.persistentDataPath}\GemMaker\Exported Pack\");
+        GameObject a = Instantiate(messageBox2);
+        a.GetComponent<GUI_MessageBox>().title = T.getText("GEM_CREATOR_SHARE");
+        a.GetComponent<GUI_MessageBox>().message = T.getText("GEM_CREATOR_SHARE_DES");
+        a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(OpenGemPackChannel);
+    }
+    public void OpenGemPackChannel()
+    {
+        Application.OpenURL("https://discord.com/channels/758530768640802826/1061536695624925185");
+        // this link shouldn't be hard coded in, should be dynamic
     }
     public void pythonNotices()
     {

@@ -1,0 +1,752 @@
+<Translation>
+    <Translation key="TEST">
+        <Language id="en" value="GHTV Reloaded is a community-driven service and is not associated with Activision. \n GHTV Reloaded V1.0" />
+    </Translation>
+    <Translation key="STR_DOWNLOAD">
+        <Language id="en" value="Downloading" />
+    </Translation>
+    <Translation key="STR_DOWNLOADED">
+        <Language id="en" value="Downloaded:" />
+    </Translation>
+    <Translation key="STR_DOWNLOAD_LITE">
+        <Language id="en" value="Please wait while we download the Guitar Hero Live: TV Edition" />
+    </Translation>
+     <Translation key="STR_DOWNLOAD_LITE_TITLE">
+        <Language id="en" value="Download Guitar Hero Live: TV Edition" />
+    </Translation>
+     <Translation key="STR_INSTALLING_LITE">
+        <Language id="en" value="Please wait while we install Guitar Hero Live: TV Edition" />
+    </Translation>
+     <Translation key="STR_DOWNLOAD_LITE_TITLE_DES">
+        <Language id="en" value="Would you like to download Guitar Hero Live: TV Edition&#xA;&#xA; Guitar Hero Live but only contains GHTV" />
+    </Translation>
+    <Translation key="STR_DOWNLOAD_GHLR_UPDATE">
+        <Language id="en" value="Please wait while we download the Guitar Hero Live Update" />
+    </Translation>
+    <Translation key="STR_GHLR_UPDATE">
+        <Language id="en" value="Guitar Hero Live Update" />
+    </Translation>
+    <Translation key="STR_GHLR_FOUND">
+        <Language id="en" value="A new update for Guitar Hero Live has been found Would you like to update?" />
+    </Translation>
+    <Translation key="STR_LATESTVER">
+        <Language id="en" value="Latest Version:" />
+    </Translation>
+    <Translation key="STR_GAMEVER">
+        <Language id="en" value="Game Version:" />
+    </Translation>
+    <Translation key="STR_APPLYUPDATE">
+        <Language id="en" value="Applying Update" />
+    </Translation>
+    <Translation key="STR_APPLYUPDATEMSG">
+        <Language id="en" value="Please wait while we Apply the Guitar Hero Live Update" />
+    </Translation>
+    <Translation key="STR_GAME_UP_TO_DATE">
+        <Language id="en" value="Guitar Hero Live is now up to date!" />
+    </Translation>
+    <Translation key="STR_GAMEUPDATEDONE">
+        <Language id="en" value="Game Update Complete" />
+    </Translation>
+    <Translation key="SOFTWARE_TITLE">
+        <Language id="en" value="GHTV Reloaded: Mod Tools" />
+    </Translation>
+    <Translation key="MOD_HIGHWAY">
+        <Language id="en" value="Highway FX Changer" />
+    </Translation>
+    <Translation key="MOD_HYPERSPED">
+        <Language id="en" value="Hyper Speed Changer" />
+    </Translation>
+    <Translation key="MOD_GEM">
+        <Language id="en" value="Gem Changer" />
+    </Translation>
+    <Translation key="OPT_SETTINGS">
+        <Language id="en" value="Settings" />
+    </Translation>
+    <Translation key="OPT_COM_PATCHES">
+        <Language id="en" value="Community Patches" />
+    </Translation>
+    <Translation key="STR_BACK">
+        <Language id="en" value="Back" />
+    </Translation>
+    <Translation key="COM_NOSTREAK">
+        <Language id="en" value="No Streak Patch" />
+    </Translation>
+    <Translation key="COM_NOVID">
+        <Language id="en" value="No Video Patch" />
+    </Translation>
+    <Translation key="COM_HEROPOW">
+        <Language id="en" value="Hero Power Patch" />
+    </Translation>
+    <Translation key="COM_HOPO">
+        <Language id="en" value="Hopo Patch" />
+    </Translation>
+    <Translation key="TITLE_CREDIT">
+        <Language id="en" value="Credits" />
+    </Translation>
+    <Translation key="SETT_RPCS3_FOLDER">
+        <Language id="en" value="Select RPCS3 Folder" />
+    </Translation>
+    <Translation key="SETT_DEL_ALL_CACHE">
+        <Language id="en" value="Delete All Cache Files" />
+    </Translation>
+    <Translation key="SETT_DEL_SAV">
+        <Language id="en" value="Delete Save" />
+    </Translation>
+    <Translation key="SETT_DEL_HYPER_CACHE">
+        <Language id="en" value="Delete HyperSpeed Cache" />
+    </Translation>
+    <Translation key="MSG_SEL_RPCS3">
+        <Language id="en" value="SELECT YOUR RPCS3 FOLDER" />
+    </Translation>
+    <Translation key="MGS_RPCS3_FOLD">
+        <Language id="en" value="RPSC3 FOLDER" />
+    </Translation>
+    <Translation key="ERROR_INVAL_PATH">
+        <Language id="en" value="Invalided Path" />
+    </Translation>
+    <Translation key="STR_RPCS3_RIGHT_FOLD">
+        <Language id="en" value="Please make sure you have selected your RPCS3 Root folder!" />
+    </Translation>
+    <Translation key="STR_HYPER_CACHE_CLEAR">
+        <Language id="en" value="HyperSpeed Cache Clear" />
+    </Translation>
+    <Translation key="STR_DEL_CACHE_FILES">
+        <Language id="en" value="Deleting Cache Files" />
+    </Translation>
+    <Translation key="STR_WAIT_DEL_CACHE_FILES">
+        <Language id="en" value="Please wait while remove cache files" />
+    </Translation>
+    <Translation key="COM_TITLE_NOSTREAK">
+        <Language id="en" value="NO STREAK PATCH" />
+    </Translation>
+    <Translation key="COM_DES_NOSTREAK">
+        <Language id="en" value="This disable the note streak pop when hitting note streak milestones." />
+    </Translation>
+    <Translation key="COM_COMMON_BEFORE">
+        <Language id="en" value="BEFORE PATCH" />
+    </Translation>
+    <Translation key="COM_COMMON_AFTER">
+        <Language id="en" value="AFTER PATCH" />
+    </Translation>
+    <Translation key="COM_COMMON_APPLY">
+        <Language id="en" value="APPLY PATCH" />
+    </Translation>
+    <Translation key="COM_COMMON_REMOVE">
+        <Language id="en" value="RESTORE/REMOVE" />
+    </Translation>
+    <Translation key="COM_COMMON_COMPLETE">
+        <Language id="en" value="Patch Complete" />
+    </Translation>
+    <Translation key="COM_COMMON_DES_COMPLETE">
+        <Language id="en" value="We have successfully apply the patch&#xA;&#xA;Please restart your game" />
+    </Translation>
+    <Translation key="COM_COMMON_RESTORE">
+        <Language id="en" value="Restore Complete" />
+    </Translation>
+    <Translation key="COM_COMMON_DES_RESTORE">
+        <Language id="en" value="We have restore/remove the patch&#xA;&#xA;Please restart your game" />
+    </Translation>
+    <Translation key="STR_CONTINUE">
+        <Language id="en" value="Continue" />
+    </Translation>
+    <Translation key="COM_TITLE_NOVID">
+        <Language id="en" value="NO VIDEO PATCH" />
+    </Translation>
+    <Translation key="COM_DES_NOVID">
+        <Language id="en" value="This disable video playback on Guitar Hero Live and GHTV channels.&#xA;NOTE: WHILE THIS PATCH IS ENABLE YOU CAN'T PLAY SONGS ON-DEMAND" />
+    </Translation>
+    <Translation key="COM_TITLE_HOPO">
+        <Language id="en" value="HOPO PATCH" />
+    </Translation>
+    <Translation key="COM_DES_HOPO">
+        <Language id="en" value="This allow you to change how noticeable Hero Power notes look like. This helps reading Hammer-ons and Pull-offs easier when Hero Power notes are on screen." />
+    </Translation>
+    <Translation key="COM_TITLE_HEROPOW">
+        <Language id="en" value="HERO POWER PATCH" />
+    </Translation>
+    <Translation key="COM_DES_HEROPOW">
+        <Language id="en" value="This give the PS3 Version Guitar Hero Live extra effects when Hero Powers are in used that found in other version of the game. This also fixes the audio lower bug with certain Hero Powers" />
+    </Translation>
+    <Translation key="COM_COMMON_APPLYING">
+        <Language id="en" value="Applying Patch" />
+    </Translation>
+    <Translation key="COM_COMMON_APPLYING_DES">
+        <Language id="en" value="Please wait while we apply the patch" />
+    </Translation>
+    <Translation key="STR_DONE">
+        <Language id="en" value="Done" />
+    </Translation>
+    <Translation key="HIGH_FX_GEMBOTH">
+        <Language id="en" value="Gem Both" />
+    </Translation>
+    <Translation key="HIGH_FX_GEMDOWN">
+        <Language id="en" value="Gem Down" />
+    </Translation>
+    <Translation key="HIGH_FX_GEMUP">
+        <Language id="en" value="Gem Up" />
+    </Translation>
+    <Translation key="HIGH_FX_GEMOPEN">
+        <Language id="en" value="Gem Open" />
+    </Translation>
+    <Translation key="HIGH_FX_LIGHT">
+        <Language id="en" value="Lighting" />
+    </Translation>
+    <Translation key="HIGH_FX_FIRE">
+        <Language id="en" value="Fire" />
+    </Translation>
+    <Translation key="HIGH_FX_UPSMASH">
+        <Language id="en" value="Up Smash" />
+    </Translation>
+    <Translation key="HIGH_FX_FLARE">
+        <Language id="en" value="Flare" />
+    </Translation>
+    <Translation key="HIGH_FX_BAR">
+        <Language id="en" value="Bar Strip" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_SAVED">
+        <Language id="en" value="Colours Saved!!" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_SAVED_DES">
+        <Language id="en" value="Your custom colour have been save to your Guitar Hero Live game. &#xA;&#xA;Colour will be change the next time you launch GHL/GHTV from the main menu" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_SAVED_FAILED">
+        <Language id="en" value="Failed To Save Colours" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_SAVED_FAILED_DES">
+        <Language id="en" value="An Error has occured while saving.&#xA;Please try again.&#xA;&#xA;ERROR CODE: FXsysFailed" />
+    </Translation>
+    <Translation key="STR_REMOVED">
+        <Language id="en" value="Removed" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_RESTORED">
+        <Language id="en" value="Colours Restored!!!" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_RESTORED_DES">
+        <Language id="en" value="Your custom colour have been removed from your Guitar Hero Live game. &#xA;&#xA;Colour will be change the next time you launch GHL/GHTV from the main menu" />
+    </Translation>
+    <Translation key="HYPER_STR_TITLE">
+        <Language id="en" value="HYPER SPEED" />
+    </Translation>
+    <Translation key="HYPER_STR_DES">
+        <Language id="en" value="Adjust how fast notes come down the highway.&#xA;&#xA;This effects all songs." />
+    </Translation>
+    <Translation key="HYPER_STR_DEFAULT">
+        <Language id="en" value="Default: 100%" />
+    </Translation>
+    <Translation key="HYPER_STR_RECOMMENDED">
+        <Language id="en" value="Recommended: 200%" />
+    </Translation>
+    <Translation key="STR_FINISH">
+        <Language id="en" value="Finished" />
+    </Translation>
+    <Translation key="HYPER_STR_SAVED_FAILED">
+        <Language id="en" value="Failed To Save Hyper Speed" />
+    </Translation>
+    <Translation key="HYPER_STR_SAVED_FAILED_DES">
+        <Language id="en" value="An Error has occured while saving&#xA;Please try again&#xA;&#xA;ERROR CODE: HSsysNoneFailed" />
+    </Translation>
+    <Translation key="HYPER_STR_SAVING">
+        <Language id="en" value="Saving Hyper Speed" />
+    </Translation>
+    <Translation key="STR_PLZ_WAIT">
+        <Language id="en" value="Please wait...." />
+    </Translation>
+    <Translation key="HYPER_STR_SAVED">
+        <Language id="en" value="Hyper Speed Saved!" />
+    </Translation>
+    <Translation key="HYPER_STR_SAVED_DES">
+        <Language id="en" value="Your Hyper Speed been save to your Guitar Hero Live game.&#xA;&#xA;The next song you load your Hyper Speed will be apply" />
+    </Translation>
+    <Translation key="NET_COM_NONE_ACTIVE">
+        <Language id="en" value="No Active Internet Connection" />
+    </Translation>
+    <Translation key="NET_COM_NONE_ACTIVE_DES">
+        <Language id="en" value="No internet connect exist&#xA;&#xA;Make sure you are connected to the internet and try again." />
+    </Translation>
+    <Translation key="HYPER_STR_DOWNLOAD_DATA">
+        <Language id="en" value="Downloading Hyper Speed data" />
+    </Translation>
+    <Translation key="NET_COM_FAILED_DOWNLOAD">
+        <Language id="en" value="Failed to download!" />
+    </Translation>
+    <Translation key="HYPER_STR_DOWNLOAD_DATA_FAIL">
+        <Language id="en" value="The tool failed to download the hyper speed libary.&#xA;&#xA;Please try again" />
+    </Translation>
+    <Translation key="GEM_WEL_TITLE">
+        <Language id="en" value="Gem Changer" />
+    </Translation>
+    <Translation key="STR_SEL_OPTION">
+        <Language id="en" value="Select A Options" />
+    </Translation>
+    <Translation key="STR_RETURN_MAINMENU">
+        <Language id="en" value="Return To Main Menu" />
+    </Translation>
+    <Translation key="GEM_WEL_CREATE">
+        <Language id="en" value="Create Gem Pack" />
+    </Translation>
+    <Translation key="GEM_WEL_IMPORT">
+        <Language id="en" value="Import Gem Pack" />
+    </Translation>
+    <Translation key="GEM_WEL_RESET">
+        <Language id="en" value="Reset GHL Gems" />
+    </Translation>
+    <Translation key="GEM_CREATOR_TITLE">
+        <Language id="en" value="GEM CHANGER" />
+    </Translation>
+    <Translation key="GEM_CREATOR_TITLE_DES">
+        <Language id="en" value="Change the gem textures for highways." />
+    </Translation>
+    <Translation key="GEM_CREATOR_RIGHT_HND">
+        <Language id="en" value="Right Handed" />
+    </Translation>
+    <Translation key="GEM_CREATOR_BOX">
+        <Language id="en" value="Gem Box" />
+    </Translation>
+    <Translation key="GEM_CREATOR_BOX_TOGGLE">
+        <Language id="en" value="Gem Box preview" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SEL_BOX">
+        <Language id="en" value="Select your open gem texture" />
+    </Translation>
+    <Translation key="GEM_CREATOR_LEFT_HND">
+        <Language id="en" value="Left Handed" />
+    </Translation>
+    <Translation key="STR_RESET">
+        <Language id="en" value="Reset" />
+    </Translation>
+    <Translation key="STR_TEMPLATES">
+        <Language id="en" value="Templates" />
+    </Translation>
+    <Translation key="GEM_CREATOR_OPEN_STRUM">
+        <Language id="en" value="Open Strum" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATE_PACK">
+        <Language id="en" value="Create Gem Pack" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_OPEN_RESOURCE">
+        <Language id="en" value="Open Gem Pack Folder" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_REDOWNLOAD">
+        <Language id="en" value="Redownload Official gem pack" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_TITLE">
+        <Language id="en" value="Gem Pack Import" />
+    </Translation>
+    <Translation key="STR_NORMAL">
+        <Language id="en" value="Normal" />
+    </Translation>
+    <Translation key="STR_HERO_COLLECT">
+        <Language id="en" value="Hero Power Collect" />
+    </Translation>
+    <Translation key="STR_HERO_ACTIVE">
+        <Language id="en" value="Hero Power Active" />
+    </Translation>
+    <Translation key="GEM_CREATOR_LEFT_HND_PRE">
+        <Language id="en" value="Left Handed Preview" />
+    </Translation>
+    <Translation key="STR_HOPO">
+        <Language id="en" value="Hopo" />
+    </Translation>
+    <Translation key="STR_STREAK">
+        <Language id="en" value="Streak" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_FIND_MORE">
+        <Language id="en" value="FIND MORE" />
+    </Translation>
+    <Translation key="GEM_CREATOR_PACK_NAME">
+        <Language id="en" value="Pack Name....." />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATOR_NAME">
+        <Language id="en" value="Creator Name...." />
+    </Translation>
+    <Translation key="GEM_IMPORTER_DOWNLOAD_PACK">
+        <Language id="en" value="Download Official Pack" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_DOWNLOAD_PACK_DES">
+        <Language id="en" value="Would you like to download the Official GHTV Reloaded Gem Packs?" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_DOWNLOADING">
+        <Language id="en" value="Please wait while we download Official GHTV Reloaded Gem Packs" />
+    </Translation>
+    <Translation key="STR_IMPORTING">
+        <Language id="en" value="Importing" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_PACKOUTDATED_DES">
+        <Language id="en" value="Pack was made on an earlier version of the mod tools&#xA;Some texture and features will be missing when applying it" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_PACKOUTDATED">
+        <Language id="en" value="Outdated Gem Pack" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_IMPORTING_DES">
+        <Language id="en" value="Please wait while we imported the Official GHTV Reloaded Gem Packs to your resource folder" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_NOPACK">
+        <Language id="en" value="No Gem Pack Found" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_NOPACK_DES">
+        <Language id="en" value="You need to add gem pack into your 'resource pack' folder" />
+    </Translation>
+    <Translation key="STR_EXPORTING">
+        <Language id="en" value="Exporting" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_EXPORTING">
+        <Language id="en" value="Please wait while Export your textures" />
+    </Translation>
+    <Translation key="STR_EXPORTDONE">
+        <Language id="en" value="Exported Complete" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_EXPORT_DONE">
+        <Language id="en" value="Custom Gems have been exported to Guitar Hero live.&#xA;&#xA;The Next time you load into GHTV or play GHL song the changes will be apply." />
+    </Translation>
+    <Translation key="STR_SELECT">
+        <Language id="en" value="Select" />
+    </Translation>
+    <Translation key="STR_CREATOR">
+        <Language id="en" value="Creator:" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_CONFIRM">
+        <Language id="en" value="Are you Sure you want to import this pack?" />
+    </Translation>
+    <Translation key="STR_CONFIRM">
+        <Language id="en" value="Confirm" />
+    </Translation>
+    <Translation key="STR_ERROR">
+        <Language id="en" value="ERROR" />
+    </Translation>
+    <Translation key="GEM_CREATOR_PLATFORM_ISNT_SUPPORTED">
+        <Language id="en" value="Gem Changer - Create isn't supported for your current OS&#xA;&#xA;Gem Changer - Create is currently support Windows" />
+    </Translation>
+    <Translation key="NET_COM_DOWNLOADING_EXTERNAL">
+        <Language id="en" value="Please wait while we download external files" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_PT1">
+        <Language id="en" value="External Tool Require - PART 1" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_PT1_DES">
+        <Language id="en" value="We need you to install an external tool to allow us to save your custom gems to Guitar Hero Live.&#xA;&#xA;Click Continue Download once downloaded install the program&#xA;&#xA;If this is already install you can skip this step" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_PT2">
+        <Language id="en" value="External Tool Require - PART 2" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_PT2_DES">
+        <Language id="en" value="Once the install has complete&#xA;&#xA;Click Continue to locate the PVRTextToolCLI.exe&#xA;&#xA;If you have installed it to the default path we will auto located." />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_TOOL_FOUND">
+        <Language id="en" value="External Tool successfully located" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_TOOL_FOUND_DES">
+        <Language id="en" value="We manage to auto located the external tool on your device!!!" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_TOOL_REQ">
+        <Language id="en" value="External Tool Require" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_TOOL_REQ_DES">
+        <Language id="en" value="We need you to install an external tool to allow us to save your custom gems to Guitar Hero Live.&#xA;&#xA;Click Continue to open the download page&#xA;&#xA;MAKE SURE YOUR INSTALL PVR V4.0" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SEL_LEFT_HND">
+        <Language id="en" value="Select your Left handed gem texture" />
+    </Translation>
+    <Translation key="STR_INVALID_IMG">
+        <Language id="en" value="Invalided Image" />
+    </Translation>
+    <Translation key="STR_IMG_TOOLTIP">
+        <Language id="en" value="Make Sure your uploaded image is 256X256 &#xA;&#xA;Please try again" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SEL_OPEN">
+        <Language id="en" value="Select your open gem texture" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SEL_RIGHT_HND">
+        <Language id="en" value="Select your Right hadned gem texture" />
+    </Translation>
+    <Translation key="STR_CONVERTING">
+        <Language id="en" value="Converting" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CONVERTING_TEX">
+        <Language id="en" value="Please wait while convert your textures." />
+    </Translation>
+    <Translation key="STR_CONVERT_FAIL">
+        <Language id="en" value="Convert Failed" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CONVERTING_FAIL">
+        <Language id="en" value="Failed to Convert your textures&#xA;&#xA;Check if you have Python 3.1 installed" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CONVERT_DONE">
+        <Language id="en" value="Create Gem Pack" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CONVERT_DONE_DES">
+        <Language id="en" value="Before we can create your pack, We need some details" />
+    </Translation>
+    <Translation key="STR_CONVERTED">
+        <Language id="en" value="Converted:" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATE_PACK">
+        <Language id="en" value="Creating Gem Pack" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATE_PACK_DES">
+        <Language id="en" value="Please wait while we create your gem pack." />
+    </Translation>
+    <Translation key="GEM_CREATOR_SHARE">
+        <Language id="en" value="Share your Gem Pack?" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SHARE_DES">
+        <Language id="en" value="Would you like to share your Gem Pack to the would? &#xA;&#xA;(Opens to our Gem Pack sharing discord channel)" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATED_PACK">
+        <Language id="en" value="Gem Pack Created" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATED_PACK_DES1">
+        <Language id="en" value="Your Gem pack" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATED_PACK_DES2">
+        <Language id="en" value="has been created" />
+    </Translation>
+    <Translation key="SETUP_STR_WELCOME">
+        <Language id="en" value="WELCOME TO THE GHTV RELOADED: MOD TOOLS&#xA;&#xA;Here you will find variety of mods to be apply to Guitar Hero Live." />
+    </Translation>
+    <Translation key="STR_GETSTARTED">
+        <Language id="en" value="GET STARTED" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1">
+        <Language id="en" value="SETUP: STAGE 1&#xA;&#xA;Since this is your first time running the tool we need to know have you played GHTV Reloaded before?" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_NO">
+        <Language id="en" value="No - First Time Playing" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_YES">
+        <Language id="en" value="Yes - I have played before" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_TITLE">
+        <Language id="en" value="SETUP: STAGE 1" />
+    </Translation>
+    <Translation key="STR_YES">
+        <Language id="en" value="Yes" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_DOWNLOAD">
+        <Language id="en" value="No - Download" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_2">
+        <Language id="en" value="Do you have RPCS3 (PlayStation 3 Emulator)&#xA;installed?" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_3">
+        <Language id="en" value="SETUP: STAGE 1&#xA;&#xA;Add your copy of Guitar Hero Live to RPCS3" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_4">
+        <Language id="en" value="SETUP: STAGE 1&#xA;&#xA;Update Guitar Hero Live to the latest offical patch" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_5">
+        <Language id="en" value="SETUP: STAGE 1&#xA;&#xA;Config RPCS3 settings" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE2_1">
+        <Language id="en" value="SETUP: STAGE 2&#xA;&#xA;Create or login into a RPCN account" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE2_2">
+        <Language id="en" value="SETUP: STAGE 2&#xA;&#xA;Create your GHTV Reloaded account" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE2_2_DES">
+        <Language id="en" value="Unlock Type&#xA;(COPY TO CLIPBOARD)" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE2_2_UNLCOKALL">
+        <Language id="en" value="Unlock all - 1" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE2_2_OG">
+        <Language id="en" value="Original - 0" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE3">
+        <Language id="en" value="SETUP: STAGE 3&#xA;&#xA;Installing GHTV Reloaded Mod&#xA;please wait while we download and install the mod" />
+    </Translation>
+    <Translation key="STR_LOADING_STATUS">
+        <Language id="en" value="Status:" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE3_2">
+        <Language id="en" value="SETUP: STAGE 3&#xA;&#xA;GHTV Reloaded mod has been installed to Guitar Hero Live.&#xA;Would you want to run though guitar setup?" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE3_2_DES">
+        <Language id="en" value="(Usefull to figure out how to connect your guitar to RPCS3)" />
+    </Translation>
+    <Translation key="STR_NEED_SETUP">
+        <Language id="en" value="Yes - I need to setup" />
+    </Translation>
+    <Translation key="STR_NO_NEED_SETUP">
+        <Language id="en" value="No - Already setup" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4">
+        <Language id="en" value="SETUP: STAGE 4&#xA;&#xA;Which guitar do you have?" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_1_CONSOLE">
+        <Language id="en" value="Console Guitar &#xA;(Xbox, Playstation, Wii U)" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_1_MOBILE">
+        <Language id="en" value="IOS Guitar" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_2">
+        <Language id="en" value="SETUP: STAGE 4&#xA;&#xA;Which dongle do you have?&#xA;(Select the colour that matches the sync button on the dongle)" />
+    </Translation>
+    <Translation key="CONSOLE_XBOX360">
+        <Language id="en" value="Xbox 360" />
+    </Translation>
+    <Translation key="CONSOLE_XBO">
+        <Language id="en" value="Xbox One" />
+    </Translation>
+    <Translation key="CONSOLE_PS4">
+        <Language id="en" value="PS4" />
+    </Translation>
+    <Translation key="CONSOLE_PS3_WIIU">
+        <Language id="en" value="PS3 / Wii U" />
+    </Translation>
+    <Translation key="STR_GUITAR_DONGLE">
+        <Language id="en" value="DONGLE" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_3_XBOX360">
+        <Language id="en" value="SETUP: STAGE 4&#xA;&#xA;Follow the video below on how to setup your dongle" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_3_EXTERNAL">
+        <Language id="en" value="SETUP: STAGE 4&#xA;&#xA;Follow the instuctions on the&#xA;webpage readme on how to setup your dongle" />
+    </Translation>
+    <Translation key="STR_REOPENLINK">
+        <Language id="en" value="Reopen Link" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_4">
+        <Language id="en" value="SETUP: STAGE 4&#xA;&#xA;Config RPCS3 Controller for your guitar" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE5">
+        <Language id="en" value="Stage: 5&#xA;&#xA;Your ready to play GHTV Reloaded!" />
+    </Translation>
+    <Translation key="STR_ROCKON">
+        <Language id="en" value="ROCK ON!" />
+    </Translation>
+    <Translation key="SETUP_STR_LOCATED_RPCS3">
+        <Language id="en" value="Located RPCS3" />
+    </Translation>
+    <Translation key="SETUP_STR_LOCATED_RPCS3_DES">
+        <Language id="en" value="We need you to located your RPCS3 folder" />
+    </Translation>
+    <Translation key="SETUP_STR_NO_DISC">
+        <Language id="en" value="No game found" />
+    </Translation>
+    <Translation key="SETUP_STR_NO_DISC_DES">
+        <Language id="en" value="We can't find Guitar Hero Live installed on RPCS3&#xA;&#xA;Please try again" />
+    </Translation>
+    <Translation key="SETUP_STR_NO_FSG_UPDATE">
+        <Language id="en" value="No game update found" />
+    </Translation>
+    <Translation key="SETUP_STR_NO_FSG_UPDATE_DES">
+        <Language id="en" value="We can't find Guitar Hero Live update installed on RPCS3&#xA;&#xA;Please try again" />
+    </Translation>
+    <Translation key="SETUP_STR_CONFIRM_RPCS3_SETTING">
+        <Language id="en" value="Are you sure that you have configure RPCS3 correctly" />
+    </Translation>
+    <Translation key="SETUP_STR_NONE_RPCN">
+        <Language id="en" value="No RPCN Account Found" />
+    </Translation>
+    <Translation key="SETUP_STR_NONE_RPCN_DES">
+        <Language id="en" value="There no RPCN account found in your RPCS3 installed&#xA;&#xA;Make sure you have sign up or log in" />
+    </Translation>
+    <Translation key="STR_INVAIL_FILE">
+        <Language id="en" value="Invalided file" />
+    </Translation>
+    <Translation key="SETUP_STR_RELOADED_ACCOUNT_TIP">
+        <Language id="en" value="Please make sure you have selected CONFIGDEMONWARE.XML" />
+    </Translation>
+    <Translation key="NET_COM_PREP">
+        <Language id="en" value="Prepairing" />
+    </Translation>
+    <Translation key="NET_COM_FETCH_GIT_DETAILS">
+        <Language id="en" value="Grabing latest update details" />
+    </Translation>
+    <Translation key="NET_COM_DOWNLOAD_START_GHTVR">
+        <Language id="en" value="Starting Downloading the Latest Update" />
+    </Translation>
+    <Translation key="NET_COM_DOWNLOAD_DONE">
+        <Language id="en" value="Finished!!!!" />
+    </Translation>
+    <Translation key="SETUP_ERROR_NO_TOOL">
+        <Language id="en" value="No public tool" />
+    </Translation>
+    <Translation key="SETUP_ERROR_NO_TOOL_DES">
+        <Language id="en" value="At this current time, No available tools or drivers are made for" />
+    </Translation>
+    <Translation key="NET_COM_DEFAULT_MSG">
+        <Language id="en" value="Please wait while we download the file" />
+    </Translation>
+    <Translation key="NET_COM_NO_GAME">
+        <Language id="en" value="Guitar Hero Live Missing" />
+    </Translation>
+    <Translation key="NET_COM_NO_GAME_DES">
+        <Language id="en" value="Look like Guitar Hero Live is missing from RPCS3" />
+    </Translation>
+    <Translation key="NET_COM_PREP_INSTALL">
+        <Language id="en" value="Prepairing files for install" />
+    </Translation>
+    <Translation key="NET_COM_APPLY_MOD">
+        <Language id="en" value="Apply mod" />
+    </Translation>
+    <Translation key="NET_COM_UPDATE_DONE">
+        <Language id="en" value="Update completed" />
+    </Translation>
+    <Translation key="NET_COM_PATH_FAILL">
+        <Language id="en" value="Failed to find RPCS3" />
+    </Translation>
+    <Translation key="NET_COM_PATH_FAILL_DES">
+        <Language id="en" value="You have to re run to setup processed again.." />
+    </Translation>
+    <Translation key="SETT_TOG_AUTO_UPDATE">
+        <Language id="en" value="Game Auto Updates" />
+    </Translation>
+    <Translation key="NET_CHECK_FOR_GAME_UPDATE">
+        <Language id="en" value="Grabing latest GHTV Reloaded update" />
+    </Translation>
+    <Translation key="NET_CHECK_FOR_GAME_UPDATE_DES">
+        <Language id="en" value="Looking for updates" />
+    </Translation>
+    <Translation key="NET_ERROR_GAME_UP_TODATE">
+        <Language id="en" value="Grabing latest GHTV Reloaded update" />
+    </Translation>
+    <Translation key="NET_ERROR_GAME_UP_TODATE_DES">
+        <Language id="en" value="GHTV Reloaded is up to date" />
+    </Translation>
+    <Translation key="SETT_FORCE_GAME_UPDATE">
+        <Language id="en" value="Check for GHTV Reloaded update" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SEL_TRAIL">
+        <Language id="en" value="Select your trail texture" />
+    </Translation>
+    <Translation key="GEM_CREATOR_TRAIL">
+        <Language id="en" value="Note Trail" />
+    </Translation>
+    <Translation key="SETT_TAB_1">
+        <Language id="en" value="General" />
+    </Translation>
+    <Translation key="SETT_TAB_2">
+        <Language id="en" value="Cache" />
+    </Translation>
+    <Translation key="SETT_TAB_3">
+        <Language id="en" value="User Data" />
+    </Translation>
+    <Translation key="COM_COMMON_NOVID_DES_COMPLETE">
+        <Language id="en" value="To enable this you need to open 'Mange/Game Patches' in RPCS3 enable the no video patch though there." />
+    </Translation>
+    <Translation key="STR_QUIT">
+        <Language id="en" value="Quit Application" />
+    </Translation>
+    <Translation key="COMM_RESTARTPATCH_TITLE">
+        <Language id="en" value="RESTART PATCH" />
+    </Translation>
+    <Translation key="COMM_RESTARTPATCH_TITLE_DES">
+        <Language id="en" value="Add a restart button to on-demand" />
+    </Translation>
+    <Translation key="STR_TUTORIAL">
+        <Language id="en" value="Tutorial" />
+    </Translation>
+    <Translation key="COMM_RESTART_TUT">
+        <Language id="en" value="When Restarting a song&#xA;&#xA;1. Press ok when the failed download content loads&#xA;&#xA;2. Press pause button to get rid of hero power select (repeat 3X).&#xA;&#xA;3. On the third time the song will restart. (if restarting a playlist you go back to the first song in the playlist)" />
+    </Translation>
+    <Translation key="STR_ACKNOWLEDGE">
+        <Language id="en" value="Acknowledge" />
+    </Translation>
+    <Translation key="COMM_TAB_2">
+        <Language id="en" value="Experimental" />
+    </Translation>
+    <Translation key="COM_RESTART">
+        <Language id="en" value="Restart Patch" />
+    </Translation>
+</Translation>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+
 public class GemChanger_CreateTexturePack_MessageBox : MonoBehaviour
 {
     public TMP_InputField texturePackName;
@@ -14,7 +16,16 @@ public class GemChanger_CreateTexturePack_MessageBox : MonoBehaviour
 
     private void Start()
     {
-        gameObject.GetComponent<GUI_MessageBox>().button.onClick.AddListener(Done);
+        try 
+        {
+            gameObject.GetComponent<GUI_MessageBox>().button.onClick.AddListener(Done);
+        }
+        catch(Exception e)
+        {
+            Debug.LogError(e.Message);
+            Destroy(this);
+        }
+
     }
     public string getPackName()
     {
@@ -26,37 +37,45 @@ public class GemChanger_CreateTexturePack_MessageBox : MonoBehaviour
     }
     public void Done()
     {
-        if(texturePackName.text == null || texturePackName.text == "" || creator.text == null || creator.text == "")
+        try
         {
-            GameObject a = Instantiate(MessageBox);
-            a.GetComponent<GUI_MessageBox>().title = "Bad Word Detective";
-            a.GetComponent<GUI_MessageBox>().message = $"Sorry your not allow to use bad word in a pack name/creator";
-            texturePackName.text = "";
-            creator.text = "";
-        }
-        bool hasBadWord = false;
-        foreach(string badWord in badWords)
-        {
-            if(texturePackName.text.ToLower().Contains(badWord))
+            if (texturePackName.text == null || texturePackName.text == "" || creator.text == null || creator.text == "")
             {
-                hasBadWord = true;
+                GameObject a = Instantiate(MessageBox);
+                a.GetComponent<GUI_MessageBox>().title = "Bad Word Detective";
+                a.GetComponent<GUI_MessageBox>().message = $"Sorry your not allow to use bad word in a pack name/creator";
+                texturePackName.text = "";
+                creator.text = "";
             }
-            if(creator.text.ToLower().Contains(badWord))
+            bool hasBadWord = false;
+            foreach (string badWord in badWords)
             {
-                hasBadWord = true;
+                if (texturePackName.text.ToLower().Contains(badWord))
+                {
+                    hasBadWord = true;
+                }
+                if (creator.text.ToLower().Contains(badWord))
+                {
+                    hasBadWord = true;
+                }
+            }
+            if (hasBadWord)
+            {
+                GameObject a = Instantiate(MessageBox);
+                a.GetComponent<GUI_MessageBox>().title = "Bad Word Detective";
+                a.GetComponent<GUI_MessageBox>().message = $"Sorry your not allow to use bad word in a pack name/creator";
+                texturePackName.text = "";
+                creator.text = "";
+            }
+            else
+            {
+                host.premakeZipFile(getPackName(), getCreatorName());
             }
         }
-        if(hasBadWord)
+        catch (Exception e)
         {
-            GameObject a = Instantiate(MessageBox);
-            a.GetComponent<GUI_MessageBox>().title = "Bad Word Detective";
-            a.GetComponent<GUI_MessageBox>().message = $"Sorry your not allow to use bad word in a pack name/creator";
-            texturePackName.text = "";
-            creator.text = "";
-        }
-        else
-        {
-            host.premakeZipFile(getPackName(), getCreatorName());
+            Debug.LogError(gameObject.name + e.Message);
+            Destroy(this);
         }
     }
 

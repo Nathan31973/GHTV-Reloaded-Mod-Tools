@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Classes>
+	<Class Type="CGameUI">
+		<Property Name="Scaleform Movies">
+			<!-- Persistent -->
+			<Value>
+				<Class Type="CGameUIMovie">
+					<Property Name="Name">Persistent</Property>
+					<Property Name="Filename">Flash/Output/Persistent.swf</Property>
+					<Property Name="Render Order">Persistent</Property>
+					<Property Name="Scaleform Gameplay Update">1</Property>
+					
+					<Property Name="UI Elements">
+						<!-- Legend -->
+						<Value>
+							<Class Type="CGameUILegend">
+								<Property Name="Name">Legend</Property>
+								<Property Name="Scaleform Object">_root.myLegend</Property>
+							</Class>
+						</Value>
+						<Value>
+							<Class Type="CGameUISocialFeed">
+								<Property Name="Name">SocialFeed</Property>
+								<Property Name="Scaleform Object">_root.mySocialFeed</Property>
+							</Class>
+						</Value>
+						<Value>
+							<Class Type="CGameUISubtitles">
+								<Property Name="Name">Subtitles</Property>
+								<Property Name="Scaleform Object">_root.mySubtitles</Property>
+							</Class>
+						</Value>
+						<Value>
+							<Class Type="CGameUINotifications">
+								<Property Name="Name">Notifications</Property>
+								<Property Name="Scaleform Object">_root.myNotifications</Property>
+							</Class>
+						</Value>
+					</Property>
+				</Class>
+			</Value>
+			
+			<!-- Spinner -->
+			<Value>
+				<Class Type="CGameUIMovie">
+					<Property Name="Name">Spinner</Property>
+					<Property Name="Filename">Flash/Output/Spinner.swf</Property>
+					<Property Name="Render Order">Front</Property>
+					<Property Name="Render Layer">Spinner</Property>
+					<Property Name="Scaleform Gameplay Update">1</Property>
+				</Class>
+			</Value>
+			
+			<!-- Pre FrontEnd -->
+			<Value>				
+				<Class Type="CGameUIMovie">
+					<Property Name="Name">PreFE</Property>
+					<Property Name="Filename">Flash/Output/PreFE.swf</Property>
+					<Property Name="Render Order">UI</Property>
+					
+					<!-- UI Elements -->
+					<Property Name="UI Elements">
+						<!-- Splash Screens / Legal / etc. -->
+						<Value>
+							<Class Type="CGameUISplash">
+								<Property Name="Name">Splash</Property>
+								<Property Name="Bindings">
+									<Value>
+										<Class Type="CGameUISplashBinder" />
+									</Value>
+									<Value>
+										<Class Type="CGameUIDiskInstallBinder" />
+									</Value>
+								</Property>
+								<Property Name="Screens">
+									<!-- Legal -->
+									<Value>
+										<Class Type="CGameUISplashScreen">
+											<Property Name="Invoke">playLegal</Property>
+											<Property Name="Spinner">true</Property>
+											<Property Name="Wait For Initial Load">true</Property>
+										</Class>
+									</Value>
+									<!-- Disk Install? -->
+									<Value>
+										<Class Type="CGameUISplashScreen">
+											<Property Name="Invoke">playInstall</Property>
+											<Property Name="Spinner">false</Property>
+										</Class>
+									</Value>
+									<!-- ATVI Sting -->
+									<Value>
+										<Class Type="CGameUISplashScreen">
+											<Property Name="Video">Video/ATVI_Sting/ATVI_logo_HD/video.xml</Property>
+											<Property Name="Skippable">true</Property>
+											<Property Name="Audio">Tracks/FrontEnd/ATVI_Sting/Audio/ATVI_Sting_track.wem</Property>
+										</Class>
+									</Value>
+									<!-- FSG Sting -->
+									<Value>
+										<Class Type="CGameUISplashScreen">
+											<Property Name="Video">Video/FSG_Sting/fsg_logo/video.xml</Property>
+											<Property Name="Skippable">true</Property>
+											<Property Name="Audio">Tracks/FrontEnd/FSG_Sting/Audio/FSG_Sting_track.wem</Property>
+										</Class>
+									</Value>
+									<!-- FSG Logo -->
+									<!--Value>
+										<Class Type="CGameUISplashScreen">
+											<Property Name="Invoke">playSplash</Property>
+										</Class>
+									</Value-->
+								</Property>
+							</Class>
+						</Value>
+					</Property>
+				</Class>
+			</Value>
+			
+			<!-- Onboarding -->
+			<Value>				
+				<Class Type="CGameUIMovie">
+					<Property Name="Name">Onboarding</Property>
+					<Property Name="Filename">Flash/Output/Onboarding.swf</Property>
+					<Property Name="Render Order">UI</Property>
+				</Class>
+			</Value>
+			
+			<!-- FrontEnd -->
+			<Value>				
+				<Class Type="CGameUIMovie">
+					<Property Name="Name">FrontEnd</Property>
+					<Property Name="Filename">Flash/Output/FrontEnd.swf</Property>
+					<Property Name="Render Order">UI</Property>
+					
+					<!-- UI Elements -->
+					<Property Name="UI Elements">
+						<!-- Background -->
+						<Value>
+							<Class Type="CGameUIBackgroundController">
+								<Property Name="Name">Background</Property>
+								<Property Name="Menu System">FrontEnd</Property>
+								<Property Name="Image Sets">
+									<!-- FrontEnd Video -->
+									<Value>
+										<Class Type="CGameUIBackgroundVideo">
+											<Property Name="Name">Default</Property>
+											<Property Name="Transition Type">zoom</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Video">Video/Frontend/front_end_parallax/video.xml</Property>
+										</Class>
+									</Value>
+									
+									<!-- Rock The Block Image Sets -->
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">RTBBandSelect</Property>
+											<Property Name="Menu Id">RockTheBlockBandSelect</Property>
+											<Property Name="Image Delay">40.0f</Property>
+											<Property Name="Transition Type">zoom</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/RTB/RtbBandSelectMenu.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbBandSelectMenu.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">RTBSetlist</Property>
+											<Property Name="Menu Id">RockTheBlockSetlist</Property>
+											<Property Name="Image Delay">40.0f</Property>
+											<Property Name="Transition Type">zoom</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/RTB/RtbBandSelectMenu.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbBandSelectMenu.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">RTBFestivalGuide</Property>
+											<Property Name="Menu Id">RTBFestivalGuideMenu</Property>
+											<Property Name="Transition Type">move</Property>
+											<Property Name="Image Delay">0.0f</Property>
+											<Property Name="Instant">false</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/RTB/RtbFestivalGuide01.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbFestivalGuide02.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbFestivalGuide03.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbFestivalGuide04.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbFestivalGuide05.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbFestivalGuide06.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbFestivalGuide07.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbFestivalGuide08.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbFestivalGuide09.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbFestivalGuide10.img</Value>
+												<Value>art/ui/images/Backgrounds/RTB/RtbFestivalGuide11.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									
+									<!-- Soundial Image Sets -->
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">SDBandSelect</Property>
+											<Property Name="Menu Id">SoundialBandSelect</Property>
+											<Property Name="Image Delay">40.0f</Property>
+											<Property Name="Transition Type">zoom</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/SD/SDBandSelectMenu.img</Value>
+												<Value>art/ui/images/Backgrounds/SD/SDBandSelectMenu.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">SDSetlist</Property>
+											<Property Name="Menu Id">SoundialSetlist</Property>
+											<Property Name="Image Delay">40.0f</Property>
+											<Property Name="Transition Type">zoom</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/SD/SDBandSelectMenu.img</Value>
+												<Value>art/ui/images/Backgrounds/SD/SDBandSelectMenu.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">SDFestivalGuide</Property>
+											<Property Name="Menu Id">SDFestivalGuideMenu</Property>
+											<Property Name="Transition Type">move</Property>
+											<Property Name="Image Delay">0.0f</Property>
+											<Property Name="Instant">false</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/SD/SDFestivalGuide01.img</Value>
+												<Value>art/ui/images/Backgrounds/SD/SDFestivalGuide02.img</Value>
+												<Value>art/ui/images/Backgrounds/SD/SDFestivalGuide03.img</Value>
+												<Value>art/ui/images/Backgrounds/SD/SDFestivalGuide04.img</Value>
+												<Value>art/ui/images/Backgrounds/SD/SDFestivalGuide05.img</Value>
+												<Value>art/ui/images/Backgrounds/SD/SDFestivalGuide06.img</Value>
+												<Value>art/ui/images/Backgrounds/SD/SDFestivalGuide07.img</Value>
+												<Value>art/ui/images/Backgrounds/SD/SDFestivalGuide09.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									
+									<!-- Onboarding specific backgrounds -->
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">HandednessMenu</Property>
+											<Property Name="Menu Id">OnboardingHandednessMenu</Property>
+											<Property Name="Transition Type">blend</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/Onboarding/OB01.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">ScreenBrightnessMenu</Property>
+											<Property Name="Menu Id">OnboardingScreenBrightnessMenu</Property>
+											<Property Name="Transition Type">blend</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/Onboarding/OB02.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">SoundSettingsMenu</Property>
+											<Property Name="Menu Id">OnboardingSoundSettingsMenu</Property>
+											<Property Name="Transition Type">blend</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/Onboarding/OB04.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">VideoOffsetMenu</Property>
+											<Property Name="Menu Id">OnboardingVideoOffsetMenu</Property>
+											<Property Name="Transition Type">blend</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/Onboarding/OB05.img</Value>
+											</Property>
+										</Class>
+									</Value>																											
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">GuitarControlsMenu</Property>
+											<Property Name="Menu Id">OnboardingGuitarControlsMenu</Property>
+											<Property Name="Transition Type">blend</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/Onboarding/OB07.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">SetupCompleteMenu</Property>
+											<Property Name="Menu Id">OnboardingSetupCompleteMenu</Property>
+											<Property Name="Transition Type">blend</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/Onboarding/OB08.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIBackgroundNone">
+											<Property Name="Name">Credits</Property>
+											<Property Name="Menu Id">Credits</Property>
+											<Property Name="Instant">true</Property>
+										</Class>
+									</Value>
+									<!--<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">ScreenDimensionsMenu</Property>
+											<Property Name="Menu Id">OnboardingScreenDimensionsMenu</Property>
+											<Property Name="Transition Type">blend</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/Onboarding/OB03.img</Value>
+											</Property>
+										</Class>
+									</Value>-->									
+								</Property>
+							</Class>
+						</Value>
+					</Property>
+					
+					<!-- Callbacks -->
+					<Property Name="Game Callbacks">
+						<Value><Class Type="CFrontEndScaleformCallbacks" /></Value>
+					</Property>
+				</Class>
+			</Value>
+			
+			<!-- Live -->
+			<Value>				
+				<Class Type="CGameUIMovie">
+					<Property Name="Name">Live</Property>
+					<Property Name="Filename">Flash/Output/GHLive.swf</Property>
+					<Property Name="Render Order">UI</Property>
+
+					<!-- UI Elements -->
+					<Property Name="UI Elements">
+						<!-- Background -->
+						<Value>
+							<Class Type="CGameUIBackgroundController">
+								<Property Name="Name">Background</Property>
+								<Property Name="Menu System">Live Results</Property>
+								<Property Name="Image Sets">
+								
+									<!-- Results Screen Image Sets -->
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">SDLiveResults</Property>
+											<Property Name="Menu Id">ResultsSD</Property>
+											<Property Name="Image Delay">0.0f</Property>
+											<Property Name="Transition Type">blend</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/LiveQuickPlayResults/defaultbackground.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">RTBLiveResults</Property>
+											<Property Name="Menu Id">ResultsRTB</Property>
+											<Property Name="Image Delay">0.0f</Property>
+											<Property Name="Transition Type">blend</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/LiveQuickPlayResults/defaultbackground.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">QuickplayLiveResults</Property>
+											<Property Name="Menu Id">QuickplayResults</Property>
+											<Property Name="Image Delay">0.0f</Property>
+											<Property Name="Transition Type">blend</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/LiveQuickPlayResults/defaultbackground.img</Value>
+											</Property>
+										</Class>
+									</Value>
+									<!--<Value>
+										<Class Type="CGameUIBackgroundImageSet">
+											<Property Name="Name">LeaderboardMenuResults</Property>
+											<Property Name="Menu Id">ResultsLeaderboardMenu</Property>
+											<Property Name="Image Delay">0.0f</Property>
+											<Property Name="Transition Type">blend</Property>
+											<Property Name="Instant">true</Property>
+											<Property Name="Images">
+												<Value>art/ui/images/Backgrounds/LiveQuickPlayResults/defaultbackground.img</Value>
+											</Property>
+										</Class>
+									</Value>-->
+								</Property>
+							</Class>
+						</Value>
+					</Property>
+					
+					<!-- Callbacks -->
+					<Property Name="Game Callbacks">
+						<Value><Class Type="CCommonScaleformCallbacks" /></Value>
+					</Property>
+				</Class>
+			</Value>
+			
+			<!-- Tutorial -->
+			<Value>				
+				<Class Type="CGameUIMovie">
+					<Property Name="Name">Tutorial</Property>
+					<Property Name="Filename">Flash/Output/GHLive.swf</Property>
+					<Property Name="Render Order">UI</Property>
+					
+					<!-- Callbacks -->
+					<Property Name="Game Callbacks">
+						<Value><Class Type="CCommonScaleformCallbacks" /></Value>
+					</Property>
+				</Class>
+			</Value>
+			
+			<!-- GHTV -->
+			<Value>				
+				<Class Type="CGameUIMovie">
+					<Property Name="Name">GHTV</Property>
+					<Property Name="Filename">Flash/Output/GHTV.swf</Property>
+					<Property Name="Render Order">UI</Property>
+					
+					<!-- UI Elements -->
+					<Property Name="UI Elements">
+						<!-- Wallet -->
+						<Value>
+							<Class Type="CGameUIWallet">
+								<Property Name="Name">Wallet</Property>
+								<Property Name="Scaleform Object">_root.myWallet</Property>
+							</Class>
+						</Value>
+						
+						<!-- Onboarding Lessons -->
+						<Value>
+							<Class Type="CGameUIOnboardingLessons">
+								<Property Name="Name">Onboarding Lessons</Property>
+								<Property Name="Scaleform Object">_root.myOnboardingLessons</Property>
+								
+								<Property Name="Lessons">
+									<!-- Level Up -->
+									<Value>
+										<Class Type="CGameUIOnboardingLesson">
+											<Property Name="Lesson ID">Level 3</Property>
+											<Property Name="Event Trigger Start"><Value>EVENT_GHTV_LEVELED_UP</Value></Property>
+											<Property Name="Event Trigger End"><Value>EVENT_STATE_RESULTS_EXIT</Value></Property>
+											<Property Name="UnlockEnum">My GHTV</Property>
+											<Property Name="Voice Over ID">event_vo_16_sslevel3</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIOnboardingLesson">
+											<Property Name="Lesson ID">Level 4</Property>
+											<Property Name="Event Trigger Start"><Value>EVENT_GHTV_LEVELED_UP</Value></Property>
+											<Property Name="Event Trigger End"><Value>EVENT_STATE_RESULTS_EXIT</Value></Property>
+											<Property Name="UnlockEnum">Store (Complete)</Property>
+											<Property Name="Voice Over ID">event_vo_84_unlock_playeraccess</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIOnboardingLesson">
+											<Property Name="Lesson ID">Level 5</Property>
+											<Property Name="Event Trigger Start"><Value>EVENT_GHTV_LEVELED_UP</Value></Property>
+											<Property Name="Event Trigger End"><Value>EVENT_STATE_RESULTS_EXIT</Value></Property>
+											<Property Name="Superstar Status Required">5</Property>
+											<Property Name="Voice Over ID">event_vo_85_unlock_highaccess</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIOnboardingLesson">
+											<Property Name="Lesson ID">Level 6</Property>
+											<Property Name="Event Trigger Start"><Value>EVENT_GHTV_LEVELED_UP</Value></Property>
+											<Property Name="Event Trigger End"><Value>EVENT_STATE_RESULTS_EXIT</Value></Property>
+											<Property Name="UnlockEnum">Premium Shows</Property>
+											<Property Name="Voice Over ID">event_vo_65_unlock_premium</Property>
+										</Class>
+									</Value>
+									<Value>
+										<Class Type="CGameUIOnboardingLesson">
+											<Property Name="Lesson ID">Level 12</Property>
+											<Property Name="Event Trigger Start"><Value>EVENT_GHTV_LEVELED_UP</Value></Property>
+											<Property Name="Event Trigger End"><Value>EVENT_STATE_RESULTS_EXIT</Value></Property>
+											<Property Name="UnlockEnum">Rivals</Property>
+											<Property Name="Voice Over ID">event_vo_67_unlock_rivals</Property>
+										</Class>
+									</Value>
+											
+									<Value>
+										<Class Type="CGameUIOnboardingLesson">
+											<Property Name="Lesson ID">Welecome-Rivals</Property>
+											<Property Name="Event Trigger Start"><Value>EVENT_FE_MENU_WELCOMEMENU_ENTERED</Value></Property>
+											<Property Name="Event Trigger End"><Value>EVENT_FE_MENU_WELCOMEMENU_EXITED</Value></Property>
+											<Property Name="UnlockEnum">Rivals</Property>
+											<Property Name="Voice Over ID">event_vo_38_rivals</Property>
+										</Class>
+									</Value>
+									
+									<!-- Premium Menu -->
+									<Value>
+										<Class Type="CGameUIOnboardingLesson">
+											<Property Name="Lesson ID">Premium</Property>
+											<Property Name="Event Trigger Start"><Value>EVENT_FE_MENU_PREMIUMSHOWSOVERVIEW_ENTERED</Value></Property>
+											<Property Name="Event Trigger End"><Value>EVENT_FE_MENU_PREMIUMSHOWSOVERVIEW_EXITED</Value></Property>
+											<Property Name="UnlockEnum">Premium Shows</Property>
+											<Property Name="Voice Over ID">event_vo_27_premiumshows_part1_2</Property>
+										</Class>
+									</Value>
+								</Property>
+							</Class>
+						</Value>
+					</Property>
+					
+					<!-- Callbacks -->
+					<Property Name="Game Callbacks">
+						<Value><Class Type="CGHTVScaleformCallbacks" /></Value>
+						<Value><Class Type="CGHTVRivalsStatsCallbacks" /></Value>
+						<Value><Class Type="CGHTVRivalsEOSCallbacks" /></Value>
+					</Property>
+				</Class>
+			</Value>
+		</Property>
+	</Class>
+</Classes>

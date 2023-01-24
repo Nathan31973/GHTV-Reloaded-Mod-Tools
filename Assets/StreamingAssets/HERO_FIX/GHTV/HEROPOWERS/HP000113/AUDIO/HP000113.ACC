@@ -1,0 +1,4 @@
+<AudioContentConfig name="HeroPower Smart Bomb" >
+	<AuxBus name="HeroPower_02" />
+	<Event name="PLAYER_HEROPOWER_SMARTBOMB_" />
+</AudioContentConfig>

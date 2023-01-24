@@ -1,0 +1,752 @@
+<Translation>
+    <Translation key="TEST">
+        <Language id="es" value="GHTV Reloaded es un servicio impulsado por la comunidad y no está asociado con Activision. \n GHTV Reloaded V1.0" />
+    </Translation>
+    <Translation key="STR_DOWNLOAD">
+        <Language id="es" value="Descargando" />
+    </Translation>
+    <Translation key="STR_DOWNLOADED">
+        <Language id="es" value="Descargado:" />
+    </Translation>
+    <Translation key="STR_DOWNLOAD_LITE">
+        <Language id="es" value="Por favor, espera mientras se descarga Guitar Hero Live: Edición TV" />
+    </Translation>
+     <Translation key="STR_DOWNLOAD_LITE_TITLE">
+        <Language id="es" value="Descargar Guitar Hero Live: Edición TV" />
+    </Translation>
+     <Translation key="STR_INSTALLING_LITE">
+        <Language id="es" value="Por favor, espera mientras se instala Guitar Hero Live: Edición TV" />
+    </Translation>
+     <Translation key="STR_DOWNLOAD_LITE_TITLE_DES">
+        <Language id="es" value="¿Te gustaría descargar Guitar Hero Live: Edición TV?&#xA;&#xA; Guitar Hero Live, pero solo contiene GHTV" />
+    </Translation>
+    <Translation key="STR_DOWNLOAD_GHLR_UPDATE">
+        <Language id="es" value="Por favor, espera mientras se descarga la actualización de Guitar Hero Live" />
+    </Translation>
+    <Translation key="STR_GHLR_UPDATE">
+        <Language id="es" value="Guitar Hero Live Actualizado" />
+    </Translation>
+    <Translation key="STR_GHLR_FOUND">
+        <Language id="es" value="Se ha encontrado una nueva actualización para Guitar Hero Live, ¿Quieres actualizar?" />
+    </Translation>
+    <Translation key="STR_LATESTVER">
+        <Language id="es" value="Última versión:" />
+    </Translation>
+    <Translation key="STR_GAMEVER">
+        <Language id="es" value="Versión del juego:" />
+    </Translation>
+    <Translation key="STR_APPLYUPDATE">
+        <Language id="es" value="Aplicando actualización" />
+    </Translation>
+    <Translation key="STR_APPLYUPDATEMSG">
+        <Language id="es" value="Por favor, espera mientras se aplica la actualización de Guitar Hero Live" />
+    </Translation>
+    <Translation key="STR_GAME_UP_TO_DATE">
+        <Language id="es" value="¡Guitar Hero Live está actualizado!" />
+    </Translation>
+    <Translation key="STR_GAMEUPDATEDONE">
+        <Language id="es" value="Actualización del juego completa" />
+    </Translation>
+    <Translation key="SOFTWARE_TITLE">
+        <Language id="es" value="GHTV Reloaded: Herramientas de modificación" />
+    </Translation>
+    <Translation key="MOD_HIGHWAY">
+        <Language id="es" value="Modificador FX de la Autopista" />
+    </Translation>
+    <Translation key="MOD_HYPERSPED">
+        <Language id="es" value="Modificador de Hipervelocidad" />
+    </Translation>
+    <Translation key="MOD_GEM">
+        <Language id="es" value="Modificador de Gemas" />
+    </Translation>
+    <Translation key="OPT_SETTINGS">
+        <Language id="es" value="Ajustes" />
+    </Translation>
+    <Translation key="OPT_COM_PATCHES">
+        <Language id="es" value="Parches de la Comunidad" />
+    </Translation>
+    <Translation key="STR_BACK">
+        <Language id="es" value="Regresar" />
+    </Translation>
+    <Translation key="COM_NOSTREAK">
+        <Language id="es" value="Parche: Sin animación de racha de notas" />
+    </Translation>
+    <Translation key="COM_NOVID">
+        <Language id="es" value="Parche: Sin video" />
+    </Translation>
+    <Translation key="COM_HEROPOW">
+        <Language id="es" value="Parche: Hero Power" />
+    </Translation>
+    <Translation key="COM_HOPO">
+        <Language id="es" value="Parche: Notas Hopo" />
+    </Translation>
+    <Translation key="TITLE_CREDIT">
+        <Language id="es" value="Créditos" />
+    </Translation>
+    <Translation key="SETT_RPCS3_FOLDER">
+        <Language id="es" value="Selecciona la carpeta de RPCS3" />
+    </Translation>
+    <Translation key="SETT_DEL_ALL_CACHE">
+        <Language id="es" value="Borrar archivos de caché" />
+    </Translation>
+    <Translation key="SETT_DEL_SAV">
+        <Language id="es" value="Borrar Guardado" />
+    </Translation>
+    <Translation key="SETT_DEL_HYPER_CACHE">
+        <Language id="es" value="Borrar caché de Hipervelocidad" />
+    </Translation>
+    <Translation key="MSG_SEL_RPCS3">
+        <Language id="es" value="SELECCIONA TU CARPETA DE RPCS3" />
+    </Translation>
+    <Translation key="MGS_RPCS3_FOLD">
+        <Language id="es" value="CARPETA DE RPCS3" />
+    </Translation>
+    <Translation key="ERROR_INVAL_PATH">
+        <Language id="es" value="Ruta no válida" />
+    </Translation>
+    <Translation key="STR_RPCS3_RIGHT_FOLD">
+        <Language id="es" value="Por favor, asegurate de haber seleccionado la carpeta raíz de RPCS3" />
+    </Translation>
+    <Translation key="STR_HYPER_CACHE_CLEAR">
+        <Language id="es" value="Limpiar caché de Hipervelocidad" />
+    </Translation>
+    <Translation key="STR_DEL_CACHE_FILES">
+        <Language id="es" value="Borrando archivos caché" />
+    </Translation>
+    <Translation key="STR_WAIT_DEL_CACHE_FILES">
+        <Language id="es" value="Por favor, espera mientras se eliminan los archivos caché" />
+    </Translation>
+    <Translation key="COM_TITLE_NOSTREAK">
+        <Language id="es" value="PARCHE: SIN ANIMACIÓN DE RACHA DE NOTAS" />
+    </Translation>
+    <Translation key="COM_DES_NOSTREAK">
+        <Language id="es" value="Esto desactiva la animación de racha de notas al completar cierto número de notas." />
+    </Translation>
+    <Translation key="COM_COMMON_BEFORE">
+        <Language id="es" value="ANTES DEL PARCHE" />
+    </Translation>
+    <Translation key="COM_COMMON_AFTER">
+        <Language id="es" value="DESPUES DEL PARCHE" />
+    </Translation>
+    <Translation key="COM_COMMON_APPLY">
+        <Language id="es" value="APLICAR PARCHE" />
+    </Translation>
+    <Translation key="COM_COMMON_REMOVE">
+        <Language id="es" value="RESTAURAR/ELIMINAR" />
+    </Translation>
+    <Translation key="COM_COMMON_COMPLETE">
+        <Language id="es" value="Parche completo" />
+    </Translation>
+    <Translation key="COM_COMMON_DES_COMPLETE">
+        <Language id="es" value="Se ha aplicado el parche correctamente&#xA;&#xA;Por favor, reinicia el juego" />
+    </Translation>
+    <Translation key="COM_COMMON_RESTORE">
+        <Language id="es" value="Restauración completa" />
+    </Translation>
+    <Translation key="COM_COMMON_DES_RESTORE">
+        <Language id="es" value="Se ha restaurado/eliminado el parche&#xA;&#xA;Por favor, reinicia el juego" />
+    </Translation>
+    <Translation key="STR_CONTINUE">
+        <Language id="es" value="Continuar" />
+    </Translation>
+    <Translation key="COM_TITLE_NOVID">
+        <Language id="es" value="PARCHE: SIN VIDEO" />
+    </Translation>
+    <Translation key="COM_DES_NOVID">
+        <Language id="es" value="Esto desactiva los videos en los canales de GHTV.&#xA;NOTA: MIENTRAS EL PARCHE ESTÉ ACTIVADO, NO PODRÁS REPRODUCIR CANCIONES BAJO DEMANDA" />
+    </Translation>
+    <Translation key="COM_TITLE_HOPO">
+        <Language id="es" value="PARCHE: NOTAS HOPO" />
+    </Translation>
+    <Translation key="COM_DES_HOPO">
+        <Language id="es" value="Esto hará que las notas HOPO sean mucho más visibles cuando activas un Hero Power." />
+    </Translation>
+    <Translation key="COM_TITLE_HEROPOW">
+        <Language id="es" value="PARCHE: HERO POWER" />
+    </Translation>
+    <Translation key="COM_DES_HEROPOW">
+        <Language id="es" value="Esto hará que los Hero Powers luzcan como las versiones NEXT GEN. También corrige un error de sonido bajo en ciertos Hero Powers." />
+    </Translation>
+    <Translation key="COM_COMMON_APPLYING">
+        <Language id="es" value="Aplicando parche" />
+    </Translation>
+    <Translation key="COM_COMMON_APPLYING_DES">
+        <Language id="es" value="Por favor, espera mientras se aplica el parche" />
+    </Translation>
+    <Translation key="STR_DONE">
+        <Language id="es" value="Hecho" />
+    </Translation>
+    <Translation key="HIGH_FX_GEMBOTH">
+        <Language id="es" value="Gema Cuadrada" />
+    </Translation>
+    <Translation key="HIGH_FX_GEMDOWN">
+        <Language id="es" value="Gema Abajo" />
+    </Translation>
+    <Translation key="HIGH_FX_GEMUP">
+        <Language id="es" value="Gema Arriba" />
+    </Translation>
+    <Translation key="HIGH_FX_GEMOPEN">
+        <Language id="es" value="Gema Abierta" />
+    </Translation>
+    <Translation key="HIGH_FX_LIGHT">
+        <Language id="es" value="Iluminador" />
+    </Translation>
+    <Translation key="HIGH_FX_FIRE">
+        <Language id="es" value="Flama" />
+    </Translation>
+    <Translation key="HIGH_FX_UPSMASH">
+        <Language id="es" value="Efecto lateral" />
+    </Translation>
+    <Translation key="HIGH_FX_FLARE">
+        <Language id="es" value="Destello" />
+    </Translation>
+    <Translation key="HIGH_FX_BAR">
+        <Language id="es" value="Tira de barra" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_SAVED">
+        <Language id="es" value="¡Colores guardados!" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_SAVED_DES">
+        <Language id="es" value="Tus colores personalizados han sido guardados a tu Guitar Hero Live.&#xA;&#xA;Los colores se aplicarán la próxima vez que ingreses a GHL/GHTV desde el menú principal" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_SAVED_FAILED">
+        <Language id="es" value="Error al guardar los colores" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_SAVED_FAILED_DES">
+        <Language id="es" value="Error al guardar.&#xA;Por favor, inténtalo de nuevo.&#xA;&#xA;CÓDIGO DE ERROR: FXsysFailed" />
+    </Translation>
+    <Translation key="STR_REMOVED">
+        <Language id="es" value="Eliminado" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_RESTORED">
+        <Language id="es" value="¡Colores restaurados!" />
+    </Translation>
+    <Translation key="HIGH_FX_STR_RESTORED_DES">
+        <Language id="es" value="Se han eliminado tus colores pesonalizados de tu Guitar Hero Live.&#xA;&#xA;Los colores se aplicarán la próxima vez que ingreses a GHL/GHTV desde el menú principal" />
+    </Translation>
+    <Translation key="HYPER_STR_TITLE">
+        <Language id="es" value="HIPERVELOCIDAD" />
+    </Translation>
+    <Translation key="HYPER_STR_DES">
+        <Language id="es" value="Ajusta la rapidez con la que llegan las notas por la Autopista.&#xA;&#xA;Esto se afectará a todas las canciones." />
+    </Translation>
+    <Translation key="HYPER_STR_DEFAULT">
+        <Language id="es" value="Por defecto: 100%" />
+    </Translation>
+    <Translation key="HYPER_STR_RECOMMENDED">
+        <Language id="es" value="Recomendado: 200%" />
+    </Translation>
+    <Translation key="STR_FINISH">
+        <Language id="es" value="Finalizar" />
+    </Translation>
+    <Translation key="HYPER_STR_SAVED_FAILED">
+        <Language id="es" value="Error al guardar la Hipervelocidad" />
+    </Translation>
+    <Translation key="HYPER_STR_SAVED_FAILED_DES">
+        <Language id="es" value="Error al guardar.&#xA;Por favor, inténtalo de nuevo.&#xA;&#xA;CÓDIGO DE ERROR: HSsysNoneFailed" />
+    </Translation>
+    <Translation key="HYPER_STR_SAVING">
+        <Language id="es" value="Guardando Hipervelocidad" />
+    </Translation>
+    <Translation key="STR_PLZ_WAIT">
+        <Language id="es" value="Por favor, espera..." />
+    </Translation>
+    <Translation key="HYPER_STR_SAVED">
+        <Language id="es" value="¡Hipervelocidad guardada!" />
+    </Translation>
+    <Translation key="HYPER_STR_SAVED_DES">
+        <Language id="es" value="La Hipervelocidad ha sido guardada en tu Guitar Hero Live.&#xA;&#xA;La próxima canción que inicies aplicará tu Hipervelocidad" />
+    </Translation>
+    <Translation key="NET_COM_NONE_ACTIVE">
+        <Language id="es" value="No hay conexión a Internet" />
+    </Translation>
+    <Translation key="NET_COM_NONE_ACTIVE_DES">
+        <Language id="es" value="No hay conexión a Internet.&#xA;&#xA;Comprueba la conexión a Internet e inténtalo de nuevo." />
+    </Translation>
+    <Translation key="HYPER_STR_DOWNLOAD_DATA">
+        <Language id="es" value="Descargando datos de Hipervelocidad" />
+    </Translation>
+    <Translation key="NET_COM_FAILED_DOWNLOAD">
+        <Language id="es" value="Error de descarga" />
+    </Translation>
+    <Translation key="HYPER_STR_DOWNLOAD_DATA_FAIL">
+        <Language id="es" value="La herramienta no pudo descargar los datos de Hipervelocidad.&#xA;&#xA;Por favor, inténtalo de nuevo." />
+    </Translation>
+    <Translation key="GEM_WEL_TITLE">
+        <Language id="es" value="Cambiador de Gemas" />
+    </Translation>
+    <Translation key="STR_SEL_OPTION">
+        <Language id="es" value="Selecciona una opción" />
+    </Translation>
+    <Translation key="STR_RETURN_MAINMENU">
+        <Language id="es" value="Volver al Menú Principal" />
+    </Translation>
+    <Translation key="GEM_WEL_CREATE">
+        <Language id="es" value="Crear Paquete de Gemas" />
+    </Translation>
+    <Translation key="GEM_WEL_IMPORT">
+        <Language id="es" value="Importar Paquete de Gemas" />
+    </Translation>
+    <Translation key="GEM_WEL_RESET">
+        <Language id="es" value="Restaurar Gemas de GHL" />
+    </Translation>
+    <Translation key="GEM_CREATOR_TITLE">
+        <Language id="es" value="CAMBIADOR DE GEMAS" />
+    </Translation>
+    <Translation key="GEM_CREATOR_TITLE_DES">
+        <Language id="es" value="Cambia la apariencia de las gemas en las Carreteras.." />
+    </Translation>
+    <Translation key="GEM_CREATOR_RIGHT_HND">
+        <Language id="es" value="Modo Diestro" />
+    </Translation>
+    <Translation key="GEM_CREATOR_BOX">
+        <Language id="es" value="Cristal de las Gemas" />
+    </Translation>
+    <Translation key="GEM_CREATOR_BOX_TOGGLE">
+        <Language id="es" value="Vista previa del Cristal de las Gemas" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SEL_BOX">
+        <Language id="es" value="Selecciona la textura de la Gema Abierta" />
+    </Translation>
+    <Translation key="GEM_CREATOR_LEFT_HND">
+        <Language id="es" value="Modo Zurdo" />
+    </Translation>
+    <Translation key="STR_RESET">
+        <Language id="es" value="Restaurar" />
+    </Translation>
+    <Translation key="STR_TEMPLATES">
+        <Language id="es" value="Plantillas" />
+    </Translation>
+    <Translation key="GEM_CREATOR_OPEN_STRUM">
+        <Language id="es" value="Rasguero Abierto" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATE_PACK">
+        <Language id="es" value="Crear Paquete de Gemas" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_OPEN_RESOURCE">
+        <Language id="es" value="Abrir carpeta de Paquete de Gemas" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_REDOWNLOAD">
+        <Language id="es" value="Volver a descargar el Paquete de Gemas Oficial" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_TITLE">
+        <Language id="es" value="Importar Paquete de Gemas" />
+    </Translation>
+    <Translation key="STR_NORMAL">
+        <Language id="es" value="Normal" />
+    </Translation>
+    <Translation key="STR_HERO_COLLECT">
+        <Language id="es" value="Hero Power Recolector" />
+    </Translation>
+    <Translation key="STR_HERO_ACTIVE">
+        <Language id="es" value="Hero Power Activado" />
+    </Translation>
+    <Translation key="GEM_CREATOR_LEFT_HND_PRE">
+        <Language id="es" value="Vista previa del Modo Zurdo" />
+    </Translation>
+    <Translation key="STR_HOPO">
+        <Language id="es" value="Hopo" />
+    </Translation>
+    <Translation key="STR_STREAK">
+        <Language id="es" value="Racha" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_FIND_MORE">
+        <Language id="es" value="CONSIGUE MÁS" />
+    </Translation>
+    <Translation key="GEM_CREATOR_PACK_NAME">
+        <Language id="es" value="Nombre del Paquete..." />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATOR_NAME">
+        <Language id="es" value="Nombre del Creador..." />
+    </Translation>
+    <Translation key="GEM_IMPORTER_DOWNLOAD_PACK">
+        <Language id="es" value="Descargar Paquete Oficial" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_DOWNLOAD_PACK_DES">
+        <Language id="es" value="¿Te gustaría descargar los Paquetes de Gemas Oficiales de GHTV Reloaded?" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_DOWNLOADING">
+        <Language id="es" value="Espera mientras se descargan los Paquetes de Gemas Oficiales de GHTV Reloaded." />
+    </Translation>
+    <Translation key="STR_IMPORTING">
+        <Language id="es" value="Importando" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_PACKOUTDATED_DES">
+        <Language id="es" value="El paquete se creó en una versión anterior al de las Herramientas de modificación.&#xA;Es posible que falten algunas texturas y características al aplicarlo." />
+    </Translation>
+    <Translation key="GEM_IMPORTER_PACKOUTDATED">
+        <Language id="es" value="Paquete de Gemas obsoleto" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_IMPORTING_DES">
+        <Language id="es" value="Por favor, espera mientras importamos los Paquetes de Gemas Oficiales de GHTV Reloaded a tu carpeta de recursos" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_NOPACK">
+        <Language id="es" value="No se encontró ningún Paquete de Gemas" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_NOPACK_DES">
+        <Language id="es" value="Debes agregar el Paquete de Gemas a tu carpeta 'resource pack'" />
+    </Translation>
+    <Translation key="STR_EXPORTING">
+        <Language id="es" value="Exportando" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_EXPORTING">
+        <Language id="es" value="Por favor, espera mientras exportamos tus texturas" />
+    </Translation>
+    <Translation key="STR_EXPORTDONE">
+        <Language id="es" value="Exportación completa" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_EXPORT_DONE">
+        <Language id="es" value="Las gemas personalizadas se han exportado a Guitar Hero Live.&#xA;&#xA;Los cambios surtirán efecto la próxima vez que inicies una canción de GHL o vuelvas a cargar GHTV." />
+    </Translation>
+    <Translation key="STR_SELECT">
+        <Language id="es" value="Seleccionar" />
+    </Translation>
+    <Translation key="STR_CREATOR">
+        <Language id="es" value="Creador:" />
+    </Translation>
+    <Translation key="GEM_IMPORTER_CONFIRM">
+        <Language id="es" value="¿Estás seguro que quieres importar este paquete?" />
+    </Translation>
+    <Translation key="STR_CONFIRM">
+        <Language id="es" value="Confirmar" />
+    </Translation>
+    <Translation key="STR_ERROR">
+        <Language id="es" value="ERROR" />
+    </Translation>
+    <Translation key="GEM_CREATOR_PLATFORM_ISNT_SUPPORTED">
+        <Language id="es" value="Cambiador de Gemas - Crear Paquetes no es compatible con tu sistema operativo actual.&#xA;&#xA;Cambiador de Gemas - Crear Paquetes es solo compatible con Windows" />
+    </Translation>
+    <Translation key="NET_COM_DOWNLOADING_EXTERNAL">
+        <Language id="es" value="Espera mientras descargamos archivos externos" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_PT1">
+        <Language id="es" value="Herramienta externa requerida - PARTE 1" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_PT1_DES">
+        <Language id="es" value="Para poder guardar tus Gemas Personalizadas en Guitar Hero Live, es necesaria la instalación de una herramienta externa.&#xA;&#xA;Haz click en Continuar Descarga. Una vez descargado, instala el programa&#xA;&#xA;Si ya tienes instalado el programa, puedes omitir este paso" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_PT2">
+        <Language id="es" value="Herramienta externa requerida - PARTE 2" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_PT2_DES">
+        <Language id="es" value="Cuando la instalación finalice&#xA;&#xA;Haz clic en continuar para localizar PVRTextToolCLI.exe&#xA;&#xA;Si lo instalaste en la ubicación por defecto, lo localizaremos automáticamente." />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_TOOL_FOUND">
+        <Language id="es" value="Herramienta externa localizada con éxito" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_TOOL_FOUND_DES">
+        <Language id="es" value="¡Hemos localizado automáticamente la herramienta externa en tu dispositivo!" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_TOOL_REQ">
+        <Language id="es" value="Herramienta externa requerida" />
+    </Translation>
+    <Translation key="GEM_CREATOR_EXT_TOOL_REQ_DES">
+        <Language id="es" value="Para poder guardar tus Gemas Personalizadas en Guitar Hero Live, es necesaria la instalación de una herramienta externa.&#xA;&#xA;Haz click en Continuar para abrir la página de descarga&#xA;&#xA;ASEGÚRATE DE INSTALAR PVR V4.0" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SEL_LEFT_HND">
+        <Language id="es" value="Selecciona la textura de la Gema del Modo Zurdo" />
+    </Translation>
+    <Translation key="STR_INVALID_IMG">
+        <Language id="es" value="Imagen no válida" />
+    </Translation>
+    <Translation key="STR_IMG_TOOLTIP">
+        <Language id="es" value="Asegúrate de que tu imagen es de 256x256 &#xA;&#xA;Inténtalo de nuevo" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SEL_OPEN">
+        <Language id="es" value="Selecciona la textura de la Gema Abierta" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SEL_RIGHT_HND">
+        <Language id="es" value="Selecciona la textura de la Gema del modo Diestro" />
+    </Translation>
+    <Translation key="STR_CONVERTING">
+        <Language id="es" value="Convirtiendo" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CONVERTING_TEX">
+        <Language id="es" value="Espera mientras convertimos tus texturas." />
+    </Translation>
+    <Translation key="STR_CONVERT_FAIL">
+        <Language id="es" value="Conversión fallida" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CONVERTING_FAIL">
+        <Language id="es" value="Error al convertir tus texturas&#xA;&#xA;Comprueba si tienes instalado Python 3.1" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CONVERT_DONE">
+        <Language id="es" value="Crear Paquete de Gemas" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CONVERT_DONE_DES">
+        <Language id="es" value="Necesitamos algunos detalles antes de crear tu Paquete" />
+    </Translation>
+    <Translation key="STR_CONVERTED">
+        <Language id="es" value="Convertido:" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATE_PACK">
+        <Language id="es" value="Creando Paquete de Gemas" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATE_PACK_DES">
+        <Language id="es" value="Espera mientras creamos tu Paquete de Gemas." />
+    </Translation>
+    <Translation key="GEM_CREATOR_SHARE">
+        <Language id="es" value="Compartir tu Paquete de Gemas" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SHARE_DES">
+        <Language id="es" value="¿Te gustaría compartir tu Paquete de Gemas con los demás? &#xA;&#xA;(Se abrirá nuestro canal de Discord donde podrás compartirlo con los demás)" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATED_PACK">
+        <Language id="es" value="Paquete de Gemas creado" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATED_PACK_DES1">
+        <Language id="es" value="Tu Paquete de Gemas" />
+    </Translation>
+    <Translation key="GEM_CREATOR_CREATED_PACK_DES2">
+        <Language id="es" value="Ha sido creado" />
+    </Translation>
+    <Translation key="SETUP_STR_WELCOME">
+        <Language id="es" value="BIENVENIDO A GHTV RELOADED: HERRAMIENTAS DE MODIFICACIÓN&#xA;&#xA;Aquí encontrarás diversas modificaciones para aplicar a Guitar Hero Live." />
+    </Translation>
+    <Translation key="STR_GETSTARTED">
+        <Language id="es" value="EMPECEMOS" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 1&#xA;&#xA;Como es la primera vez que ejecutas la herramienta, necesitamos saber si has jugado antes a GHTV Reloaded." />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_NO">
+        <Language id="es" value="No - Primera vez jugando" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_YES">
+        <Language id="es" value="Sí - He jugado anteriormente" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_TITLE">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 1" />
+    </Translation>
+    <Translation key="STR_YES">
+        <Language id="es" value="Sí" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_DOWNLOAD">
+        <Language id="es" value="No - Descargar" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_2">
+        <Language id="es" value="¿Ya tienes RPCS3 (emulador de PlayStation 3)&#xA;instalado?" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_3">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 1&#xA;&#xA;Agrega tu copia de Guitar Hero Live a RPCS3" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_4">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 1&#xA;&#xA;Actualiza Guitar Hero Live al último parche oficial" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE1_5">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 1&#xA;&#xA;Configurar los ajustes de RPCS3" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE2_1">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 2&#xA;&#xA;Crear o iniciar sesión en una cuenta RPCN" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE2_2">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 2&#xA;&#xA;Crea tu cuenta de GHTV Reloaded" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE2_2_DES">
+        <Language id="es" value="Tipo de desbloqueo&#xA;(COPIAR AL PORTAPAPELES)" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE2_2_UNLCOKALL">
+        <Language id="es" value="Desbloquear todo - 1" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE2_2_OG">
+        <Language id="es" value="Original - 0" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE3">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 3&#xA;&#xA;Instalando mod GHTV Reloaded&#xA;Por favor, espera mientras descargamos e instalamos el mod" />
+    </Translation>
+    <Translation key="STR_LOADING_STATUS">
+        <Language id="es" value="Estado:" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE3_2">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 3&#xA;&#xA;El mod GHTV Reloaded se ha instalado en Guitar Hero Live.&#xA;¿Te gustaría iniciar la configuración de guitarra?" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE3_2_DES">
+        <Language id="es" value="(Útil para averiguar cómo conectar tu guitarra a RPCS3)" />
+    </Translation>
+    <Translation key="STR_NEED_SETUP">
+        <Language id="es" value="Sí - Configurar" />
+    </Translation>
+    <Translation key="STR_NO_NEED_SETUP">
+        <Language id="es" value="No - Ya está configurado" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 4&#xA;&#xA;¿Qué guitarra tienes?" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_1_CONSOLE">
+        <Language id="es" value="Guitarra de consola &#xA;(Xbox, Playstation, Wii U)" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_1_MOBILE">
+        <Language id="es" value="Guitarra de iOS" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_2">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 4&#xA;&#xA;¿Qué dongle tienes?&#xA;(Selecciona el color que coincida con el botón de sincronización en el dongle)" />
+    </Translation>
+    <Translation key="CONSOLE_XBOX360">
+        <Language id="es" value="Xbox 360" />
+    </Translation>
+    <Translation key="CONSOLE_XBO">
+        <Language id="es" value="Xbox One" />
+    </Translation>
+    <Translation key="CONSOLE_PS4">
+        <Language id="es" value="PS4" />
+    </Translation>
+    <Translation key="CONSOLE_PS3_WIIU">
+        <Language id="es" value="PS3 / Wii U" />
+    </Translation>
+    <Translation key="STR_GUITAR_DONGLE">
+        <Language id="es" value="DONGLE" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_3_XBOX360">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 4&#xA;&#xA;Revisa el video a continuación sobre cómo configurar tu dongle" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_3_EXTERNAL">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 4&#xA;&#xA;Sigue las instrucciones en el archivo&#xA;léeme (readme) de la página web sobre cómo configurar tu dongle" />
+    </Translation>
+    <Translation key="STR_REOPENLINK">
+        <Language id="es" value="Reabrir enlace" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE4_4">
+        <Language id="es" value="CONFIGURACIÓN: ETAPA 4&#xA;&#xA;Configura el controlador RPCS3 para tu guitarra" />
+    </Translation>
+    <Translation key="SETUP_STR_STAGE5">
+        <Language id="es" value="Etapa: 5&#xA;&#xA;¡Estás listo para jugar a GHTV Reloaded!" />
+    </Translation>
+    <Translation key="STR_ROCKON">
+        <Language id="es" value="ROCK ON!" />
+    </Translation>
+    <Translation key="SETUP_STR_LOCATED_RPCS3">
+        <Language id="es" value="Localiza RPCS3" />
+    </Translation>
+    <Translation key="SETUP_STR_LOCATED_RPCS3_DES">
+        <Language id="es" value="Necesitamos que localices tu carpeta de RPCS3" />
+    </Translation>
+    <Translation key="SETUP_STR_NO_DISC">
+        <Language id="es" value="No se ha encontrado el juego" />
+    </Translation>
+    <Translation key="SETUP_STR_NO_DISC_DES">
+        <Language id="es" value="No pudimos encontrar Guitar Hero Live instalado en tu RPCS3&#xA;&#xA;Inténtalo de nuevo" />
+    </Translation>
+    <Translation key="SETUP_STR_NO_FSG_UPDATE">
+        <Language id="es" value="No se ha encontrado ninguna actualización del juego" />
+    </Translation>
+    <Translation key="SETUP_STR_NO_FSG_UPDATE_DES">
+        <Language id="es" value="No pudimos encontrar la actualización de Guitar Hero Live instalada en tu RPCS3&#xA;&#xA;Inténtalo de nuevo" />
+    </Translation>
+    <Translation key="SETUP_STR_CONFIRM_RPCS3_SETTING">
+        <Language id="es" value="¿Estás seguro de que has configurado RPCS3 correctamente?" />
+    </Translation>
+    <Translation key="SETUP_STR_NONE_RPCN">
+        <Language id="es" value="No se ha encontrado ninguna cuenta de RPCN" />
+    </Translation>
+    <Translation key="SETUP_STR_NONE_RPCN_DES">
+        <Language id="es" value="No se ha encontrado ninguna cuenta de RPCN instalada en tu RPCS3&#xA;&#xA;Asegúrate de haberte registrado o iniciado sesión" />
+    </Translation>
+    <Translation key="STR_INVAIL_FILE">
+        <Language id="es" value="Archivo no válido" />
+    </Translation>
+    <Translation key="SETUP_STR_RELOADED_ACCOUNT_TIP">
+        <Language id="es" value="Asegúrese de haber seleccionado CONFIGDEMONWARE.XML" />
+    </Translation>
+    <Translation key="NET_COM_PREP">
+        <Language id="es" value="Preparando" />
+    </Translation>
+    <Translation key="NET_COM_FETCH_GIT_DETAILS">
+        <Language id="es" value="Obtención de los últimos detalles de la actualización" />
+    </Translation>
+    <Translation key="NET_COM_DOWNLOAD_START_GHTVR">
+        <Language id="es" value="Iniciando descarga de la última actualización" />
+    </Translation>
+    <Translation key="NET_COM_DOWNLOAD_DONE">
+        <Language id="es" value="¡Completado!" />
+    </Translation>
+    <Translation key="SETUP_ERROR_NO_TOOL">
+        <Language id="es" value="Ninguna herramienta pública" />
+    </Translation>
+    <Translation key="SETUP_ERROR_NO_TOOL_DES">
+        <Language id="es" value="En este momento, no hay herramientas ni controladores disponibles" />
+    </Translation>
+    <Translation key="NET_COM_DEFAULT_MSG">
+        <Language id="es" value="Por favor, espera mientras descargamos el archivo." />
+    </Translation>
+    <Translation key="NET_COM_NO_GAME">
+        <Language id="es" value="Falta Guitar Hero Live" />
+    </Translation>
+    <Translation key="NET_COM_NO_GAME_DES">
+        <Language id="es" value="Parece que falta Guitar Hero Live en RPCS3" />
+    </Translation>
+    <Translation key="NET_COM_PREP_INSTALL">
+        <Language id="es" value="Preparando archivos para instalar" />
+    </Translation>
+    <Translation key="NET_COM_APPLY_MOD">
+        <Language id="es" value="Aplicar modificación" />
+    </Translation>
+    <Translation key="NET_COM_UPDATE_DONE">
+        <Language id="es" value="Actualización completa" />
+    </Translation>
+    <Translation key="NET_COM_PATH_FAILL">
+        <Language id="es" value="Error al encontrar RPCS3" />
+    </Translation>
+    <Translation key="NET_COM_PATH_FAILL_DES">
+        <Language id="es" value="Debes volver a ejecutar para que la configuración se procese de nuevo..." />
+    </Translation>
+    <Translation key="SETT_TOG_AUTO_UPDATE">
+        <Language id="es" value="Actualizaciones automáticas del juego" />
+    </Translation>
+    <Translation key="NET_CHECK_FOR_GAME_UPDATE">
+        <Language id="es" value="Obteniendo la última actualización de GHTV Reloaded" />
+    </Translation>
+    <Translation key="NET_CHECK_FOR_GAME_UPDATE_DES">
+        <Language id="es" value="Buscando actualizaciones" />
+    </Translation>
+    <Translation key="NET_ERROR_GAME_UP_TODATE">
+        <Language id="es" value="Obteniendo la última actualización de GHTV Reloaded" />
+    </Translation>
+    <Translation key="NET_ERROR_GAME_UP_TODATE_DES">
+        <Language id="es" value="GHTV Reloaded está actualizado" />
+    </Translation>
+    <Translation key="SETT_FORCE_GAME_UPDATE">
+        <Language id="es" value="Buscar actualizacioes para GHTV Reloaded" />
+    </Translation>
+    <Translation key="GEM_CREATOR_SEL_TRAIL">
+        <Language id="es" value="Selecciona la textura del Rastro de nota" />
+    </Translation>
+    <Translation key="GEM_CREATOR_TRAIL">
+        <Language id="es" value="Rastro de nota" />
+    </Translation>
+    <Translation key="SETT_TAB_1">
+        <Language id="es" value="General" />
+    </Translation>
+    <Translation key="SETT_TAB_2">
+        <Language id="es" value="Caché" />
+    </Translation>
+    <Translation key="SETT_TAB_3">
+        <Language id="es" value="Datos de usuario" />
+    </Translation>
+    <Translation key="COM_COMMON_NOVID_DES_COMPLETE">
+        <Language id="en" value="Para habilitar esto, debe abrir 'Mange/Game Patches' en RPCS3 y habilitar el parche sin video allí." />
+    </Translation>
+    <Translation key="STR_QUIT">
+        <Language id="en" value="Salir de la aplicación" />
+    </Translation>
+    <Translation key="COMM_RESTARTPATCH_TITLE">
+        <Language id="en" value="PARCHE DE REINICIO" />
+    </Translation>
+    <Translation key="COMM_RESTARTPATCH_TITLE_DES">
+        <Language id="en" value="Agregue un botón de reinicio a pedido" />
+    </Translation>
+    <Translation key="STR_TUTORIAL">
+        <Language id="en" value="Tutorial" />
+    </Translation>
+    <Translation key="COMM_RESTART_TUT">
+        <Language id="en" value="Al reiniciar una canción&#xA;&#xA;1. Presione ok cuando se cargue el contenido de descarga fallido&#xA;&#xA;2. Presione el botón de pausa para deshacerse de la selección de energía del héroe (repita 3X).&#xA;&#xA;3. A la tercera vez, la canción se reiniciará. (si reinicia una lista de reproducción, vuelve a la primera canción de la lista de reproducción)" />
+    </Translation>
+    <Translation key="STR_ACKNOWLEDGE">
+        <Language id="en" value="Reconocer" />
+    </Translation>
+    <Translation key="COMM_TAB_2">
+        <Language id="en" value="Experimental" />
+    </Translation>
+    <Translation key="COM_RESTART">
+        <Language id="en" value="Reiniciar parche" />
+    </Translation>
+</Translation>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Classes>
+	<Class Type="CGHLiveSerialisableMenu">
+		<Property Name="Class">
+			<Class Type="CPauseMenu">
+				<Property Name="Popup Id">OnDemandPauseDialog</Property>
+				<!--Property Name="Popup Id P2">OnDemandPauseDialogP2</Property-->
+			</Class>
+		</Property>
+		
+		<Property Name="ID">OnDemandPauseMenu</Property>
+		<Property Name="Title">STR_PAUSEMENU</Property>
+		
+		<!-- Transitions -->
+		<Property Name="Transitions">
+			<Value>PauseOptions</Value>
+			<Value>PauseCountdown</Value>
+			<Value>PlayerHeroPowerMenuP1</Value>
+		</Property>
+		
+		<!-- Options -->
+		<Property Name="Options">
+			<Value>
+				<Class Type="CGHLiveSerialisableMenuOption">
+					<Property Name="ID">Continue</Property>
+					<Property Name="Text">STR_RESUME</Property>
+				</Class>
+			</Value>
+			<Value>
+				<Class Type="CGHLiveSerialisableMenuOption">
+					<Property Name="ID">Restart</Property>
+					<Property Name="Text">STR_RESTART</Property>
+				</Class>
+			</Value>
+			<Value>
+				<Class Type="CGHLiveSerialisableMenuOption">
+					<Property Name="ID">HeroPower</Property>
+					<Property Name="Text">STR_HEROPOWERS</Property>
+					<Property Name="DefaultTransition">PlayerHeroPowerMenuP1</Property>
+				</Class>
+			</Value>
+			<Value>
+				<Class Type="CGHLiveSerialisableMenuOption">
+					<Property Name="ID">Difficulty</Property>
+					<Property Name="Text">STR_DIFFICULTY</Property>
+				</Class>
+			</Value>
+			<Value>
+				<Class Type="CGHLiveSerialisableMenuOption">
+					<Property Name="ID">LeftyFlip</Property>
+					<Property Name="Text">STR_TOGGLELEFTYFLIP</Property>
+					<Property Name="Class">
+						<Class Type="CGHLivePopupMenuOption">
+							<Property Name="Popup Option Class">
+								<Class Type="CToggleDialogOption">
+									<Property Name="Values">
+										<Value>STR_ON</Value>
+										<Value>STR_OFF</Value>
+									</Property>
+									<Property Name="Auto Toggle">true</Property>
+								</Class>
+							</Property>
+						</Class>
+					</Property>
+				</Class>
+			</Value>
+			<!--Value>
+				<Class Type="CGHLiveSerialisableMenuOption">
+					<Property Name="ID">Vocals</Property>
+					<Property Name="Text">STR_TOGGLEVOCALS</Property>
+					<Property Name="Class">
+						<Class Type="CGHLivePopupMenuOption">
+							<Property Name="Popup Option Class">
+								<Class Type="CToggleDialogOption">
+									<Property Name="Values">
+										<Value>STR_ON</Value>
+										<Value>STR_OFF</Value>
+									</Property>
+									<Property Name="Auto Toggle">true</Property>
+								</Class>
+							</Property>
+						</Class>
+					</Property>
+				</Class>
+			</Value-->
+			<Value>
+				<Class Type="CGHLiveSerialisableMenuOption">
+					<Property Name="ID">Options</Property>
+					<Property Name="Text">STR_OPTIONS</Property>
+					<Property Name="DefaultTransition">PauseOptions</Property>
+				</Class>
+			</Value>
+			<Value>
+				<Class Type="CGHLiveSerialisableMenuOption">
+					<Property Name="ID">Quit</Property>
+					<Property Name="Text">STR_QUIT</Property>
+				</Class>
+			</Value>
+		</Property>
+	</Class>
+</Classes>

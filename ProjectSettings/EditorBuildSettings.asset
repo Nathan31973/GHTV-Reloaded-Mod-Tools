@@ -24,6 +24,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Gem Changer.unity
     guid: 190a4d7a68270b84db85a266bdc6840f
   - enabled: 1
-    path: Assets/Scenes/Hopo Patch.unity
+    path: Assets/Scenes/Community patches/Hopo Patch.unity
     guid: d7dd0cfe41c1a5d458ab9de4ed050789
+  - enabled: 1
+    path: Assets/Scenes/Community patches/Hero Patch.unity
+    guid: 5392d1279e945424ab2a2902912ba255
+  - enabled: 1
+    path: Assets/Scenes/Community patches/Streak Patch.unity
+    guid: 2eca0cc2ef97c6d4ab01ff1e98b7d11b
+  - enabled: 1
+    path: Assets/Scenes/Community patches/Novid Patch.unity
+    guid: f257ba4c00151b9459281522700124b8
+  - enabled: 1
+    path: Assets/Scenes/Setup.unity
+    guid: 57cdd6b61881e184ca6d6bd7ec8f09ee
+  - enabled: 1
+    path: Assets/Scenes/Community patches/Restart Button Patch.unity
+    guid: 51e4c23578630d749aaeedfb65880419
   m_configObjects: {}

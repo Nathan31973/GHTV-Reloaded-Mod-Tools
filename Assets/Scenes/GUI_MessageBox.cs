@@ -19,9 +19,12 @@ public class GUI_MessageBox : MonoBehaviour
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        if (title != null | title != " " | MessageTitle != null)
+        if (MessageTitle != null)
         {
-            MessageTitle.text = title;
+            if (title != null | title != " " | MessageTitle != null)
+            {
+                MessageTitle.text = title;
+            }
         }
         addmessage();
         if (button != null)

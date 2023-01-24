@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Classes>
+	<Class Type="CGenericDialog">
+		<!-- Unique Identifier -->
+		<Property Name="ID">OnDemandPauseDialog</Property>
+
+		<!-- Data -->
+		<Property Name="Data">
+			<Class Type="CDialogScaleformData">
+				<Property Name="Scaleform Movie">Flash/Output/Persistent.swf</Property>
+				<Property Name="Scaleform Member">_root.Dialog</Property>
+				<Property Name="Panel">DynamicDialogPanel</Property>
+				<Property Name="Data Object">fsg.common.dialog.data.DialogData</Property>
+				
+				<Property Name="Option Objects">
+					<Value>fsg.common.dialog.DialogOption</Value>
+					<Value>fsg.common.dialog.DialogOption</Value>
+					<Value>fsg.common.dialog.DialogOption</Value>
+					<Value>fsg.common.dialog.DialogOption</Value>
+					<Value>fsg.common.dialog.OnOffDialogOption</Value>
+					<Value>fsg.common.dialog.DialogOption</Value>
+					<Value>fsg.common.dialog.DialogOption</Value>
+					<Value>fsg.common.dialog.OnOffDialogOption</Value>
+				</Property>
+			</Class>
+		</Property>
+	</Class>
+</Classes>

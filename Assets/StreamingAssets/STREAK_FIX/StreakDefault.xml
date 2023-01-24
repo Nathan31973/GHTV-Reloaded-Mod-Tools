@@ -1,0 +1,92 @@
+<Config>
+ 
+	<!-- Multiplier -->	
+	<MaxMultiplier> 4 </MaxMultiplier>
+	<StreakPerMultiplierLevel> 10 </StreakPerMultiplierLevel>
+
+	
+	<!-- Streak -->
+	
+	<!-- Beginner -->
+	<StreakValueBeginner1>25</StreakValueBeginner1>
+	<StreakValueBeginner2>50</StreakValueBeginner2>
+	<StreakValueBeginner3>75</StreakValueBeginner3>
+	<StreakValueBeginner4>100</StreakValueBeginner4>
+	<StreakValueBeginner5>125</StreakValueBeginner5>
+	<StreakValueBeginner6>150</StreakValueBeginner6>
+	<StreakValueBeginner7>175</StreakValueBeginner7>
+	<StreakValueBeginner8>200</StreakValueBeginner8>
+	<StreakValueBeginner9>225</StreakValueBeginner9>
+	<StreakValueBeginner10>250</StreakValueBeginner10>
+	<StreakIncrementBeginner>25</StreakIncrementBeginner>
+	
+	<!-- Easy -->
+	<StreakValueEasy1>25</StreakValueEasy1>
+	<StreakValueEasy2>50</StreakValueEasy2>
+	<StreakValueEasy3>75</StreakValueEasy3>
+	<StreakValueEasy4>100</StreakValueEasy4>
+	<StreakValueEasy5>125</StreakValueEasy5>
+	<StreakValueEasy6>150</StreakValueEasy6>
+	<StreakValueEasy7>175</StreakValueEasy7>
+	<StreakValueEasy8>200</StreakValueEasy8>
+	<StreakValueEasy9>225</StreakValueEasy9>
+	<StreakValueEasy10>250</StreakValueEasy10>
+	<StreakIncrementEasy>25</StreakIncrementEasy>
+	
+	<!-- Medium -->
+	<StreakValueMedium1>50</StreakValueMedium1>
+	<StreakValueMedium2>100</StreakValueMedium2>
+	<StreakValueMedium3>150</StreakValueMedium3>
+	<StreakValueMedium4>200</StreakValueMedium4>
+	<StreakValueMedium5>250</StreakValueMedium5>
+	<StreakValueMedium6>300</StreakValueMedium6>
+	<StreakValueMedium7>350</StreakValueMedium7>
+	<StreakValueMedium8>400</StreakValueMedium8>
+	<StreakValueMedium9>450</StreakValueMedium9>
+	<StreakValueMedium10>500</StreakValueMedium10>
+	<StreakIncrementMedium>50</StreakIncrementMedium>
+	
+	<!-- Hard -->
+	<StreakValueHard1>50</StreakValueHard1>
+	<StreakValueHard2>100</StreakValueHard2>
+	<StreakValueHard3>150</StreakValueHard3>
+	<StreakValueHard4>200</StreakValueHard4>
+	<StreakValueHard5>250</StreakValueHard5>
+	<StreakValueHard6>300</StreakValueHard6>
+	<StreakValueHard7>350</StreakValueHard7>
+	<StreakValueHard8>400</StreakValueHard8>
+	<StreakValueHard9>450</StreakValueHard9>
+	<StreakValueHard10>500</StreakValueHard10>
+	<StreakIncrementHard>100</StreakIncrementHard>
+	
+	<!-- Expert -->
+	<StreakValueExpert1>50</StreakValueExpert1>
+	<StreakValueExpert2>100</StreakValueExpert2>
+	<StreakValueExpert3>200</StreakValueExpert3>
+	<StreakValueExpert4>300</StreakValueExpert4>
+	<StreakValueExpert5>400</StreakValueExpert5>
+	<StreakValueExpert6>500</StreakValueExpert6>
+	<StreakValueExpert7>600</StreakValueExpert7>
+	<StreakValueExpert8>700</StreakValueExpert8>
+	<StreakValueExpert9>800</StreakValueExpert9>
+	<StreakValueExpert10>900</StreakValueExpert10>
+	<StreakIncrementExpert>100</StreakIncrementExpert>
+
+		
+	<!-- Streak Max -->
+	<MaxStreakValue>99999</MaxStreakValue>	
+ 
+	<!-- Streak Banner Types-->
+	<!--
+	0=All notes
+	1=Left-most note only
+	-->
+	<StreakBannerType>0</StreakBannerType>
+	
+	<!-- Streak Banner Levels -->
+	<StreakBannerLevel1>0</StreakBannerLevel1>
+	<StreakBannerLevel2>50</StreakBannerLevel2>
+	<StreakBannerLevel3>100</StreakBannerLevel3>
+	<StreakBannerLevel4>200</StreakBannerLevel4>
+	
+</Config>

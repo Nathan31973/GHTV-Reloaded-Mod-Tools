@@ -36,8 +36,10 @@ public class HyperSpeed : MonoBehaviour
 
     public DateTime lastCheck;
     public DateTime dt;
+    private Translater T;
     private void Start()
     {
+        T = Translater.instance;
         DiscordController.instance.UpdateDiscordActivity("Hyper Speed Changer", "Adjusting the highway speed for GHL", "hyperspeed", "Hyper Speed Changer");
         updateText(hyperSpeed);
         slider.value = hyperSpeed;
@@ -101,8 +103,8 @@ public class HyperSpeed : MonoBehaviour
                 else
                 {
                     GameObject t = Instantiate(Message);
-                    t.GetComponent<GUI_MessageBox>().title = "Invalided Path";
-                    t.GetComponent<GUI_MessageBox>().message = $"Please make sure you have selected your RPCS3 Root folder!";
+                    t.GetComponent<GUI_MessageBox>().title = T.getText("ERROR_INVAL_PATH");
+                    t.GetComponent<GUI_MessageBox>().message = T.getText("STR_RPCS3_RIGHT_FOLD");
                 }
             }
         }
@@ -116,27 +118,43 @@ public class HyperSpeed : MonoBehaviour
         {
             GameObject t = Instantiate(Message);
             userData.instance.LocalFilePath = "TEST";
-            t.GetComponent<GUI_MessageBox>().title = "Invalided Path";
-            t.GetComponent<GUI_MessageBox>().message = $"Please make sure you have selected your RPCS3 Root folder!";
+            t.GetComponent<GUI_MessageBox>().title = T.getText("ERROR_INVAL_PATH");
+            t.GetComponent<GUI_MessageBox>().message = T.getText("STR_RPCS3_RIGHT_FOLD");
         }
     }
 
     private IEnumerator SaveToDisk(string path)
     {
+        //version checker
+        string region = "";
+        if (userData.instance.gameVersion == userData.Version.PAL || userData.instance.gameVersion == userData.Version.Lite)
+        {
+            region = "BLES02180";
+        }
+        else if (userData.instance.gameVersion == userData.Version.USA)
+        {
+            region = "BLUS31556";
+        }
+        else
+        {
+            Debug.LogError("[HyperSpeed] USER HASN'T SELECTED A GAME REGION");
+            yield break;
+        }
+
         load = null;
         if (path == null || path == "")
         {
             GameObject h = Instantiate(Message);
-            h.GetComponent<GUI_MessageBox>().title = "Failed To Save Hyper Speed";
-            h.GetComponent<GUI_MessageBox>().message = $"An Error has occured while saving\nPlease try again\n\nERROR CODE: HSsysNoneFailed";
+            h.GetComponent<GUI_MessageBox>().title = T.getText("HYPER_STR_SAVED_FAILED");
+            h.GetComponent<GUI_MessageBox>().message = T.getText("HYPER_STR_SAVED_FAILED_DES");
             Debug.LogError("[HyperSpeed] path is null while saving");
             yield break;
         }
         if (!Directory.Exists(Application.persistentDataPath + "/External_Tools/HyperSpeed/OVERRIDE/TRACKS_CLEAN"))
         {
             load = Instantiate(Loading);
-            load.GetComponent<GUI_MessageBox>().title = "Saving Hyper Speed";
-            load.GetComponent<GUI_MessageBox>().message = "Please wait....";
+            load.GetComponent<GUI_MessageBox>().title = T.getText("HYPER_STR_SAVING");
+            load.GetComponent<GUI_MessageBox>().message = T.getText("STR_PLZ_WAIT");
 
             Download();
             yield return new WaitUntil(() => downloadDone == true);
@@ -144,19 +162,26 @@ public class HyperSpeed : MonoBehaviour
         if(load == null)
         {
             load = Instantiate(Loading);
-            load.GetComponent<GUI_MessageBox>().title = "Saving Hyper Speed";
-            load.GetComponent<GUI_MessageBox>().message = "Please wait....";
+            load.GetComponent<GUI_MessageBox>().title = T.getText("HYPER_STR_SAVING");
+            load.GetComponent<GUI_MessageBox>().message = T.getText("STR_PLZ_WAIT");
         }
         Debug.Log("[HyperSpeed] Copying trackconfig to game");
         var directories = Directory.GetDirectories(Application.persistentDataPath + "/External_Tools/HyperSpeed/OVERRIDE/TRACKS_CLEAN");
         foreach (var d in directories)
         {
+            Debug.Log($"[HyperSpeed] dir = {d}");
             yield return new WaitForEndOfFrame();
             var a = d.Split(@"TRACKS_CLEAN\");
+            if(Application.platform == RuntimePlatform.LinuxPlayer || Application.platform == RuntimePlatform.LinuxEditor)
+            {
+                a = d.Split(@"TRACKS_CLEAN/");
+            }
             if (a.Length > 0)
             {
                 if (File.Exists(d + "/TRACKCONFIG.XML"))
                 {
+
+                    Debug.Log($"[HyperSpeed] opening {a[1]}.xml from {d}");
                     XDocument xmlFile = XDocument.Load(d + "/TRACKCONFIG.XML");
 
                     var dif = from c in xmlFile.Elements("Track").Elements("Highway")
@@ -172,16 +197,12 @@ public class HyperSpeed : MonoBehaviour
                     }
                     //save the XML back as file
                     //checking if directory exist
-                    if (!Directory.Exists($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}")) ;
+                    if (!Directory.Exists($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}")) ;
                     {
-                        Directory.CreateDirectory($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}");
+                        Directory.CreateDirectory($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}");
                     }
-                    if (!Directory.Exists($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}")) ;
-                    {
-                        Directory.CreateDirectory($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}");
-                    }
-                    xmlFile.Save($"{path}/dev_hdd0/game/BLUS31556/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}/TRACKCONFIG.XML");
-                    xmlFile.Save($"{path}/dev_hdd0/game/BLES02180/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}/TRACKCONFIG.XML");
+                    Debug.Log($"[HyperSpeed] Song ID {a[1]} saved");
+                    xmlFile.Save($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}/TRACKCONFIG.XML");
                 }
             }
         }
@@ -190,8 +211,8 @@ public class HyperSpeed : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Debug.Log("[HyperSpeed] Finished Copying");
         GameObject t = Instantiate(Message);
-        t.GetComponent<GUI_MessageBox>().title = "Hyper Speed Saved!";
-        t.GetComponent<GUI_MessageBox>().message = $"Your Hyper been save to your Guitar Hero Live game.\n\nThe next song you load your Hyper Speed will be apply";
+        t.GetComponent<GUI_MessageBox>().title = T.getText("HYPER_STR_SAVED");
+        t.GetComponent<GUI_MessageBox>().message = T.getText("HYPER_STR_SAVED_DES");
         t.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
         yield return null;
     }
@@ -256,8 +277,8 @@ public class HyperSpeed : MonoBehaviour
             {
                 Debug.Log("[HyperSpeed] Error. Check internet connection!");
                 GameObject a = Instantiate(Message);
-                a.GetComponent<GUI_MessageBox>().title = "No Active Internet Connection";
-                a.GetComponent<GUI_MessageBox>().message = $"No internet connect exist\n\nMake sure you are connected to the internet and try again.";
+                a.GetComponent<GUI_MessageBox>().title = T.getText("NET_COM_NONE_ACTIVE");
+                a.GetComponent<GUI_MessageBox>().message = T.getText("NET_COM_NONE_ACTIVE_DES");
                 a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
                 return;
             }
@@ -268,13 +289,22 @@ public class HyperSpeed : MonoBehaviour
             // Is file downloading yet?
             if (webClient != null)
                 return;
-
+            if (File.Exists($"{Application.persistentDataPath}/Hyperspeed.zip"))
+            {
+            File.Delete($"{Application.persistentDataPath}/Hyperspeed.zip");
+            }
             webClient = new WebClient();
             downloadDone = false;
+            HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create("http://ghtv.tools.hyper.stickgaming.net/");
+            myHttpWebRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
+            myHttpWebRequest.AllowAutoRedirect = true;
+            HttpWebResponse myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse();
+            Debug.Log(myHttpWebResponse.ResponseUri);
+
             webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
             webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webClient_DownloadProgressChanged);
-            webClient.QueryString.Add("file", Application.persistentDataPath + "\\Hyperspeed.zip"); // To identify the file 
-            webClient.DownloadFileAsync(new Uri("http://ghtv.tools.hyper.stickgaming.net/"), Application.persistentDataPath + "\\Hyperspeed.zip");
+            webClient.QueryString.Add("file", Application.persistentDataPath + "/Hyperspeed.zip"); // To identify the file 
+            webClient.DownloadFileAsync(new Uri($"{myHttpWebResponse.ResponseUri}"), Application.persistentDataPath + "/Hyperspeed.zip");
         
     }
     void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
@@ -282,7 +312,7 @@ public class HyperSpeed : MonoBehaviour
         string fileProcessed = ((System.Net.WebClient)(sender)).QueryString["file"]; // Getting the local path if required   
         Debug.Log("[HyperSpeed] Download Recevedbyte: " + e.BytesReceived + " Download totalbyte: " + e.TotalBytesToReceive);
         // use these variables if needed
-        load.GetComponent<GUI_MessageBox>().message = $"Downloading Hyper Speed data\n\n Dowloaded: {e.ProgressPercentage}%";
+        load.GetComponent<GUI_MessageBox>().message = $"{T.getText("HYPER_STR_DOWNLOAD_DATA")}\n\n{T.getText("STR_DOWNLOADED")} {e.ProgressPercentage}%";
         load.GetComponent<GUI_MessageBox>().addmessage();
 
 
@@ -290,6 +320,8 @@ public class HyperSpeed : MonoBehaviour
     private void Completed(object sender, AsyncCompletedEventArgs e)
     {
         webClient = null;
+        load.GetComponent<GUI_MessageBox>().CloseAnim();
+        load = null;
         Debug.LogWarning(e);
         Debug.Log("[HyperSpeed] Download completed!");
         extractFile("Hyperspeed.zip");
@@ -297,26 +329,32 @@ public class HyperSpeed : MonoBehaviour
 
     private void extractFile(string filename)
     {
-        long length = new FileInfo(Application.persistentDataPath + "\\Hyperspeed.zip").Length;
+        Debug.Log("[Hyper Speed] Extracting files");
+        long length = new FileInfo(Application.persistentDataPath + "/Hyperspeed.zip").Length;
         if (length > 0)
         {
-            if (!Directory.Exists(Application.persistentDataPath + "\\External_Tools"))
+            //cheap bug fix
+            if(Directory.Exists(Application.persistentDataPath + "/External_Tools/HyperSpeed"))
             {
-                Directory.CreateDirectory(Application.persistentDataPath + "\\External_Tools");
+                Directory.Delete(Application.persistentDataPath + "/External_Tools/HyperSpeed", true);
             }
-            if (!Directory.Exists(Application.persistentDataPath + "\\External_Tools\\HyperSpeed"))
+            if (!Directory.Exists(Application.persistentDataPath + "/External_Tools"))
             {
-                Directory.CreateDirectory(Application.persistentDataPath + "\\External_Tools\\HyperSpeed");
+                Directory.CreateDirectory(Application.persistentDataPath + "/External_Tools");
             }
-            ZipFile.ExtractToDirectory(Application.persistentDataPath + $"\\{filename}", Application.persistentDataPath + "\\External_Tools\\HyperSpeed");
-            File.Delete(Application.persistentDataPath + "\\Hyperspeed.zip");
+            if (!Directory.Exists(Application.persistentDataPath + "/External_Tools/HyperSpeed"))
+            {
+                Directory.CreateDirectory(Application.persistentDataPath + "/External_Tools/HyperSpeed");
+            }
+            ZipFile.ExtractToDirectory(Application.persistentDataPath + $"/{filename}", Application.persistentDataPath + "/External_Tools/HyperSpeed");
+            File.Delete(Application.persistentDataPath + "/Hyperspeed.zip");
             downloadDone = true;
         }
         else
         {
             GameObject t = Instantiate(Message);
-            t.GetComponent<GUI_MessageBox>().title = "Failed to download!";
-            t.GetComponent<GUI_MessageBox>().message = $"The tool failed to download the hyper speed libary.\n\nPlease try again";
+            t.GetComponent<GUI_MessageBox>().title = T.getText("NET_COM_FAILED_DOWNLOAD");
+            t.GetComponent<GUI_MessageBox>().message = T.getText("HYPER_STR_DOWNLOAD_DATA_FAIL");
             t.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
         }
     }

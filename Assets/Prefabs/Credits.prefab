@@ -144,10 +144,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "GHTV Reloaded: Mod Tools \nCreated by Nathan3197\n\nGHTV Reloaded:\nThe
-    Guitar Hero Nerd\n\nGem templates and premake packs:\nNathan3197\nGHCripto\n\nCommuity
-    Patches:\nHopo Patch Files:\nGHCripto\n\nThis application uses external software
-    by\n\nGHLIMGConverter:\nAnthoChamb\n\nPowerVR SDK V4.0: \nImaginationTech\n\nHyperSpeed
-    Files:\nThe Guitar Hero Nerd"
+    Guitar Hero Nerd\n\nGem templates and premake packs:\nNathan3197\nGHCripto\n\nCommunity
+    Patches:\nHopo Patch Files:\nGHCripto\n\nHero Power Patch Files and Screenshots:\nGHCripto\n\nStreak
+    Patch:\nNathan3197\n\nNo Video Patch Files:\nThe Guitar Hero Nerd\n\nTranslations:\nEnglish
+    - Nathan3197\nSpanish - GHCripto\n\nQA V1.3:\nBadskillz\nGHCripto\nMai!\n\nThis
+    application uses external software by\n\nGHLIMGConverter:\nAnthoChamb\n\nPowerVR
+    SDK V4.0: \nImaginationTech\n\nHyperSpeed Files:\nThe Guitar Hero Nerd"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c745de8153c0f9e4f92a91c23f82f59f, type: 2}
   m_sharedMaterial: {fileID: 8194078863458140800, guid: c745de8153c0f9e4f92a91c23f82f59f, type: 2}
@@ -196,7 +198,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_enableExtraPadding: 0
+  m_enableExtraPadding: 1
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1
@@ -241,6 +243,7 @@ GameObject:
   - component: {fileID: 3348026878801101112}
   - component: {fileID: 1366473161636042147}
   - component: {fileID: 4146836220272751760}
+  - component: {fileID: 5652615567148605516}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -296,7 +299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back
+  m_text: STR_BACK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c745de8153c0f9e4f92a91c23f82f59f, type: 2}
   m_sharedMaterial: {fileID: 8194078863458140800, guid: c745de8153c0f9e4f92a91c23f82f59f, type: 2}
@@ -365,6 +368,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5652615567148605516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583866853184552729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfd5c039190d044ea1502fb01c7a395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoupdate: 0
 --- !u!1 &1713990575441247249
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +526,7 @@ GameObject:
   - component: {fileID: 6987146670574863226}
   - component: {fileID: 6177234647548134406}
   - component: {fileID: 1278001053456690941}
+  - component: {fileID: 33506485887806916}
   m_Layer: 5
   m_Name: MessageTitle
   m_TagString: Untagged
@@ -565,7 +582,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Credits
+  m_text: TITLE_CREDIT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c745de8153c0f9e4f92a91c23f82f59f, type: 2}
   m_sharedMaterial: {fileID: 8194078863458140800, guid: c745de8153c0f9e4f92a91c23f82f59f, type: 2}
@@ -634,6 +651,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &33506485887806916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311687250754096693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfd5c039190d044ea1502fb01c7a395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoupdate: 0
 --- !u!1 &5422721312848763226
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d4f2388a7f4af4b8cd7fe32d08f09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Credits
+  title: TITLE_CREDIT
   message: 
   MessageTitle: {fileID: 1278001053456690941}
   MessageBox: {fileID: 0}

@@ -28,10 +28,12 @@ public class GemChanger_Importer : MonoBehaviour
 
     private GameObject nopackmessage;
     public bool refreshing = false;
+    private Translater T;
 
     // Start is called before the first frame update
     public void GemChangerImporterStart()
     {
+        T = Translater.instance;
         DiscordController.instance.UpdateDiscordActivity("Gem Changer", "Importing a Gem Pack", "gem_changer", "Gem Changer");
         if (!Directory.Exists($"{Application.persistentDataPath}/GemMaker/Resource Pack"))
         {
@@ -41,28 +43,29 @@ public class GemChanger_Importer : MonoBehaviour
         {
             GameObject a = Instantiate(MessageBox2);
             GUI_MessageBox b = a.GetComponent<GUI_MessageBox>();
-            b.title = "Download Official Pack";
-            b.message = "Would you like to download the Official GHTV Reloaded Gem Packs?";
+            b.title = T.getText("GEM_IMPORTER_DOWNLOAD_PACK");
+            b.message = T.getText("GEM_IMPORTER_DOWNLOAD_PACK_DES");
             b.button.onClick.AddListener(DownloadPacks);
         }
         else
         {
             refreshUI();
         }
-        
     }
+
     public void DownloadPacks()
     {
         Directory.CreateDirectory($"{Application.persistentDataPath}/GemMaker/defaultpack/");
         userData.instance.hasDownloadedDefaultAtLeastOnce = true;
-        btnDownload_Click("https://github.com/Nathan31973/GHTV-Reloaded-Official-Gem-Packs/archive/refs/heads/main.zip", "OfficialGemPack.zip");
+        btnDownload_Click("https://github.com/Nathan31973/GHTV-Reloaded-Mods-Tools-Assets/raw/main/default.stickpack", "OfficialGemPack.stickpack");
     }
+
     public void MANUALDOWNLOADPACK()
     {
         GameObject a = Instantiate(MessageBox2);
         GUI_MessageBox b = a.GetComponent<GUI_MessageBox>();
-        b.title = "Download Official Pack";
-        b.message = "Would you like to download the Official GHTV Reloaded Gem Packs?";
+        b.title = T.getText("GEM_IMPORTER_DOWNLOAD_PACK");
+        b.message = T.getText("GEM_IMPORTER_DOWNLOAD_PACK_DES");
         b.button.onClick.AddListener(DownloadPacks);
     }
 
@@ -88,14 +91,23 @@ public class GemChanger_Importer : MonoBehaviour
             {
                 return;
             }
+            if (!Directory.Exists(Application.persistentDataPath + $"/GemMaker/defaultpack"))
+            {
+                Directory.CreateDirectory(Application.persistentDataPath + $"/GemMaker/defaultpack");
+            }
 
-                isDownloading = true;
-                webClient = new WebClient();
-                webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(CompletedConver);
-                webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webClient_DownloadProgressChanged);
-                webClient.QueryString.Add("file", Application.persistentDataPath + $"\\{filename}"); // To identify the file
-                webClient.DownloadFileAsync(new Uri($"{url}"), Application.persistentDataPath + $"\\{filename}");
+            //checking if we don't have an old one
+            if (File.Exists(Application.persistentDataPath + $"/GemMaker/defaultpack/OfficialGemPack.stickpack"))
+            {
+                File.Delete(Application.persistentDataPath + $"/GemMaker/defaultpack/OfficialGemPack.stickpack");
+            }
 
+            isDownloading = true;
+            webClient = new WebClient();
+            webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(CompletedConver);
+            webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webClient_DownloadProgressChanged);
+            webClient.QueryString.Add("file", Application.persistentDataPath + $"/GemMaker/defaultpack/{filename}"); // To identify the file
+            webClient.DownloadFileAsync(new Uri($"{url}"), Application.persistentDataPath + $"/GemMaker/defaultpack/{filename}");
         }
     }
 
@@ -104,7 +116,7 @@ public class GemChanger_Importer : MonoBehaviour
         string fileProcessed = ((System.Net.WebClient)(sender)).QueryString["file"]; // Getting the local path if required
         Debug.Log("[GemChangerImporter] Download Recevedbyte: " + e.BytesReceived + " Download totalbyte: " + e.TotalBytesToReceive);
         // use these variables if needed
-        load.GetComponent<GUI_MessageBox>().message = $"Please wait while we download Official GHTV Reloaded Gem Packs\n\n Dowloaded: {e.ProgressPercentage}%";
+        load.GetComponent<GUI_MessageBox>().message = $"{T.getText("GEM_IMPORTER_DOWNLOADING")}\n\n{T.getText("STR_DOWNLOADED")} {e.ProgressPercentage}%";
         load.GetComponent<GUI_MessageBox>().addmessage();
     }
 
@@ -114,24 +126,16 @@ public class GemChanger_Importer : MonoBehaviour
         isDownloading = false;
         load.GetComponent<GUI_MessageBox>().CloseAnim();
         Debug.Log("[GemChangerImporter] Download completed!");
-        //checking if we don't have an old one
-        if(File.Exists(Application.persistentDataPath + $"\\GemMaker\\defaultpack\\GHTV-Reloaded-Official-Gem-Packs-main\\default.stickpack"))
-        {
-            File.Delete(Application.persistentDataPath + $"\\GemMaker\\defaultpack\\GHTV-Reloaded-Official-Gem-Packs-main\\default.stickpack");
-        }
-
-        ZipFile.ExtractToDirectory(Application.persistentDataPath + $"\\OfficialGemPack.zip", Application.persistentDataPath + "\\GemMaker\\defaultpack");
-        File.Delete(Application.persistentDataPath + $"\\OfficialGemPack.zip");
-        StartCoroutine(extractFile(Application.persistentDataPath + $"\\GemMaker\\defaultpack\\GHTV-Reloaded-Official-Gem-Packs-main\\default.stickpack"));
+        StartCoroutine(extractFile(Application.persistentDataPath + $"/GemMaker/defaultpack/OfficialGemPack.stickpack"));
     }
+
     private IEnumerator extractFile(string path)
     {
         load = Instantiate(LoadingBox);
-        load.GetComponent<GUI_MessageBox>().title = "Importing";
-        load.GetComponent<GUI_MessageBox>().message = "Please wait while we imported the Official GHTV Reloaded Gem Packs to your resource folder";
+        load.GetComponent<GUI_MessageBox>().title = T.getText("STR_IMPORTING");
+        load.GetComponent<GUI_MessageBox>().message = T.getText("GEM_IMPORTER_IMPORTING_DES");
         using (ZipArchive archive = ZipFile.OpenRead(path))
         {
-
             foreach (ZipArchiveEntry entry in archive.Entries.Where(e => e.FullName.Contains(".stickpack")))
             {
                 yield return new WaitForEndOfFrame();
@@ -139,13 +143,13 @@ public class GemChanger_Importer : MonoBehaviour
                 {
                     Directory.CreateDirectory($"{Application.persistentDataPath}/GemMaker/Resource Pack/");
                 }
-                entry.ExtractToFile(Path.Combine($"{Application.persistentDataPath}/GemMaker/Resource Pack/", entry.FullName),true);
+                entry.ExtractToFile(Path.Combine($"{Application.persistentDataPath}/GemMaker/Resource Pack/", entry.FullName), true);
+                Debug.Log($"[GemChangerImporter] Extracting {Path.Combine($"{Application.persistentDataPath}/GemMaker/Resource Pack/", entry.FullName)}");
             }
         }
-        Directory.Delete(Application.persistentDataPath + $"\\GemMaker\\defaultpack", true);
+        Directory.Delete(Application.persistentDataPath + $"/GemMaker/defaultpack", true);
         load.GetComponent<GUI_MessageBox>().CloseAnim();
     }
-
 
     private void refreshUI()
     {
@@ -165,8 +169,8 @@ public class GemChanger_Importer : MonoBehaviour
                         Debug.Log("[GemChangerImporter] No Gem Pack found");
                         nopackmessage = Instantiate(MessageBox);
                         GUI_MessageBox b = nopackmessage.GetComponent<GUI_MessageBox>();
-                        b.title = "No Gem Pack Found";
-                        b.message = "You need to add gem pack into your 'resource pack' folder";
+                        b.title = T.getText("GEM_IMPORTER_NOPACK");
+                        b.message = T.getText("GEM_IMPORTER_NOPACK_DES");
                         b.button.onClick.AddListener(OpenResourcePackFolder);
                     }
                 }
@@ -176,88 +180,91 @@ public class GemChanger_Importer : MonoBehaviour
                 if (e.Message.Contains("Could not find a part of the path"))
                 {
                     Debug.Log("[GemChangerImporter] Can't find Path");
-
                 }
             }
         }
-
     }
+
     public void OpenResourcePackFolder()
     {
-        Application.OpenURL(@$"{Application.persistentDataPath}\GemMaker\Resource Pack");
-        
+        Application.OpenURL($"{Application.persistentDataPath}/GemMaker/Resource Pack");
     }
+
     private void OnApplicationFocus(bool focus)
     {
         refreshUI();
     }
+
     private IEnumerator GrabingKeyFilesFromPack()
     {
-
-            refreshing = true;
-            blocker.SetActive(true);
-            //nuke the cache folder
-            if (Directory.Exists($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache"))
-            {
-                Debug.LogWarning("[GemChangerImporter] Clearing Resource Pack Cache");
-                Directory.Delete($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache", true);
-            }
-            yield return new WaitForEndOfFrame();
-            //clearing out existing UI
-            if (PackObj != null)
-            {
-                foreach (GameObject g in PackObj.ToArray())
-                {
-                    yield return new WaitForEndOfFrame();
-                    GameObject a = g;
-                    PackObj.Remove(g);
-                    Destroy(a);
-
-                }
-                PackObj.Clear();
-
-            }
-
-            string creator = "";
-            foreach (string pack in resourcePacks)
+        refreshing = true;
+        blocker.SetActive(true);
+        //nuke the cache folder
+        if (Directory.Exists($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache"))
+        {
+            Debug.LogWarning("[GemChangerImporter] Clearing Resource Pack Cache");
+            Directory.Delete($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache", true);
+        }
+        yield return new WaitForEndOfFrame();
+        //clearing out existing UI
+        if (PackObj != null)
+        {
+            foreach (GameObject g in PackObj.ToArray())
             {
                 yield return new WaitForEndOfFrame();
-                using (ZipArchive archive = ZipFile.OpenRead(pack))
-                {
-
-                    foreach (ZipArchiveEntry entry in archive.Entries.Where(e => e.FullName.Contains("Cover.png")))
-                    {
-                        if (!Directory.Exists($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}"))
-                        {
-                            Directory.CreateDirectory($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}");
-                        }
-                        entry.ExtractToFile(Path.Combine($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}", entry.FullName));
-                    }
-                    foreach (ZipArchiveEntry entry in archive.Entries.Where(e => e.FullName.Contains("Credit.dat")))
-                    {
-                        if (!Directory.Exists($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}"))
-                        {
-                            Directory.CreateDirectory($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}");
-                        }
-                        entry.ExtractToFile(Path.Combine($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}", entry.FullName));
-                        string getcreator = GetLine($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}/Credit.dat", 2);
-                        string[] tempsplit = getcreator.Split(":");
-                        creator = tempsplit[1];
-                    }
-
-                    GameObject a = Instantiate(PackPrefab);
-                    a.transform.SetParent(ScrollViewContent.transform, false);
-                    a.GetComponent<ExportPackCoverGameObject>().host = this;
-                    a.GetComponent<ExportPackCoverGameObject>().packName = Path.GetFileNameWithoutExtension(pack);
-                    a.GetComponent<ExportPackCoverGameObject>().Creator = creator;
-                    a.GetComponent<ExportPackCoverGameObject>().PackIcon = GetImg($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}/Cover");
-                    PackObj.Add(a);
-                }
+                GameObject a = g;
+                PackObj.Remove(g);
+                Destroy(a);
             }
-            blocker.SetActive(false);
-            refreshing = false;
-        
+            PackObj.Clear();
+        }
+
+        string creator = "";
+        string version = "";
+        foreach (string pack in resourcePacks)
+        {
+            yield return new WaitForEndOfFrame();
+            using (ZipArchive archive = ZipFile.OpenRead(pack))
+            {
+                foreach (ZipArchiveEntry entry in archive.Entries.Where(e => e.FullName.Contains("Cover.png")))
+                {
+                    if (!Directory.Exists($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}"))
+                    {
+                        Directory.CreateDirectory($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}");
+                    }
+                    entry.ExtractToFile(Path.Combine($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}", entry.FullName));
+                }
+                foreach (ZipArchiveEntry entry in archive.Entries.Where(e => e.FullName.Contains("Credit.dat")))
+                {
+                    if (!Directory.Exists($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}"))
+                    {
+                        Directory.CreateDirectory($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}");
+                    }
+                    entry.ExtractToFile(Path.Combine($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}", entry.FullName));
+                    string getcreator = GetLine($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}/Credit.dat", 2);
+                    string[] tempsplit = getcreator.Split(":");
+                    creator = tempsplit[1];
+
+                    string getver = GetLine($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}/Credit.dat", 3);
+                    string[] tempsplit2 = getver.Split(":");
+                    version = tempsplit2[1];
+
+                }
+
+                GameObject a = Instantiate(PackPrefab);
+                a.transform.SetParent(ScrollViewContent.transform, false);
+                a.GetComponent<ExportPackCoverGameObject>().host = this;
+                a.GetComponent<ExportPackCoverGameObject>().packName = Path.GetFileNameWithoutExtension(pack);
+                a.GetComponent<ExportPackCoverGameObject>().Creator = creator;
+                a.GetComponent<ExportPackCoverGameObject>().version = version;
+                a.GetComponent<ExportPackCoverGameObject>().PackIcon = GetImg($"{Application.persistentDataPath}/GemMaker/Resource Pack/cache/{Path.GetFileNameWithoutExtension(pack)}/Cover");
+                PackObj.Add(a);
+            }
+        }
+        blocker.SetActive(false);
+        refreshing = false;
     }
+
     private string GetLine(string fileName, int line)
     {
         using (var sr = new StreamReader(fileName))
@@ -267,6 +274,7 @@ public class GemChanger_Importer : MonoBehaviour
             return sr.ReadLine();
         }
     }
+
     private Texture2D GetImg(string path)
     {
         Texture2D thisTexture;
@@ -276,7 +284,6 @@ public class GemChanger_Importer : MonoBehaviour
         thisTexture.LoadImage(bytes);
         thisTexture.name = "Cover";
         return thisTexture;
-
     }
 
     public void ExportPack(string packname)
@@ -298,8 +305,8 @@ public class GemChanger_Importer : MonoBehaviour
                 {
                     GameObject t = Instantiate(MessageBox);
                     userData.instance.LocalFilePath = "TEST";
-                    t.GetComponent<GUI_MessageBox>().title = "Invalided Path";
-                    t.GetComponent<GUI_MessageBox>().message = $"Please make sure you have selected your RPCS3 Root folder!";
+                    t.GetComponent<GUI_MessageBox>().title = T.getText("ERROR_INVAL_PATH");
+                    t.GetComponent<GUI_MessageBox>().message = T.getText("STR_RPCS3_RIGHT_FOLD");
                 }
             }
         }
@@ -312,20 +319,23 @@ public class GemChanger_Importer : MonoBehaviour
         {
             GameObject t = Instantiate(MessageBox);
             userData.instance.LocalFilePath = "TEST";
-            t.GetComponent<GUI_MessageBox>().title = "Invalided Path";
-            t.GetComponent<GUI_MessageBox>().message = $"Please make sure you have selected your RPCS3 Root folder!";
+            t.GetComponent<GUI_MessageBox>().title = T.getText("ERROR_INVAL_PATH");
+            t.GetComponent<GUI_MessageBox>().message = T.getText("STR_RPCS3_RIGHT_FOLD");
         }
     }
 
     private IEnumerator Extract(string path)
     {
         load = Instantiate(LoadingBox);
-        load.GetComponent<GUI_MessageBox>().title = "Exporting";
-        load.GetComponent<GUI_MessageBox>().message = "Please wait while Export your textures";
+        load.GetComponent<GUI_MessageBox>().title = T.getText("STR_EXPORTING");
+        load.GetComponent<GUI_MessageBox>().message = T.getText("GEM_IMPORTER_EXPORTING");
         yield return new WaitForEndOfFrame();
+        if (Directory.Exists(Application.persistentDataPath + $"/GemMaker/Texture/"))
+        {
+            Directory.Delete(Application.persistentDataPath + $"/GemMaker/Texture/", true);
+        }
         using (ZipArchive archive = ZipFile.OpenRead(path))
         {
-
             foreach (ZipArchiveEntry entry in archive.Entries.Where(e => e.FullName.Contains(".IMG")))
             {
                 yield return new WaitForEndOfFrame();
@@ -337,14 +347,12 @@ public class GemChanger_Importer : MonoBehaviour
             }
         }
         StartCoroutine(AddToGHL());
-
     }
 
     private IEnumerator AddToGHL()
     {
-
         yield return new WaitForSeconds(8);
-
+        bool hasver = false;
         //checking if img files exist
         //if(!File.Exists($"{Application.persistentDataPath}/GemMaker/Texture/GemRight.IMG") | !File.Exists($"{Application.persistentDataPath}/GemMaker/Texture/GemLeft.IMG"))
         //{
@@ -375,40 +383,175 @@ public class GemChanger_Importer : MonoBehaviour
         string OpenGemHeroCollectIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemHeroPowerCollect";
         string OpenGemHeroActiveIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemHeroPowerActive";
         string OpenGemStreakIMG = Application.persistentDataPath + $"/GemMaker/Texture/OpenGemStreak";
+        string GemBoxIMG = Application.persistentDataPath + $"/GemMaker/Texture/GemBox";
+
+        string trailIMG = Application.persistentDataPath + $"/GemMaker/Texture/Trail";
+        string trailHeroIMG = Application.persistentDataPath + $"/GemMaker/Texture/TrailHero";
         //loop though the list of loc so it apply to GHTV and GHL gems
 
-        List<string> GameVersion = new List<string>();
-        GameVersion.Add("BLES02180");
-        GameVersion.Add("BLUS31556");
-        //all highways of GHL
-        int num = 0;
-
-        //removing the old gems if placed
-        foreach (string version in GameVersion)
+        //for updating from older version of the tool
+        string version = "";
+        if (userData.instance.gameVersion == userData.Version.PAL || userData.instance.gameVersion == userData.Version.Lite)
         {
+            version = "BLES02180";
+            hasver = true;
+        }
+        else if (userData.instance.gameVersion == userData.Version.USA)
+        {
+            version = "BLUS31556";
+            hasver = true;
+        }
+        else
+        {
+            Debug.LogError("[HopoPatch] USER HASN'T SELECTED A GAME REGION");
+        }
+        if (hasver)
+        {
+            //all highways of GHL
+            int num = 0;
+
+            //removing the old gems if placed
+
             if (Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS"))
             {
                 Directory.Delete($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS", true);
             }
-        }
-        foreach (string highway in main.Highways)
-        {
-            yield return new WaitForEndOfFrame();
-            load.GetComponent<GUI_MessageBox>().message = $"Please wait while Export your textures\n\nConverted: {num}/{main.Highways.Count}";
-            load.GetComponent<GUI_MessageBox>().addmessage();
-            num++;
-            foreach (string version in GameVersion)
+
+            foreach(string highway in main.Highways)
             {
+                yield return new WaitForEndOfFrame();
+                load.GetComponent<GUI_MessageBox>().message = $"Please wait while Export your textures\n\nConverted: {num}/{main.Highways.Count}";
+                load.GetComponent<GUI_MessageBox>().addmessage();
+                num++;
+
+                //CHECKING IF Folder EXIST
+                if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/"))
+                {
+                    Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/");
+                }
+
+
+                //checking if IMG exist from the bat file. this allow users to only update certain textures
+                if (File.Exists($"{RighGemImg}.IMG"))
+                {
+                    File.Copy($"{RighGemImg}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEM_COL_SRGB_00.1001.IMG", true);
+                    if (File.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEM_COL_SRGB_00.1001.IMG"))
+                    {
+                        Debug.Log("[GemChangerImporter] WE COPY GEM_{highway}_GEM_COL_SRGB_00.1001.IMG TO RPCS3");
+                    }
+                }
+
+                if (File.Exists($"{LeftGemIMG}.IMG"))
+                {
+                    File.Copy($"{LeftGemIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMLEFT_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{LeftHeroActiveIMG}.IMG"))
+                {
+                    File.Copy($"{LeftHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHEROACTIVELEFT_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{RightHeroActiveIMG}.IMG"))
+                {
+                    File.Copy($"{RightHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHEROACTIVE_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{LeftHeroCollectIMG}.IMG"))
+                {
+                    File.Copy($"{LeftHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHEROCOLLECTLEFT_COL_SRGB_00.1001.IMG", true);
+                }
+                if (File.Exists($"{RightHeroCollectIMG}.IMG"))
+                {
+                    File.Copy($"{RightHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHEROCOLLECT_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{LeftStreakIMG}.IMG"))
+                {
+                    File.Copy($"{LeftStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMSTREAKLEFT_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{RightStreakIMG}.IMG"))
+                {
+                    File.Copy($"{RightStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMSTREAK_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{LeftHopoIMG}.IMG"))
+                {
+                    File.Copy($"{LeftHopoIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHOPOLEFT_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{RightHopoIMG}.IMG"))
+                {
+                    File.Copy($"{RightHopoIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_GEMHOPO_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{OpenGemIMG}.IMG"))
+                {
+                    File.Copy($"{OpenGemIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_STRUM_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{OpenGemHeroCollectIMG}.IMG"))
+                {
+                    File.Copy($"{OpenGemHeroCollectIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_STRUMHEROCOLLECT_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{OpenGemHeroActiveIMG}.IMG"))
+                {
+                    File.Copy($"{OpenGemHeroActiveIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_STRUMHEROACTIVE_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{OpenGemStreakIMG}.IMG"))
+                {
+                    File.Copy($"{OpenGemStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/GEM_{highway}_STRUMSTREAK_COL_SRGB_00.1001.IMG", true);
+                }
+
+                if (File.Exists($"{GemBoxIMG}.IMG"))
+                {
+                    File.Copy($"{GemBoxIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DEFAULT/{highway}/TEXTURES/CATCHER_{highway}_BOX_COL_SRGB_00.1001.IMG", true);
+                }
+            }
+
+            foreach (string highway in main.OnDiskHighways)
+            {
+                yield return new WaitForEndOfFrame();
+                load.GetComponent<GUI_MessageBox>().message = $"Please wait while Export your textures\n\nConverted: {num}/{main.Highways.Count}";
+                load.GetComponent<GUI_MessageBox>().addmessage();
+                num++;
+
                 //CHECKING IF Folder EXIST
                 if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/"))
                 {
                     Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/");
                 }
 
+                //trails
+                //CHECKING IF Folder EXIST
+                if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/"))
+                {
+                    Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/");
+                }
+                if (File.Exists($"{trailHeroIMG}.IMG"))
+                {
+                    File.Copy($"{trailHeroIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_CYAN.IMG", true);
+                    if(File.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_CYAN.IMG"))
+                    {
+                        Debug.Log("[GemChangerImporter] WE COPY TRAIL_CYAN TO RPCS3");
+                    }
+                }
+
+                if (File.Exists($"{trailIMG}.IMG"))
+                {
+                    File.Copy($"{trailIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}//USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_GREY.IMG", true);
+                }
+
                 //checking if IMG exist from the bat file. this allow users to only update certain textures
                 if (File.Exists($"{RighGemImg}.IMG"))
                 {
                     File.Copy($"{RighGemImg}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEM_COL_SRGB_00.1001.IMG", true);
+                    if (File.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_GEM_COL_SRGB_00.1001.IMG"))
+                    {
+                        Debug.Log("[GemChangerImporter] WE COPY GEM_{highway}_GEM_COL_SRGB_00.1001.IMG TO RPCS3");
+                    }
                 }
 
                 if (File.Exists($"{LeftGemIMG}.IMG"))
@@ -474,95 +617,111 @@ public class GemChanger_Importer : MonoBehaviour
                 {
                     File.Copy($"{OpenGemStreakIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/GEM_{highway}_STRUMSTREAK_COL_SRGB_00.1001.IMG", true);
                 }
+
+                if (File.Exists($"{GemBoxIMG}.IMG"))
+                {
+                    File.Copy($"{GemBoxIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/CATCHER_{highway}_BOX_COL_SRGB_00.1001.IMG", true);
+                }
             }
 
+            yield return new WaitForEndOfFrame();
+            //clean up
+            if (File.Exists($"{RighGemImg}.IMG"))
+            {
+                File.Delete(RighGemImg + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{trailIMG}.IMG"))
+            {
+                File.Delete(trailIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{trailHeroIMG}.IMG"))
+            {
+                File.Delete(trailHeroIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{LeftGemIMG}.IMG"))
+            {
+                File.Delete(LeftGemIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{LeftHeroActiveIMG}.IMG"))
+            {
+                File.Delete(LeftHeroActiveIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{RightHeroActiveIMG}.IMG"))
+            {
+                File.Delete(RightHeroActiveIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{LeftHeroCollectIMG}.IMG"))
+            {
+                File.Delete(LeftHeroCollectIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{RightHeroCollectIMG}.IMG"))
+            {
+                File.Delete(RightHeroCollectIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{LeftStreakIMG}.IMG"))
+            {
+                File.Delete(LeftStreakIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{RightStreakIMG}.IMG"))
+            {
+                File.Delete(RightStreakIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{LeftHopoIMG}.IMG"))
+            {
+                File.Delete(LeftHopoIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{RightHopoIMG}.IMG"))
+            {
+                File.Delete(RightHopoIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{OpenGemIMG}.IMG"))
+            {
+                File.Delete(OpenGemIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{OpenGemHeroCollectIMG}.IMG"))
+            {
+                File.Delete(OpenGemHeroCollectIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{OpenGemHeroActiveIMG}.IMG"))
+            {
+                File.Delete(OpenGemHeroActiveIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{OpenGemStreakIMG}.IMG"))
+            {
+                File.Delete(OpenGemStreakIMG + ".IMG");
+            }
+            yield return new WaitForEndOfFrame();
+            if (File.Exists($"{GemBoxIMG}.IMG"))
+            {
+                File.Delete(GemBoxIMG + ".IMG");
+            }
 
+            load.GetComponent<GUI_MessageBox>().CloseAnim();
+            yield return new WaitForSeconds(1);
+            //finish message
+            GameObject a = Instantiate(MessageBox);
+            a.GetComponent<GUI_MessageBox>().title = T.getText("STR_EXPORTDONE");
+            a.GetComponent<GUI_MessageBox>().message = T.getText("GEM_IMPORTER_EXPORT_DONE");
+            a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
+            Debug.LogWarning("[GemChangerImporter] Finish exporting texture");
         }
-
-        yield return new WaitForEndOfFrame();
-        //clean up
-        if (File.Exists($"{RighGemImg}.IMG"))
-        {
-            File.Delete(RighGemImg + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{LeftGemIMG}.IMG"))
-        {
-            File.Delete(LeftGemIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{LeftHeroActiveIMG}.IMG"))
-        {
-  
-            File.Delete(LeftHeroActiveIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{RightHeroActiveIMG}.IMG"))
-        {
-            File.Delete(RightHeroActiveIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{LeftHeroCollectIMG}.IMG"))
-        {
-            File.Delete(LeftHeroCollectIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{RightHeroCollectIMG}.IMG"))
-        {
-            File.Delete(RightHeroCollectIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{LeftStreakIMG}.IMG"))
-        {
-            File.Delete(LeftStreakIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{RightStreakIMG}.IMG"))
-        {
-
-            File.Delete(RightStreakIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{LeftHopoIMG}.IMG"))
-        {
-            File.Delete(LeftHopoIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{RightHopoIMG}.IMG"))
-        {
-            File.Delete(RightHopoIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{OpenGemIMG}.IMG"))
-        {
-            File.Delete(OpenGemIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{OpenGemHeroCollectIMG}.IMG"))
-        {
-            File.Delete(OpenGemHeroCollectIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{OpenGemHeroActiveIMG}.IMG"))
-        {
-            File.Delete(OpenGemHeroActiveIMG + ".IMG");
-        }
-        yield return new WaitForEndOfFrame();
-        if (File.Exists($"{OpenGemStreakIMG}.IMG"))
-        {
-            File.Delete(OpenGemStreakIMG + ".IMG");
-        }
-
-
-        load.GetComponent<GUI_MessageBox>().CloseAnim();
-        yield return new WaitForSeconds(1);
-        //finish message
-        GameObject a = Instantiate(MessageBox);
-        a.GetComponent<GUI_MessageBox>().title = "Exported Complete";
-        a.GetComponent<GUI_MessageBox>().message = $"Custom Gems have been exported to Guitar Hero live.\n\nThe Next time you load the default highway or play GHL song the changes will be apply.";
-        a.GetComponent<GUI_MessageBox>().button.onClick.AddListener(ReturnToMainMenu);
-        Debug.LogWarning("[GemChangerImporter] Finish exporting texture");
     }
+
     public void ReturnToMainMenu()
     {
         GameObject a = Instantiate(fadeToBlack);
@@ -571,4 +730,9 @@ public class GemChanger_Importer : MonoBehaviour
         a.GetComponent<FadeToBlack>().anim.Play();
     }
 
+    public void FindMoreGemPacks()
+    {
+        Application.OpenURL("https://discord.com/channels/758530768640802826/1061536695624925185");
+        // this link shouldn't be hard coded in, should be dynamic
+    }
 }

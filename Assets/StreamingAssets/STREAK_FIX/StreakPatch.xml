@@ -1,0 +1,92 @@
+<Config>
+ 
+	<!-- Multiplier -->	
+	<MaxMultiplier> 4 </MaxMultiplier>
+	<StreakPerMultiplierLevel> 10 </StreakPerMultiplierLevel>
+
+	
+	<!-- Streak -->
+	
+	<!-- Beginner -->
+	<StreakValueBeginner1>99999999</StreakValueBeginner1>
+	<StreakValueBeginner2>99999999</StreakValueBeginner2>
+	<StreakValueBeginner3>99999999</StreakValueBeginner3>
+	<StreakValueBeginner4>99999999</StreakValueBeginner4>
+	<StreakValueBeginner5>99999999</StreakValueBeginner5>
+	<StreakValueBeginner6>99999999</StreakValueBeginner6>
+	<StreakValueBeginner7>99999999</StreakValueBeginner7>
+	<StreakValueBeginner8>99999999</StreakValueBeginner8>
+	<StreakValueBeginner9>99999999</StreakValueBeginner9>
+	<StreakValueBeginner10>99999999</StreakValueBeginner10>
+	<StreakIncrementBeginner>99999999</StreakIncrementBeginner>
+	
+	<!-- Easy -->
+	<StreakValueEasy1>99999999</StreakValueEasy1>
+	<StreakValueEasy2>99999999</StreakValueEasy2>
+	<StreakValueEasy3>99999999</StreakValueEasy3>
+	<StreakValueEasy4>99999999</StreakValueEasy4>
+	<StreakValueEasy5>99999999</StreakValueEasy5>
+	<StreakValueEasy6>99999999</StreakValueEasy6>
+	<StreakValueEasy7>99999999</StreakValueEasy7>
+	<StreakValueEasy8>99999999</StreakValueEasy8>
+	<StreakValueEasy9>99999999</StreakValueEasy9>
+	<StreakValueEasy10>99999999</StreakValueEasy10>
+	<StreakIncrementEasy>99999999</StreakIncrementEasy>
+	
+	<!-- Medium -->
+	<StreakValueMedium1>99999999</StreakValueMedium1>
+	<StreakValueMedium2>99999999</StreakValueMedium2>
+	<StreakValueMedium3>99999999</StreakValueMedium3>
+	<StreakValueMedium4>99999999</StreakValueMedium4>
+	<StreakValueMedium5>99999999</StreakValueMedium5>
+	<StreakValueMedium6>99999999</StreakValueMedium6>
+	<StreakValueMedium7>99999999</StreakValueMedium7>
+	<StreakValueMedium8>99999999</StreakValueMedium8>
+	<StreakValueMedium9>99999999</StreakValueMedium9>
+	<StreakValueMedium10>99999999</StreakValueMedium10>
+	<StreakIncrementMedium>99999999</StreakIncrementMedium>
+	
+	<!-- Hard -->
+	<StreakValueHard1>99999999</StreakValueHard1>
+	<StreakValueHard2>99999999</StreakValueHard2>
+	<StreakValueHard3>99999999</StreakValueHard3>
+	<StreakValueHard4>99999999</StreakValueHard4>
+	<StreakValueHard5>99999999</StreakValueHard5>
+	<StreakValueHard6>99999999</StreakValueHard6>
+	<StreakValueHard7>99999999</StreakValueHard7>
+	<StreakValueHard8>99999999</StreakValueHard8>
+	<StreakValueHard9>99999999</StreakValueHard9>
+	<StreakValueHard10>99999999</StreakValueHard10>
+	<StreakIncrementHard>99999999</StreakIncrementHard>
+	
+	<!-- Expert -->
+	<StreakValueExpert1>99999999</StreakValueExpert1>
+	<StreakValueExpert2>99999999</StreakValueExpert2>
+	<StreakValueExpert3>99999999</StreakValueExpert3>
+	<StreakValueExpert4>99999999</StreakValueExpert4>
+	<StreakValueExpert5>99999999</StreakValueExpert5>
+	<StreakValueExpert6>99999999</StreakValueExpert6>
+	<StreakValueExpert7>99999999</StreakValueExpert7>
+	<StreakValueExpert8>99999999</StreakValueExpert8>
+	<StreakValueExpert9>99999999</StreakValueExpert9>
+	<StreakValueExpert10>99999999</StreakValueExpert10>
+	<StreakIncrementExpert>99999999</StreakIncrementExpert>
+
+		
+	<!-- Streak Max -->
+	<MaxStreakValue>99999999</MaxStreakValue>	
+ 
+	<!-- Streak Banner Types-->
+	<!--
+	0=All notes
+	1=Left-most note only
+	-->
+	<StreakBannerType>0</StreakBannerType>
+	
+	<!-- Streak Banner Levels -->
+	<StreakBannerLevel1>0</StreakBannerLevel1>
+	<StreakBannerLevel2>50</StreakBannerLevel2>
+	<StreakBannerLevel3>100</StreakBannerLevel3>
+	<StreakBannerLevel4>200</StreakBannerLevel4>
+	
+</Config>
