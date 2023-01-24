@@ -15,7 +15,7 @@ Check out [GHTV Reloaded discord](http://ghtv.reloaded.stickgaming.net)
 - Auto Updater (So you know the mod tools are up to date)
 - File Explorer (Make setup easy and remember it)
 - Auto Installer for GHTV Reloaded mod (Easy way to get GHTV Reloaded Mod setup. Great for new players)
-- Translation (Community made translation allow the mod tool text to be in your language)
+- [Translation](https://github.com/Nathan31973/GHTV-Reloaded-Mods-Tools-Assets/tree/main/TRANSLATIONS) (Community made translation allow the mod tool text to be in your language)
 - MOTD (Message of the day to let you know about anything GHTV Reloaded)
 - Auto game updater (Mod tools allways keeps Guitar Hero Live up to date and the GHTV Reloaded Mod up to date)
 - Support all version of Guitar Hero Live for PS3
@@ -43,6 +43,7 @@ Check out [GHTV Reloaded discord](http://ghtv.reloaded.stickgaming.net)
 - Custom Gem Trail (Change the texture for the trails behind long notes)
 - Export your custom gems as a gem pack so you can share them with the world
 - Export your custom gems into Guitar Hero Live
+- Support every highway for GHL and GHTV
 
 ### Gem Maker - Importor
 - Apply to all Highways in Guitar Hero Live
