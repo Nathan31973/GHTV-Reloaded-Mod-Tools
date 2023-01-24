@@ -416,11 +416,33 @@ public class GemChanger_Importer : MonoBehaviour
             {
                 Directory.Delete($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS", true);
             }
+            int highwayscount = main.OnDiskHighways.Count + main.Highways.Count + 2;
 
-            foreach(string highway in main.Highways)
+            //trails
+            //CHECKING IF Folder EXIST
+            if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/"))
+            {
+                Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/");
+            }
+            if (File.Exists($"{trailHeroIMG}.IMG"))
+            {
+                File.Copy($"{trailHeroIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_CYAN.IMG", true);
+                if (File.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_CYAN.IMG"))
+                {
+                    Debug.Log("[GemChangerImporter] WE COPY TRAIL_CYAN TO RPCS3");
+                }
+            }
+            num++;
+            if (File.Exists($"{trailIMG}.IMG"))
+            {
+                File.Copy($"{trailIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}//USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_GREY.IMG", true);
+            }
+            num++;
+
+            foreach (string highway in main.Highways)
             {
                 yield return new WaitForEndOfFrame();
-                load.GetComponent<GUI_MessageBox>().message = $"Please wait while Export your textures\n\nConverted: {num}/{main.Highways.Count}";
+                load.GetComponent<GUI_MessageBox>().message = $"Please wait while Export your textures\n\nConverted: {num}/{highwayscount}";
                 load.GetComponent<GUI_MessageBox>().addmessage();
                 num++;
 
@@ -514,7 +536,7 @@ public class GemChanger_Importer : MonoBehaviour
             foreach (string highway in main.OnDiskHighways)
             {
                 yield return new WaitForEndOfFrame();
-                load.GetComponent<GUI_MessageBox>().message = $"Please wait while Export your textures\n\nConverted: {num}/{main.Highways.Count}";
+                load.GetComponent<GUI_MessageBox>().message = $"Please wait while Export your textures\n\nConverted: {num}/{highwayscount}";
                 load.GetComponent<GUI_MessageBox>().addmessage();
                 num++;
 
@@ -524,25 +546,7 @@ public class GemChanger_Importer : MonoBehaviour
                     Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS/STAGEFRIGHT/SCENES/MODEL/HIGHWAYS/DISK/{highway}/TEXTURES/");
                 }
 
-                //trails
-                //CHECKING IF Folder EXIST
-                if (!Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/"))
-                {
-                    Directory.CreateDirectory($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/");
-                }
-                if (File.Exists($"{trailHeroIMG}.IMG"))
-                {
-                    File.Copy($"{trailHeroIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_CYAN.IMG", true);
-                    if(File.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_CYAN.IMG"))
-                    {
-                        Debug.Log("[GemChangerImporter] WE COPY TRAIL_CYAN TO RPCS3");
-                    }
-                }
 
-                if (File.Exists($"{trailIMG}.IMG"))
-                {
-                    File.Copy($"{trailIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}//USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_GREY.IMG", true);
-                }
 
                 //checking if IMG exist from the bat file. this allow users to only update certain textures
                 if (File.Exists($"{RighGemImg}.IMG"))

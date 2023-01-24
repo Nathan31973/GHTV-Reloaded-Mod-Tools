@@ -7933,7 +7933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c7c8a9a919ab5428ed25ce41dcce3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GHLite: 0
+  GHLite: 1
   WelcomeScreen: {fileID: 1060654494}
   Stage1UI:
   - {fileID: 1667451620}

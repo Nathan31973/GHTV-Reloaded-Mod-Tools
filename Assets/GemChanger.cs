@@ -1137,7 +1137,7 @@ public class GemChanger : MonoBehaviour
         }
         //all highways of GHL
         int num = 0;
-        int assets = Highways.Count + 2;
+        int assets = Highways.Count + OnDiskHighways.Count + 2;
         //removing the old gems if placed
         Debug.Log("[GemChanger] Removing old gems");
 
@@ -1158,13 +1158,13 @@ public class GemChanger : MonoBehaviour
         {
             File.Copy($"{trailHeroIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_CYAN.IMG", true);
         }
-
+        num++;
         if (File.Exists($"{trailIMG}.IMG"))
         {
             File.Copy($"{trailIMG}.IMG", $"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}//USRDIR/UPDATE/OVERRIDE/ART/HUD/TEXTURES/TRAIL_GREY.IMG", true);
         }
-
-        foreach(string highway in Highways)
+        num++;
+        foreach (string highway in Highways)
         {
             yield return new WaitForEndOfFrame();
             load.GetComponent<GUI_MessageBox>().message = $"{cache}{num}/{assets}";
