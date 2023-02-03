@@ -63,13 +63,6 @@ public class MainMenu : MonoBehaviour
         {
             Application.Quit();
         }
-        if (firstMOTDCheck && !failedtogetMOTD)
-        {
-            if (UpdateMOTD <= DateTimeOffset.Now.ToUnixTimeMilliseconds())
-            {
-                StartCoroutine(getmotd());
-            }
-        }
     }
 
     public void GOTOCOLOURCHAGER()
@@ -332,6 +325,7 @@ public class MainMenu : MonoBehaviour
         //grabing motd from github
         //download the latest
         Debug.Log("[MainMenu] DOWNLOADING MOTD");
+        yield return new WaitUntil(() => webClient == null);
         btnDownload_Click(2, "https://raw.githubusercontent.com/Nathan31973/GHTV-Reloaded-Mods-Tools-Assets/main/motd.xml", Application.persistentDataPath + "/motd.xml");
         yield return new WaitUntil(() => downloadedMOTD == true);
         //read it
@@ -370,8 +364,9 @@ public class MainMenu : MonoBehaviour
                     }
                 }
             }
+            firstMOTDCheck = true;
         }
-        firstMOTDCheck = true;
+        
         if (!display)
         {
             Debug.Log("[MainMenu] No MOTD found, dissable MOTD");

@@ -150,7 +150,7 @@ public class HyperSpeed : MonoBehaviour
             Debug.LogError("[HyperSpeed] path is null while saving");
             yield break;
         }
-        if (!Directory.Exists(Application.persistentDataPath + "/External_Tools/HyperSpeed/OVERRIDE/TRACKS_CLEAN"))
+        if (!Directory.Exists(Application.persistentDataPath + "/External_Tools/HyperSpeed/OVERRIDE/TRACKS_CLEAN") || !Directory.Exists(Application.persistentDataPath + "/External_Tools/HyperSpeed/AUDIO_CLEAN"))
         {
             load = Instantiate(Loading);
             load.GetComponent<GUI_MessageBox>().title = T.getText("HYPER_STR_SAVING");
@@ -165,14 +165,14 @@ public class HyperSpeed : MonoBehaviour
             load.GetComponent<GUI_MessageBox>().title = T.getText("HYPER_STR_SAVING");
             load.GetComponent<GUI_MessageBox>().message = T.getText("STR_PLZ_WAIT");
         }
-        Debug.Log("[HyperSpeed] Copying trackconfig to game");
+        Debug.Log("[HyperSpeed] Copying GHTV trackconfig to game");
         var directories = Directory.GetDirectories(Application.persistentDataPath + "/External_Tools/HyperSpeed/OVERRIDE/TRACKS_CLEAN");
         foreach (var d in directories)
         {
             Debug.Log($"[HyperSpeed] dir = {d}");
             yield return new WaitForEndOfFrame();
             var a = d.Split(@"TRACKS_CLEAN\");
-            if(Application.platform == RuntimePlatform.LinuxPlayer || Application.platform == RuntimePlatform.LinuxEditor)
+            if(Application.platform == RuntimePlatform.LinuxPlayer || Application.platform == RuntimePlatform.LinuxEditor || Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer)
             {
                 a = d.Split(@"TRACKS_CLEAN/");
             }
@@ -206,6 +206,51 @@ public class HyperSpeed : MonoBehaviour
                 }
             }
         }
+
+
+
+        Debug.Log("[HyperSpeed] Copying GHL trackconfig to game");
+        directories = Directory.GetDirectories(Application.persistentDataPath + "/External_Tools/HyperSpeed/OVERRIDE/AUDIO_CLEAN/AUDIOTRACKS");
+        foreach (var d in directories)
+        {
+            Debug.Log($"[HyperSpeed] dir = {d}");
+            yield return new WaitForEndOfFrame();
+            var a = d.Split(@"AUDIOTRACKS\");
+            if (Application.platform == RuntimePlatform.LinuxPlayer || Application.platform == RuntimePlatform.LinuxEditor || Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer)
+            {
+                a = d.Split(@"AUDIOTRACKS/");
+            }
+            if (a.Length > 0)
+            {
+                if (File.Exists(d + "/TRACKCONFIG.XML"))
+                {
+
+                    Debug.Log($"[HyperSpeed] opening {a[1]}.xml from {d}");
+                    XDocument xmlFile = XDocument.Load(d + "/TRACKCONFIG.XML");
+
+                    var dif = from c in xmlFile.Elements("Track").Elements("Highway")
+                              select c;
+
+                    foreach (XElement c in dif)
+                    {
+                        c.Attribute("newbeginner").Value = $"{hyperSpeed}";
+                        c.Attribute("neweasy").Value = $"{hyperSpeed}";
+                        c.Attribute("newmedium").Value = $"{hyperSpeed}";
+                        c.Attribute("newhard").Value = $"{hyperSpeed}";
+                        c.Attribute("newexpert").Value = $"{hyperSpeed}";
+                    }
+                    //save the XML back as file
+                    //checking if directory exist
+                    if (!Directory.Exists($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/AUDIO/AUDIOTRACKS/{a[1]}"));
+                    {
+                        Directory.CreateDirectory($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/AUDIO/AUDIOTRACKS/{a[1]}");
+                    }
+                    Debug.Log($"[HyperSpeed] Song ID {a[1]} saved");
+                    xmlFile.Save($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/AUDIO/AUDIOTRACKS/{a[1]}/TRACKCONFIG.XML");
+                }
+            }
+        }
+
 
         load.GetComponent<GUI_MessageBox>().CloseAnim();
         yield return new WaitForSeconds(1f);

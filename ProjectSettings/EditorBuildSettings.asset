@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Community patches/Restart Button Patch.unity
     guid: 51e4c23578630d749aaeedfb65880419
+  - enabled: 0
+    path: Assets/admin tools/batchimg.unity
+    guid: fa2c17e316c3ee7488c66e4b9ad1ea7a
   m_configObjects: {}

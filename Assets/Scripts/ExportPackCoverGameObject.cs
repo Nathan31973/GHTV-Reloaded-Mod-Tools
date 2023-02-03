@@ -28,9 +28,21 @@ public class ExportPackCoverGameObject : MonoBehaviour
         }
     }
 
+    private bool versioncheck()
+    {
+        string[] pastversion = { "1.3", "1.3.01", "1.3.02", "1.3.1" };
+        foreach(string ver in pastversion)
+        {
+            if(version == ver)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public void Click()
     {
-        if(version != $"{Application.version}")
+        if(!versioncheck())
         {
             GameObject a = Instantiate(MessageBox2);
             a.GetComponent<GUI_MessageBox>().title = $"{T.getText("GEM_IMPORTER_PACKOUTDATED")}";
