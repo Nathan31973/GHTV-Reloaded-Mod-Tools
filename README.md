@@ -1,4 +1,4 @@
-# GHTV Reloaded: Mod Tools V1.3.01
+# GHTV Reloaded: Mod Tools V1.3.1
 This user friendly tool allow you to modify guitar hero live.
 
 [Builds/downloads](https://github.com/Nathan31973/GHTV-Reloaded-Mod-Tools/releases)
@@ -30,8 +30,8 @@ Check out [GHTV Reloaded discord](http://ghtv.reloaded.stickgaming.net)
 ## FX Changer
 - Custom Colour for Highway FX
 
-## HyperSpeed Changer (GHTV songs only)
-- HyperSpeed for all songs
+## HyperSpeed Changer
+- HyperSpeed for all songs (GHTV and Live)
 - Pre-Download the latest songs from GHTV
 
 ## Gem Maker
