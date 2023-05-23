@@ -7,6 +7,8 @@ using TMPro;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Net;
+using System.ComponentModel;
 
 public class MainSetting : MonoBehaviour
 {
@@ -22,8 +24,18 @@ public class MainSetting : MonoBehaviour
     [Header("UI ELEMETS")]
     public Toggle autoupdate;
 
+    [Header("Platform related things")]
+    public Button RPCS3Folder;
+    public TMP_Dropdown platform;
+    public GameObject TV_button;
+
     private void Start()
     {
+        if(userData.instance.gameVersion != userData.Version.Lite)
+        {
+            TV_button.SetActive(false);
+        }
+        platform.value = (int)userData.instance.platform;
         autoupdate.isOn = userData.instance.AutoGameUpdate;
         T = Translater.instance;
         version.text = $"V{Application.version}";
@@ -228,5 +240,98 @@ public class MainSetting : MonoBehaviour
         Application.Quit();
         Debug.Log("[Pause] Quitting app");
     }
+
+    public void PlatformSelect(int val)
+    {
+        if(val == 0)
+        {
+            RPCS3Folder.interactable = true;
+            userData.instance.platform = userData.Platform.Rpcs3;
+        }
+        else if (val == 1)
+        {
+            RPCS3Folder.interactable = false;
+            userData.instance.platform = userData.Platform.WiiU;
+        }
+        else if (val == 2)
+        {
+            RPCS3Folder.interactable = false;
+            userData.instance.platform = userData.Platform.PS3;
+        }
+        else if (val == 3)
+        {
+            RPCS3Folder.interactable = false;
+            userData.instance.platform = userData.Platform.Ios;
+        }
+        else if (val == 4)
+        {
+            RPCS3Folder.interactable = false;
+            userData.instance.platform = userData.Platform.TVOS;
+        }
+    }
+    public void TVFIX()
+    {
+        if(!Directory.Exists(Application.persistentDataPath + "/Savefix"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Savefix");
+        }
+        if(!File.Exists(Application.persistentDataPath + "/Savefix/GHLIVE.DAT"))
+        {
+            
+            //download the file
+            btnDownload_Click("https://github.com/Nathan31973/GHTV-Reloaded-Mods-Tools-Assets/raw/main/GHLIVE.DAT", Application.persistentDataPath + "/Savefix/GHLIVE.DAT");
+        }
+        else
+        {
+            for (int i = 1; i < 11; i++)
+            {
+                if (Directory.Exists(userData.instance.LocalFilePath + $"/dev_hdd0/home/0000000{i}/savedata/BLES02180-GHLIVE"))
+                {
+                    File.Copy(Application.persistentDataPath + "/Savefix/GHLIVE.DAT", userData.instance.LocalFilePath + $"/dev_hdd0/home/0000000{i}/savedata/BLES02180-GHLIVE/GHLIVE.DAT", true);
+                    GameObject t = Instantiate(MessageBox);
+                    t.GetComponent<GUI_MessageBox>().title = T.getText("STR_SETTINGS_SAVECOPY");
+                    t.GetComponent<GUI_MessageBox>().message = T.getText("STR_SETTINGS_SAVECOPY_MSG");
+                    break;
+                }
+            }
+        }
+    }
+
+    private void btnDownload_Click(string url, string filename)
+    {
+        WebClient webClient = null;
+        //checking if we have internet connection
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("[Settings] Error. Check internet connection!");
+        }
+        else
+        {
+            Debug.Log("[Settings] We have internet");
+            // Is file downloading yet?
+            if (webClient != null)
+            {
+                Debug.LogError("[Settings] Webclient in used");
+                return;
+            }
+
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+            webClient = new WebClient();
+
+                webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(CompletedConver3);
+                webClient.DownloadFileAsync(new Uri($"{url}"), filename);
+            
+        }
+    }
+    private void CompletedConver3(object sender, AsyncCompletedEventArgs e)
+    {
+        Debug.Log("[Settings] Download completed!");
+        TVFIX();
+
+    }
+
 }
 

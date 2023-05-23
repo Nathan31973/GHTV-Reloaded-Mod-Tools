@@ -497,28 +497,49 @@ public class Setup : MonoBehaviour
     }
     private string getRpcnUserName()
     {
-        using (var reader = new StreamReader($"{userData.instance.LocalFilePath}/config/rpcn.yml"))
+        string path = "";
+        //check for rpcn.yml
+        if (File.Exists($"{userData.instance.LocalFilePath}/config/rpcn.yml"))
         {
-            // Load the stream
-            var yaml = new YamlStream();
-            yaml.Load(reader);
-            // the rest
-            var mapping = (YamlMappingNode)yaml.Documents[0].RootNode;
-            foreach (var entry in mapping.Children)
-            {
-                print(((YamlScalarNode)entry.Key).Value);
+            path = $"{userData.instance.LocalFilePath}/config/rpcn.yml";
+        }
+        else if (File.Exists($"{userData.instance.LocalFilePath}/rpcn.yml"))
+        {
+            path = $"{userData.instance.LocalFilePath}/rpcn.yml";
+        }
+        else return null;
 
-                if (((YamlScalarNode)entry.Key).Value.Contains("NPID"))
+        try
+        {
+            using (var reader = new StreamReader(path))
+            {
+                // Load the stream
+                var yaml = new YamlStream();
+                yaml.Load(reader);
+                // the rest
+                var mapping = (YamlMappingNode)yaml.Documents[0].RootNode;
+                foreach (var entry in mapping.Children)
                 {
-                    return (string)entry.Value;
+                    print(((YamlScalarNode)entry.Key).Value);
+
+                    if (((YamlScalarNode)entry.Key).Value.Contains("NPID"))
+                    {
+                        return (string)entry.Value;
+                    }
+
                 }
 
-            }
- 
-            reader.Close();
+                reader.Close();
 
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"[SETUP] Failed to find RPCN.yml \n {e.Message}");
+            return null;
         }
         return null;
+
     }
 
     //setage 2 - 2

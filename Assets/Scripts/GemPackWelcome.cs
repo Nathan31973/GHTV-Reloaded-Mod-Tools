@@ -73,6 +73,10 @@ public class GemPackWelcome : MonoBehaviour
             {
                 Directory.Delete($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/MAYAPROJECTS", true);
             }
+            if (Directory.Exists($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD"))
+            {
+                Directory.Delete($"{userData.instance.LocalFilePath}/dev_hdd0/game/{version}/USRDIR/UPDATE/OVERRIDE/ART/HUD", true);
+            }
         }
         GameObject a = Instantiate(gemChanger.messageBox);
         a.GetComponent<GUI_MessageBox>().title = "Reset Complete";

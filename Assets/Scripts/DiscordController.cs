@@ -9,7 +9,7 @@ public class DiscordController : MonoBehaviour
     public static DiscordController instance { get; private set; }
     public Discord.Discord discord;
     private bool isRunningDiscord = false;
-    private long DiscordTOKEN = 0000000000000000000;
+    private long DiscordTOKEN = 1053332741665591366;
     private void Awake()
     {
 

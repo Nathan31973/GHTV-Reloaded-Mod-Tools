@@ -19,7 +19,6 @@ public class HyperSpeed : MonoBehaviour
     public float minSpeed = 0.5f;
 
     private double offset = 0;
-    public string path;
 
     [Header("GameObjects")]
     public Slider slider;
@@ -180,29 +179,8 @@ public class HyperSpeed : MonoBehaviour
             {
                 if (File.Exists(d + "/TRACKCONFIG.XML"))
                 {
+                    editGHTVxml(d, a, region, path);
 
-                    Debug.Log($"[HyperSpeed] opening {a[1]}.xml from {d}");
-                    XDocument xmlFile = XDocument.Load(d + "/TRACKCONFIG.XML");
-
-                    var dif = from c in xmlFile.Elements("Track").Elements("Highway")
-                              select c;
-
-                    foreach (XElement c in dif)
-                    {
-                        c.Attribute("newbeginner").Value = $"{hyperSpeed}";
-                        c.Attribute("neweasy").Value = $"{hyperSpeed}";
-                        c.Attribute("newmedium").Value = $"{hyperSpeed}";
-                        c.Attribute("newhard").Value = $"{hyperSpeed}";
-                        c.Attribute("newexpert").Value = $"{hyperSpeed}";
-                    }
-                    //save the XML back as file
-                    //checking if directory exist
-                    if (!Directory.Exists($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}")) ;
-                    {
-                        Directory.CreateDirectory($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}");
-                    }
-                    Debug.Log($"[HyperSpeed] Song ID {a[1]} saved");
-                    xmlFile.Save($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}/TRACKCONFIG.XML");
                 }
             }
         }
@@ -225,28 +203,7 @@ public class HyperSpeed : MonoBehaviour
                 if (File.Exists(d + "/TRACKCONFIG.XML"))
                 {
 
-                    Debug.Log($"[HyperSpeed] opening {a[1]}.xml from {d}");
-                    XDocument xmlFile = XDocument.Load(d + "/TRACKCONFIG.XML");
-
-                    var dif = from c in xmlFile.Elements("Track").Elements("Highway")
-                              select c;
-
-                    foreach (XElement c in dif)
-                    {
-                        c.Attribute("newbeginner").Value = $"{hyperSpeed}";
-                        c.Attribute("neweasy").Value = $"{hyperSpeed}";
-                        c.Attribute("newmedium").Value = $"{hyperSpeed}";
-                        c.Attribute("newhard").Value = $"{hyperSpeed}";
-                        c.Attribute("newexpert").Value = $"{hyperSpeed}";
-                    }
-                    //save the XML back as file
-                    //checking if directory exist
-                    if (!Directory.Exists($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/AUDIO/AUDIOTRACKS/{a[1]}"));
-                    {
-                        Directory.CreateDirectory($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/AUDIO/AUDIOTRACKS/{a[1]}");
-                    }
-                    Debug.Log($"[HyperSpeed] Song ID {a[1]} saved");
-                    xmlFile.Save($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/AUDIO/AUDIOTRACKS/{a[1]}/TRACKCONFIG.XML");
+                    editGHLxml(d, a, region, path);
                 }
             }
         }
@@ -262,6 +219,72 @@ public class HyperSpeed : MonoBehaviour
         yield return null;
     }
 
+    private void editGHTVxml(string d, string[] a, string region,string path)
+    {
+        try
+        {
+            Debug.Log($"[HyperSpeed] opening {a[1]}.xml from {d}");
+            XDocument xmlFile = XDocument.Load(d + "/TRACKCONFIG.XML");
+
+            var dif = from c in xmlFile.Elements("Track").Elements("Highway")
+                      select c;
+
+            foreach (XElement c in dif)
+            {
+                c.Attribute("newbeginner").Value = $"{hyperSpeed}";
+                c.Attribute("neweasy").Value = $"{hyperSpeed}";
+                c.Attribute("newmedium").Value = $"{hyperSpeed}";
+                c.Attribute("newhard").Value = $"{hyperSpeed}";
+                c.Attribute("newexpert").Value = $"{hyperSpeed}";
+            }
+            //save the XML back as file
+            //checking if directory exist
+            if (!Directory.Exists($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}"))
+            {
+                Directory.CreateDirectory($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}");
+            }
+            Debug.Log($"[HyperSpeed] Song ID {a[1]} saved");
+            xmlFile.Save($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/TRACKS/{a[1]}/TRACKCONFIG.XML");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"[HyperSpeed] Failed to save SondID {a[1]}");
+            Debug.LogError($"[HyperSpeed] {e.Message}");
+        }
+    }
+    private void editGHLxml(string d, string[] a, string region, string path)
+    {
+        try
+        {
+            Debug.Log($"[HyperSpeed] opening {a[1]}.xml from {d}");
+            XDocument xmlFile = XDocument.Load(d + "/TRACKCONFIG.XML");
+
+            var dif = from c in xmlFile.Elements("Track").Elements("Highway")
+                      select c;
+
+            foreach (XElement c in dif)
+            {
+                c.Attribute("newbeginner").Value = $"{hyperSpeed}";
+                c.Attribute("neweasy").Value = $"{hyperSpeed}";
+                c.Attribute("newmedium").Value = $"{hyperSpeed}";
+                c.Attribute("newhard").Value = $"{hyperSpeed}";
+                c.Attribute("newexpert").Value = $"{hyperSpeed}";
+            }
+            //save the XML back as file
+            //checking if directory exist
+            if (!Directory.Exists($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/AUDIO/AUDIOTRACKS/{a[1]}")) ;
+            {
+                Directory.CreateDirectory($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/AUDIO/AUDIOTRACKS/{a[1]}");
+            }
+            Debug.Log($"[HyperSpeed] Song ID {a[1]} saved");
+            xmlFile.Save($"{path}/dev_hdd0/game/{region}/USRDIR/UPDATE/OVERRIDE/AUDIO/AUDIOTRACKS/{a[1]}/TRACKCONFIG.XML");
+        }
+        catch(Exception e)
+        {
+            Debug.LogError($"[HyperSpeed] Failed to save SondID {a[1]}");
+            Debug.LogError($"[HyperSpeed] {e.Message}");
+        }
+    }
     public void SliderChangeVal(float n)
     {
         hyperSpeed = (float)Math.Round(n, 2);

@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/admin tools/batchimg.unity
     guid: fa2c17e316c3ee7488c66e4b9ad1ea7a
+  - enabled: 0
+    path: Assets/admin tools/Admin_zone.unity
+    guid: b6911e8527e213b49ab94194d0a64f3e
   m_configObjects: {}

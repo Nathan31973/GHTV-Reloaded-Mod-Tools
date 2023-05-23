@@ -2013,9 +2013,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hyperSpeed: 1
   defaultSpeed: 1
-  maxSpeed: 3
+  maxSpeed: 4
   minSpeed: 0.5
-  path: 
   slider: {fileID: 817582295}
   percentage: {fileID: 977735457}
   highwayMat: {fileID: 2042915068}
@@ -2841,6 +2840,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1917816255324659478, guid: 3cfb84a0a31916f43b6c6530a9191fd1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.98497
+      objectReference: {fileID: 0}
     - target: {fileID: 7040893143157535720, guid: 3cfb84a0a31916f43b6c6530a9191fd1, type: 3}
       propertyPath: m_RootOrder
       value: 4

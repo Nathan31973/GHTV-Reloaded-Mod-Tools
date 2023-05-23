@@ -1,0 +1,93 @@
+<HUDType	
+			id="HWLPrimary"
+			markupType="3X2"
+			description="Custom Highway Export : PrimaryDeviceHigh "
+			camera="Default"
+			>
+
+		<Highway	
+					HighwayModel="Art/HUD/PrimaryDeviceHigh/Highway.msb"
+					HighwayBarmarkerModel="Art/HUD/PrimaryDeviceHigh/BarMarker.msb"
+					HighwayBeatmarkerModel="Art/HUD/PrimaryDeviceHigh/BeatMarker.msb"
+					Highway4StringsModel="Art/HUD/PrimaryDeviceHigh/Highway4Strings.msb"
+					HighwayFloorTextureNumTiles = "1.5f"
+					/>
+		<Gems		
+					GemModelsTemplate="Art/HUD/PrimaryDeviceHigh/Gems.msb"
+					
+					GemTrailTexture="Art/HUD/Textures/Trail_grey.img"
+					GemTrailHeroPowerTexture="Art/HUD/Textures/Trail_Cyan.img"
+					GemTrailStreakTexture="Art/HUD/Textures/Trail_Yellow.img"						
+
+					PersonalBestMarkerLeftModel="Art/HUD/PrimaryDeviceHigh/BestStreakMarkerLeft.msb"
+					PersonalBestMarkerRightModel="Art/HUD/PrimaryDeviceHigh/BestStreakMarkerRight.msb"
+					/>
+		<Catchers
+					CatcherUnpressedModel="Art/HUD/PrimaryDeviceHigh/CatcherUnpressed.msb"
+					CatcherPressedModelsTemplate="Art/HUD/PrimaryDeviceHigh/Catcher%s.msb"
+					CatcherTouchButtonModel="Art/HUD/PrimaryDeviceHigh/CatcherTouch.msb"
+					/>
+		<Lights
+					LightPositionsX="-787.215687798f,178.963440419f,264.727083281f,-490.926306339f"
+					LightPositionsY="898.833285405f,434.896779516f,-919.107060593f,695.745805765f"
+					LightPositionsZ="-597.445499027f,-313.055001575f,-1990.41859853f,224.492910532f"
+					
+					Light0Colour="0.473685830832f,0.473685830832f,0.473685830832f,1.0f"
+					Light1Colour="1.0f,0.904020726681f,0.715922772884f,1.0f"
+					Light2Colour="0.185849994421f,0.42167147994f,0.589999973774f,1.0f"
+					Light3Colour="1.0f,1.0f,1.0f,1.0f"
+					/>
+		<Particles
+					ParticleHeldNoteGreen="Wizardry/Particles/Catcher_Blue_Flame_Effect.xml"
+					ParticleHeldNoteGreenOffset_Guitars1_Player0="-16.2568f, -2.0f, -2.0f"
+					ParticleHeldNoteGreenOffset_Guitars2_Player0="-16.2568f, -2.0f, -2.0f"
+					ParticleHeldNoteGreenOffset_Guitars2_Player1="-16.2568f, -2.0f, -2.0f"
+					
+					ParticleHeldNoteRed="Wizardry/Particles/Catcher_Blue_Flame_Effect.xml"
+					ParticleHeldNoteRedOffset_Guitars1_Player0="0.0f, -2.0f, -2.0f"
+					ParticleHeldNoteRedOffset_Guitars2_Player0="0.0f, -2.0f, -2.0f"
+					ParticleHeldNoteRedOffset_Guitars2_Player1="0.0f, -2.0f, -2.0f"
+					
+					ParticleHeldNoteYellow="Wizardry/Particles/Catcher_Blue_Flame_Effect.xml"
+					ParticleHeldNoteYellowOffset_Guitars1_Player0="16.2568f, -2.0f, -2.0f"
+					ParticleHeldNoteYellowOffset_Guitars2_Player0="16.2568f, -2.0f, -2.0f"
+					ParticleHeldNoteYellowOffset_Guitars2_Player1="16.2568f, -2.0f, -2.0f"
+					
+					ParticleHeldNoteBlue="Wizardry/Particles/Catcher_Blue_Flame_Effect.xml"
+					ParticleGemDownShatter1="Wizardry/Particles/GemDown_Smash_Effect.xml"
+					ParticleGemDownShatter2="Wizardry/Particles/GemDown_Smash_Effect.xml"
+					ParticleGemDownShatter3="Wizardry/Particles/GemDown_Smash_Effect.xml"
+					ParticleGemUpShatter1="Wizardry/Particles/GemUp_Smash_Effect.xml"
+					ParticleGemUpShatter2="Wizardry/Particles/GemUp_Smash_Effect.xml"
+					ParticleGemUpShatter3="Wizardry/Particles/GemUp_Smash_Effect.xml"
+					ParticleGemOpenShatter1="Wizardry/Particles/Open_Gem_Smash_Effect.xml"
+					ParticleGemOpenShatter2="Wizardry/Particles/Open_Gem_Smash_Effect.xml"
+					ParticleGemOpenShatter3="Wizardry/Particles/Open_Gem_Smash_Effect.xml"
+					ParticleGemBothShatter1="Wizardry/Particles/GemBoth_Smash_Effect.xml"
+					ParticleGemBothShatter2="Wizardry/Particles/GemBoth_Smash_Effect.xml"
+					ParticleGemBothShatter3="Wizardry/Particles/GemBoth_Smash_Effect.xml"
+					ParticleGemBothShatter4="Wizardry/Particles/GemBoth_Smash_Effect.xml"
+					ParticleGemSlideRightShatter1="Wizardry/Particles/TouchInput_SwipeArrowRight_Effect_Green.xml"
+					ParticleGemSlideRightShatter2="Wizardry/Particles/TouchInput_SwipeArrowRight_Effect_Green.xml"
+					ParticleGemSlideRightShatter3="Wizardry/Particles/TouchInput_SwipeArrowRight_Effect_Green.xml"
+					ParticleGemSlideRightShatter4="Wizardry/Particles/TouchInput_SwipeArrowRight_Effect_Green.xml"
+					ParticleGemSlideLeftShatter1="Wizardry/Particles/TouchInput_SwipeArrowLeft_Effect_Green.xml"
+					ParticleGemSlideLeftShatter2="Wizardry/Particles/TouchInput_SwipeArrowLeft_Effect_Green.xml"
+					ParticleGemSlideLeftShatter3="Wizardry/Particles/TouchInput_SwipeArrowLeft_Effect_Green.xml"
+					ParticleGemSlideLeftShatter4="Wizardry/Particles/TouchInput_SwipeArrowLeft_Effect_Green.xml"
+					ParticleTouchButtonSuccessGlow1="Wizardry/Particles/TouchInput_HollowSquare_Effect_Blue.xml"
+					ParticleTouchButtonSuccessGlow2="Wizardry/Particles/TouchInput_HollowSquare_Effect_Blue.xml"
+					ParticleTouchButtonSuccessGlow3="Wizardry/Particles/TouchInput_HollowSquare_Effect_Blue.xml"
+					ParticleTouchButtonSuccessGlow4="Wizardry/Particles/TouchInput_HollowSquare_Effect_Blue.xml"
+					ParticleTouchButtonFailureGlow1="Wizardry/Particles/TouchInput_HollowSquare_Effect_Red.xml"
+					ParticleTouchButtonFailureGlow2="Wizardry/Particles/TouchInput_HollowSquare_Effect_Red.xml"
+					ParticleTouchButtonFailureGlow3="Wizardry/Particles/TouchInput_HollowSquare_Effect_Red.xml"
+					ParticleTouchButtonFailureGlow4="Wizardry/Particles/TouchInput_HollowSquare_Effect_Red.xml"
+					ParticleTouchButtonNeutralGlow1="Wizardry/Particles/TouchInput_SquareGlow_Effect_White.xml"
+					ParticleTouchButtonNeutralGlow2="Wizardry/Particles/TouchInput_SquareGlow_Effect_White.xml"
+					ParticleTouchButtonNeutralGlow3="Wizardry/Particles/TouchInput_SquareGlow_Effect_White.xml"
+					ParticleTouchButtonNeutralGlow4="Wizardry/Particles/TouchInput_SquareGlow_Effect_White.xml"
+
+					/>
+	
+</HUDType>

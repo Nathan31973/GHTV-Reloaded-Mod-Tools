@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: save.game
   fileLocation: 
-  useEncrpytion: 1
+  useEncrpytion: 0
 --- !u!1 &457943715
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +358,16 @@ MonoBehaviour:
   gameVersion: 0
   saveVersion: 
   ToolIntro: 0
+  platform: 0
+  wiiUVersion: 0
+  wiiULastUSB: 
+  wiiUFTP: 0
+  wiiuFtpIp: 
+  wiiuFtpPassword: 
+  SSHiosIP: 
+  SSHiosPassword: 
+  gameTvosUUID: 
+  gameIosUUID: 
 --- !u!1 &1936580737
 GameObject:
   m_ObjectHideFlags: 0

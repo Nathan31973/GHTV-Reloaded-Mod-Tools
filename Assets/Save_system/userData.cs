@@ -13,12 +13,41 @@ public class userData : MonoBehaviour, IDataPersistence
     public Version gameVersion;
     public string saveVersion;
     public bool ToolIntro;
+    public Platform platform;
+
+    [Header("WiiU details")]
+    public WiiUVersion wiiUVersion;
+    public string wiiULastUSB;
+    public bool wiiUFTP;
+    public string wiiuFtpIp;
+    public string wiiuFtpPassword;
+
+    [Header("ios / TV details")]
+    public string SSHiosIP;
+    public string SSHiosPassword;
+    public string gameTvosUUID; //app UUID so we know where it located on TVOS
+    public string gameIosUUID;  //app UUID so we know where it located on ios
+    public enum Platform
+    {
+        Rpcs3,
+        WiiU,
+        PS3,
+        Ios,
+        TVOS
+    }
     public enum Version
     {
         None,
         PAL,
         USA,
         Lite
+    }
+
+    public enum WiiUVersion
+    {
+        None,
+        PAL,
+        USA,
     }
 
     private void Awake()
@@ -36,24 +65,46 @@ public class userData : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        this.gameVersion = (Version)data.gameVersion;
-        this.AutoGameUpdate = data.AutoGameUpdate;
-        this.hasDoneFirstTimeSetup = data.hasDoneFirstTimeSetup;
-        this.LocalFilePath = data.LocalFilePath;
-        this.hasDownloadedDefaultAtLeastOnce = data.hasDownloadedDefaultAtLeastOnce;
-        this.hyperspeedLastDL = data.hyperspeedLastDL;
-        this.saveVersion = data.saveVersion;
-        this.ToolIntro = data.ToolIntro;
+        gameVersion = (Version)data.gameVersion;
+        AutoGameUpdate = data.AutoGameUpdate;
+        hasDoneFirstTimeSetup = data.hasDoneFirstTimeSetup;
+        LocalFilePath = data.LocalFilePath;
+        hasDownloadedDefaultAtLeastOnce = data.hasDownloadedDefaultAtLeastOnce;
+        hyperspeedLastDL = data.hyperspeedLastDL;
+        saveVersion = data.saveVersion;
+        ToolIntro = data.ToolIntro;
+        platform = (Platform)data.platform;
+        wiiUVersion = (WiiUVersion)data.wiiUVersion;
+        wiiUFTP = data.wiiUFTP;
+        wiiuFtpIp = data.wiiuFtpIp;
+        wiiuFtpPassword = data.wiiuFtpPassword;
+        wiiULastUSB = data.wiiULastUSB;
+
+        SSHiosIP = data.SSHiosIP;
+        SSHiosPassword = data.SSHiosPassword;
+        gameTvosUUID = data.gameTvosUUID; //app UUID so we know where it located on TVOS
+        gameIosUUID = data.gameIosUUID;  //app UUID so we know where it located on ios
+
     }
     public void SaveData(ref GameData data)
     {
-        data.gameVersion = (GameData.Version)this.gameVersion;
-        data.hasDoneFirstTimeSetup = this.hasDoneFirstTimeSetup;
-        data.LocalFilePath = this.LocalFilePath;
-        data.hasDownloadedDefaultAtLeastOnce = this.hasDownloadedDefaultAtLeastOnce;
-        data.hyperspeedLastDL = this.hyperspeedLastDL;
-        data.AutoGameUpdate = this.AutoGameUpdate;
-        data.saveVersion = this.saveVersion;
-        data.ToolIntro = this.ToolIntro;
+        data.platform = (GameData.Platform)platform;
+        data.gameVersion = (GameData.Version)gameVersion;
+        data.hasDoneFirstTimeSetup = hasDoneFirstTimeSetup;
+        data.LocalFilePath = LocalFilePath;
+        data.hasDownloadedDefaultAtLeastOnce = hasDownloadedDefaultAtLeastOnce;
+        data.hyperspeedLastDL = hyperspeedLastDL;
+        data.AutoGameUpdate = AutoGameUpdate;
+        data.saveVersion = saveVersion;
+        data.ToolIntro = ToolIntro;
+        data.wiiUVersion = (GameData.WiiUVersion)wiiUVersion;
+        data.wiiuFtpPassword = wiiuFtpPassword;
+        data.wiiuFtpIp = wiiuFtpIp;
+        data.wiiUFTP = wiiUFTP;
+        data.wiiULastUSB = wiiULastUSB;
+        data.SSHiosIP = SSHiosIP;
+        data.SSHiosPassword = SSHiosPassword;
+        data.gameTvosUUID = gameTvosUUID; //app UUID so we know where it located on TVOS
+        data.gameIosUUID = gameIosUUID;  //app UUID so we know where it located on ios
     }
 }

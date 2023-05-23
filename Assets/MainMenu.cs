@@ -10,9 +10,16 @@ using TMPro;
 using System.Xml.Linq;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using YamlDotNet.RepresentationModel;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Admin tools")]
+    public bool EnableAdmin = false;
+    public string[] AdminList;
+    public GameObject settingsOBJ;
+    public GameObject adminObj;
+
     public GameObject fadeToBlack;
     public GameObject Settings;
     public GameObject CommuityPatches;
@@ -34,6 +41,25 @@ public class MainMenu : MonoBehaviour
     private Translater t;
     public void Start()
     {
+        //string username = getRpcnUserName();
+        //foreach(string s in AdminList)
+        //{
+        //    if(username == s)
+        //    {
+        //        EnableAdmin = true;
+        //    }
+        //}
+        //if(EnableAdmin)
+        //{
+        //    settingsOBJ.SetActive(false);
+        //    adminObj.SetActive(true);
+        //}
+        //else
+        //{
+        //    settingsOBJ.SetActive(true);
+        //    adminObj.SetActive(false);
+        //}
+        userData.instance.saveVersion = Application.version;
         t = Translater.instance;
         //getting latest version of GHL
         if (userData.instance.AutoGameUpdate)
@@ -77,6 +103,14 @@ public class MainMenu : MonoBehaviour
     {
         GameObject a = Instantiate(fadeToBlack);
         a.gameObject.GetComponent<FadeToBlack>().levelToChangeScene = "Hyper Speed";
+        a.GetComponent<FadeToBlack>().anim.clip = a.GetComponent<FadeToBlack>().animClip[1];
+        a.GetComponent<FadeToBlack>().anim.Play();
+    }
+
+    public void GOTOADMINZONE()
+    {
+        GameObject a = Instantiate(fadeToBlack);
+        a.gameObject.GetComponent<FadeToBlack>().levelToChangeScene = "Admin_zone";
         a.GetComponent<FadeToBlack>().anim.clip = a.GetComponent<FadeToBlack>().animClip[1];
         a.GetComponent<FadeToBlack>().anim.Play();
     }
@@ -176,6 +210,10 @@ public class MainMenu : MonoBehaviour
         else if (userData.instance.gameVersion == userData.Version.USA)
         {
             region = "BLUS31556";
+        }
+        else if (userData.instance.gameVersion == userData.Version.Lite)
+        {
+            region = "BLES02180";
         }
         else
         {
@@ -404,5 +442,57 @@ public class MainMenu : MonoBehaviour
             File.Delete(Application.persistentDataPath + "/motd.xml");
         }
     }
+    private string getRpcnUserName()
+    {
+        string path = "";
+        //check for rpcn.yml
+        if (File.Exists($"{userData.instance.LocalFilePath}/config/rpcn.yml"))
+        {
+            path = $"{userData.instance.LocalFilePath}/config/rpcn.yml";
+        }
+        else if (File.Exists($"{userData.instance.LocalFilePath}/rpcn.yml"))
+        {
+            path = $"{userData.instance.LocalFilePath}/rpcn.yml";
+        }
+        else return null;
 
+        try
+        {
+            using (var reader = new StreamReader(path))
+            {
+                // Load the stream
+                var yaml = new YamlStream();
+                yaml.Load(reader);
+                // the rest
+                var mapping = (YamlMappingNode)yaml.Documents[0].RootNode;
+                foreach (var entry in mapping.Children)
+                {
+                    print(((YamlScalarNode)entry.Key).Value);
+
+                    if (((YamlScalarNode)entry.Key).Value.Contains("NPID"))
+                    {
+                        return (string)entry.Value;
+                    }
+
+                }
+
+                reader.Close();
+
+            }
+        }
+        catch(Exception e)
+        {
+            return null;
+        }
+        return null;
+    }
+
+    public void OpenSocialButton(string url)
+    {
+        if (url.Contains("https://"))
+        {
+            Application.OpenURL(url);
+        }
+
+    }
 }
