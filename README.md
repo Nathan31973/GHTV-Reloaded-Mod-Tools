@@ -1,7 +1,8 @@
 # GHTV Reloaded: Mod Tools V1.3.2
 This user-friendly tool allows you to modify Guitar Hero Live.
 
-## NOTICES: GHTV Reloaded: Mod Tools will not work and support V2 of GHTV Reloaded on December 1st 
+## NOTICES: GHTV Reloaded: Mod Tools will not work and support V2 of GHTV Reloaded on December 1st 2023
+## To update or install the latest version of GHTV Reloaded - https://github.com/Nathan31973/GHTV-Reloaded-Game-Patches/releases
 
 [Builds/downloads](https://github.com/Nathan31973/GHTV-Reloaded-Mod-Tools/releases)
 
